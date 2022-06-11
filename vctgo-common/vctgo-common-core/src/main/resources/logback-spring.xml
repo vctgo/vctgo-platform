@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--debug: 默认值:false 要不要打印 logback内部日志信息，true则表示要打印。建议开启 -->
+<!--scan: 默认值:true 配置发送改变时，要不要重新加载-->
+<!--scanPeriod: 默认值:1 seconds 检测配置发生变化的时间间隔。如果没给出时间单位，默认时间单位是毫秒-->
+<configuration debug="false" scan="true" scanPeriod="10 seconds">
+
+    <!--<include resource="org/springframework/boot/logging/logback/base.xml"/>-->
+    <include resource="org/springframework/boot/logging/logback/defaults.xml" />
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+    <springProperty scope="context" name="file_basePath" source="logging.file_basePath" defaultValue="./logs"/>
+    <springProperty scope="context" name="file_prefix" source="logging.file_prefix" defaultValue="application"/>
+
+
+    <!-- 按照每天生成日志文件 -->
+    <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <!-- 基本日志输出文件（当该文件达到“日记大小设置的值”则将内容“剪切”到<fileNamePattern>设定的文件中，不配置则直接将内容放到<fileNamePattern>设定的文件中） -->
+        <!-- <file>${file_basePath}/${file_prefix}.log</file> -->
+
+        <!-- 追加日志到原文件结尾 -->
+        <append>true</append>
+        <!-- timebasedrollingpolicy：演示时间和大小为基础的日志文件归档 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${file_basePath}/${file_prefix}/${file_prefix}-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 控制归档文件的最大数量的保存，删除旧的文件，默认单位天数 -->
+            <maxHistory>30</maxHistory>
+            <!-- 设置当前日志的文件的大小，决定日志翻滚 -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <!-- 日记大小设置: KB.MB等 -->
+                <maxFileSize>50MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+
+        <!-- encoders 作用是将logger事件转换成字节数组，并将字节数组写入到输出流-->
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 日记数据使用的<appender> -->
+    <root level="info">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="file" />
+    </root>
+
+
+</configuration>

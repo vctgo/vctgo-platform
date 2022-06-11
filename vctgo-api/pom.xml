@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>com.vctgo</groupId>
+        <artifactId>vctgo</artifactId>
+        <version>1.1.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>vctgo-api-system</module>
+    </modules>
+
+    <artifactId>vctgo-api</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        vctgo-api系统接口
+    </description>
+
+</project>

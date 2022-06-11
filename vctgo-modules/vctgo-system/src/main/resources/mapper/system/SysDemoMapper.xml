@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vctgo.system.mapper.SysDemoMapper">
+
+    <resultMap type="com.vctgo.system.domain.SysDemo" id="SysDemoResult">
+        <result property="demoId"    column="demo_id"    />
+        <result property="demoName"    column="demo_name"    />
+        <result property="createBy"    column="create_by"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateBy"    column="update_by"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="remark"    column="remark"    />
+        <result property="tenantId"    column="tenant_id"    />
+    </resultMap>
+
+    <sql id="selectSysDemoVo">
+        select demo_id, demo_name, create_by, create_time, update_by, update_time, remark, tenant_id from sys_demo
+    </sql>
+
+    <select id="selectSysDemoList"   resultMap="SysDemoResult">
+        <include refid="selectSysDemoVo"/>
+        <where>
+            <if test="query.demoId != null "> and demo_id = #{query.demoId}</if>
+            <if test="query.demoName != null  and query.demoName != ''"> and demo_name like concat('%', #{query.demoName}, '%')</if>
+        </where>
+    </select>
+
+    <delete id="deleteSysDemoByDemoIds" parameterType="String">
+        delete from sys_demo where demo_id in
+        <foreach item="demoId" collection="array" open="(" separator="," close=")">
+            #{demoId}
+        </foreach>
+    </delete>
+</mapper>

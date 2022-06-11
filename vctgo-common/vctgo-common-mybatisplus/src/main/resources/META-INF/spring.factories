@@ -1,0 +1,5 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.vctgo.common.mybatisplus.config.MybatisPlusConfig
+
+
+
