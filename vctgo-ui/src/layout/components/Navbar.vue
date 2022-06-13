@@ -15,11 +15,15 @@
 <!--          <size-select id="size-select" class="right-menu-item hover-effect" />-->
 <!--        </el-tooltip>-->
         <el-tooltip content="源码地址" effect="dark" placement="bottom">
-          <Vctgo-git id="ruoyi-git" class="right-menu-item hover-effect" />
+          <Vctgo-git id="vctgo-git" class="right-menu-item hover-effect" />
+        </el-tooltip>
+
+        <el-tooltip content="个人博客" effect="dark" placement="bottom">
+          <Vctgo-blog id="vctgo-blog" class="right-menu-item hover-effect" />
         </el-tooltip>
 
         <el-tooltip content="文档地址" effect="dark" placement="bottom">
-          <Vctgo-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
+          <Vctgo-doc id="vctgo-doc" class="right-menu-item hover-effect" />
         </el-tooltip>
 
       </template>
@@ -52,12 +56,14 @@ import TopNav from '@/components/TopNav'
 import Hamburger from '@/components/Hamburger'
 import VctgoGit from '@/components/Vctgo/Git'
 import VctgoDoc from '@/components/Vctgo/Doc'
+import VctgoBlog from '@/components/Vctgo/Blog'
 import Search from '@/components/HeaderSearch'
 
 export default {
   components: {
     VctgoGit,
     VctgoDoc,
+    VctgoBlog,
     Breadcrumb,
     TopNav,
     Hamburger,
