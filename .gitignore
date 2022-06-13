@@ -26,7 +26,6 @@ file_basePath_IS_UNDEFINED
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
 
 ### VS Code ###
 .vscode/
