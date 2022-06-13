@@ -14,6 +14,13 @@
 <!--        <el-tooltip content="布局大小" effect="dark" placement="bottom">-->
 <!--          <size-select id="size-select" class="right-menu-item hover-effect" />-->
 <!--        </el-tooltip>-->
+        <el-tooltip content="源码地址" effect="dark" placement="bottom">
+          <Vctgo-git id="ruoyi-git" class="right-menu-item hover-effect" />
+        </el-tooltip>
+
+        <el-tooltip content="文档地址" effect="dark" placement="bottom">
+          <Vctgo-doc id="ruoyi-doc" class="right-menu-item hover-effect" />
+        </el-tooltip>
 
       </template>
 
@@ -43,12 +50,14 @@ import { mapGetters } from 'vuex'
 import Breadcrumb from '@/components/Breadcrumb'
 import TopNav from '@/components/TopNav'
 import Hamburger from '@/components/Hamburger'
-// import Screenfull from '@/components/Screenfull'
-// import SizeSelect from '@/components/SizeSelect'
+import VctgoGit from '@/components/Vctgo/Git'
+import VctgoDoc from '@/components/Vctgo/Doc'
 import Search from '@/components/HeaderSearch'
 
 export default {
   components: {
+    VctgoGit,
+    VctgoDoc,
     Breadcrumb,
     TopNav,
     Hamburger,
