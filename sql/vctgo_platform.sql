@@ -414,8 +414,8 @@ INSERT INTO `sys_dict_data` VALUES (23, 1, '成功', '0', 'sys_common_status', '
 INSERT INTO `sys_dict_data` VALUES (24, 2, '失败', '1', 'sys_common_status', '', 'danger', 'N', '0', 'admin', '2022-03-07 15:41:18', '', NULL, '停用状态');
 INSERT INTO `sys_dict_data` VALUES (100, 0, '开启', '0', 'sys_tenant_status', 'primary', 'primary', 'N', '0', 'admin', '2022-03-15 16:30:32', 'admin', '2022-03-15 18:42:34', '租户开启状态');
 INSERT INTO `sys_dict_data` VALUES (101, 1, '关闭', '1', 'sys_tenant_status', NULL, 'danger', 'N', '0', 'admin', '2022-03-15 16:30:44', 'admin', '2022-03-15 18:42:59', '租户关闭状态');
-INSERT INTO `sys_dict_data` VALUES (102, 0, '短信通知', '0', 'sys_message_type', NULL, 'info', 'N', '0', 'admin', '2022-04-28 10:59:57', 'admin', '2022-04-28 11:00:41', '');
-INSERT INTO `sys_dict_data` VALUES (103, 1, '邮件通知', '1', 'sys_message_type', NULL, 'info', 'N', '0', 'admin', '2022-04-28 11:01:00', '', NULL, NULL);
+INSERT INTO `sys_dict_data` VALUES (102, 2, '短信通知', '1', 'sys_message_type', NULL, 'info', 'N', '0', 'admin', '2022-04-28 10:59:57', 'admin', '2022-04-28 11:00:41', '');
+INSERT INTO `sys_dict_data` VALUES (103, 1, '邮件通知', '0', 'sys_message_type', NULL, 'info', 'N', '0', 'admin', '2022-04-28 11:01:00', '', NULL, NULL);
 COMMIT;
 
 -- ----------------------------
