@@ -36,7 +36,7 @@ services:
           '--lower-case-table-names=1'
         ]
     environment:
-      MYSQL_DATABASE: 'ry-cloud'
+      MYSQL_DATABASE: 'vctgo_platform'
       MYSQL_ROOT_PASSWORD: password
   vctgo-redis:
     container_name: vctgo-redis
