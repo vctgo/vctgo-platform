@@ -3,7 +3,7 @@ package com.vctgo.modules.monitor.oshi.server;
 /**
  * 系统相关信息
  *
- * @author ruoyi
+ * @author vctgo
  */
 public class Sys
 {

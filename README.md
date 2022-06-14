@@ -7,10 +7,10 @@
        <img src="https://img.shields.io/badge/Vctgo%20Platform-v1.1.0-brightgreen" alt="vctgo-platform">
     </a>
     <a style="margin-right: 5px">
-       <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="xueYi-MultiSaas">
+       <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="vctgo-platform">
     </a>
     <a style="margin-right: 5px">
-       <img src="https://gitee.com/vctgo/vctgo-platform/badge/fork.svg?theme=dark" alt="xueYi-MultiSaas">
+       <img src="https://gitee.com/vctgo/vctgo-platform/badge/fork.svg?theme=dark" alt="vctgo-platform">
     </a>
 </p>
 
@@ -49,7 +49,8 @@ star 别忘点上 :kissing_heart:
 - 3.添加了邮件通知功能
 - 4.添加了自定义监控模块,暂时代替monitor模块
 - 5.去除定时任务模块,选择了xxl-job,目前没有加入代码库
-- 6.后续优化数据权限模块.....
+- 6.优化代码生成模块-代码生成默认集成mybatis-plus的CRUD模块
+- 7.等待建议添加....
 ## 后续开发任务
 - 1.继续同步RuoYi-Cloud相关版本性更新
 - 2.优化租户增删改查时候的数据处理逻辑,以及租户到期提前一星期通知功能

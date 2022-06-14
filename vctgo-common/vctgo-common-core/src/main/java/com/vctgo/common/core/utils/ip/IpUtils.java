@@ -8,7 +8,7 @@ import com.vctgo.common.core.utils.StringUtils;
 /**
  * 获取IP方法
  *
- * @author ruoyi
+ * @author vctgo
  */
 public class IpUtils
 {

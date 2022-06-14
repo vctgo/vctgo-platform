@@ -5,7 +5,7 @@ import com.vctgo.common.core.utils.Arith;
 /**
  * CPU相关信息
  *
- * @author ruoyi
+ * @author vctgo
  */
 public class Cpu
 {
