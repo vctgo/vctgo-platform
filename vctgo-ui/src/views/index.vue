@@ -18,7 +18,7 @@
       <el-col :sm="24" :lg="12" style="padding-left: 20px">
         <h2>菜盟快速开发平台</h2>
         <p>
-          基于Ruoyi-Cloud版本改进而来,吸收了其他项目类似于pig,spring blade,ruo-vue-pro,xueyi-vue等等优秀的开源架构,集成租户,低代码,监控,分布式,限流,容器化编排等多种功能集成的企业级开发平台!期待大家的加入,一起开发!目前已经完成开源到gitee上,到时候欢迎大家一起pr!
+          基于Ruoyi-Cloud版本改进而来,吸收了其他项目类似于ruoyi-cloud,ruoyi-vue,ruo-vue-pro,xueyi-vue等等优秀的开源架构,集成租户,低代码,监控,分布式,限流,容器化编排等多种功能集成的企业级开发平台!期待大家的加入,一起开发!目前已经完成开源到gitee上,到时候欢迎大家一起pr!
         </p>
         <p>
           <b>当前版本:</b>
