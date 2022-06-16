@@ -6,7 +6,12 @@ usage() {
 	exit 1
 }
 
-
+echo "begin package "
+#打包开始
+mvn clean install -Dmaven.test.skip=true
+#前端
+npm install --registry=https://registry.npmmirror.com
+npm run build:prod
 # copy sql
 echo "begin copy sql "
 cp ../sql/vctgo_platform.sql ./mysql/db
@@ -24,7 +29,7 @@ cp ../vctgo-gateway/target/vctgo-gateway.jar ./vctgo/gateway/jar
 echo "begin copy vctgo-auth "
 cp ../vctgo-auth/target/vctgo-auth.jar ./vctgo/auth/jar
 
-echo "begin copy vctgo-visual "
+echo "begin copy vctgo-monitor "
 cp ../vctgo-visual/vctgo-monitor/target/vctgo-monitor.jar  ./vctgo/visual/monitor/jar
 
 echo "begin copy vctgo-system "
