@@ -60,6 +60,45 @@ star 别忘点上 :kissing_heart:
 - 7.集成链路追踪
 - 8.集成普罗米修斯
 
+## 启动说明
+#### 1.nacos自行运行 如果是 M1的芯片 会出现内核报错 采用下方nacos镜像即可  docker pull zhusaidong/nacos-server-m1:2.0.3
+     - 运行指令如下 
+     docker run --name nacos-standalone -e MODE=standalone -e JVM_XMS=512m -e JVM_XMX=512m -e JVM_XMN=256m -p 8848:8848 -d zhusaidong/nacos-server-m1:2.0.3
+     
+- 非M1芯片或者非docker环境请自行参考文档里的相关部署说明
+    
+#### 2.mysql,redis等自行安装根据需求修改配置文件里的端口和连接,目前nacos初始化的配置文件里写的地址都是host映射的地址,如果需要指定指定地址请自行修改
+     - Windows处于 C:\Windows\System32\drivers\etc
+     - Linux和Mac都属于 /etc/hosts下
+     
+     主要添加以下几个部分,不理解的自行百度,其中127.0.0.1为你自己的本机ip
+     vctgo-platform 127.0.0.1
+     vctgo-nginx 127.0.0.1
+     vctgo-nacos 127.0.0.1
+     vctgo-mysql 127.0.0.1
+     vctgo-gateway 127.0.0.1
+     vctgo-auth 127.0.0.1
+     vctgo-system 127.0.0.1
+     vctgo-file 127.0.0.1
+     vctgo-gen 127.0.0.1
+     vctgo-monitor 127.0.0.1
+
+#### 3.前后端启动说明
+     - 1.nacos和mysql以及redis正常运行后 优先启动gateway网关和 auth服务,其他的就可以同时启动了
+     - 2.前段部分,记得修改vue.config里的后端接口地址
+
+
+## 一键式体验(要求linux环境)
+##### 1.docker安装和docker-compose安装请参考文档里的-应用容器部署模块进行安装
+##### 2.安装完成后下载项目到任意文件夹目录,自行安装 maven,jdk,node环境 下面简单提供三个教程链接仅供参考
+      - https://blog.csdn.net/weixin_42266606/article/details/80863781  --jdk安装
+      - https://www.cnblogs.com/116970u/p/11211963.html  --maven安装
+      - https://www.cnblogs.com/guigushanren/p/10175946.html --node安装
+##### 3.脚本执行
+      - 1.cd ./docker 目录下 执行 copy.sh 脚本会自动进行打包编译和copy
+      - 2.首先执行 sh deploy.sh base 命令进行 nacos,mysql,redis的初始化,初始化完成后建议等待10秒后执行查下一步
+      - 3.后面执行 项目脚本 sh deploy.sh modules ,如果防火墙没有关闭 还可以执行port指令请自行研究脚本
+      - 4.执行copy脚本前可以根据自己的需求自行替换相关变量 比如初始变量设置了 192.168.200.188这个虚拟机ip 可以根据需要自行全局替换
 
 ## 功能截图
 
@@ -71,8 +110,7 @@ star 别忘点上 :kissing_heart:
 ![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-6.png)
 ![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-7.png)
 
-## 启动说明
-- 1.nacos自行运行 如果是 M1的芯片 会出现内核报错 采用下方nacos镜像即可  docker pull zhusaidong/nacos-server-m1:2.0.3
+
 
 ## 系统模块
 
