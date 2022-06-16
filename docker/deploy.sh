@@ -31,7 +31,7 @@ base(){
 
 # 启动程序模块（必须）
 modules(){
-	docker-compose up -d vctgo-nginx vctgo-gateway vctgo-auth vctgo-system
+	docker-compose up -d vctgo-nginx vctgo-gateway vctgo-auth vctgo-system vctgo-gen vctgo-file vctgo-monitor
 }
 
 # 关闭所有环境/模块

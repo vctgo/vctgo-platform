@@ -27,6 +27,7 @@ services:
       - ./mysql/conf:/etc/mysql/conf.d
       - ./mysql/logs:/logs
       - ./mysql/data:/var/lib/mysql
+      - ./mysql/db:/docker-entrypoint-initdb.d
     command: [
           'mysqld',
           '--innodb-buffer-pool-size=80M',
@@ -76,6 +77,10 @@ services:
       - vctgo-redis
     links:
       - vctgo-redis
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
   vctgo-auth:
     container_name: vctgo-auth
     build:
@@ -87,6 +92,10 @@ services:
       - vctgo-redis
     links:
       - vctgo-redis
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
   vctgo-system:
     container_name: vctgo-system
     build:
@@ -100,6 +109,10 @@ services:
     links:
       - vctgo-redis
       - vctgo-mysql
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
   vctgo-gen:
     container_name: vctgo-gen
     build:
@@ -111,6 +124,10 @@ services:
       - vctgo-mysql
     links:
       - vctgo-mysql
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
   vctgo-file:
     container_name: vctgo-file
     build:
@@ -119,11 +136,19 @@ services:
     ports:
       - "39300:39300"
     volumes:
-    - ./ruoyi/uploadPath:/home/ruoyi/uploadPath
-  ruoyi-monitor:
-    container_name: ruoyi-monitor
+      - ./ruoyi/uploadPath:/home/ruoyi/uploadPath
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
+  vctgo-monitor:
+    container_name: vctgo-monitor
     build:
       context: vctgo/visual/monitor
       dockerfile: dockerfile
     ports:
       - "39100:39100"
+    environment:
+      - NACOS_HOST=192.168.200.188
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.200.188
