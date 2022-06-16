@@ -17,7 +17,7 @@ DROP DATABASE IF EXISTS `vctgo_seata`;
 
 CREATE DATABASE  `vctgo_seata` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
 
-UES vctgo_seata;
+USE vctgo_seata;
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
