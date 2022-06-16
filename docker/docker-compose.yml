@@ -47,9 +47,9 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - ./redis/conf/redis.conf:/home/ruoyi/redis/redis.conf
+      - ./redis/conf/redis.conf:/home/vctgo/redis/redis.conf
       - ./redis/data:/data
-    command: redis-server /home/ruoyi/redis/redis.conf
+    command: redis-server /home/vctgo/redis/redis.conf
   vctgo-nginx:
     container_name: vctgo-nginx
     image: nginx
@@ -58,7 +58,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx/html/dist:/home/ruoyi/projects/ruoyi-ui
+      - ./nginx/html/dist:/home/vctgo/projects/vctgo-ui
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
       - ./nginx/logs:/var/log/nginx
       - ./nginx/conf.d:/etc/nginx/conf.d
@@ -136,7 +136,7 @@ services:
     ports:
       - "39300:39300"
     volumes:
-      - ./ruoyi/uploadPath:/home/ruoyi/uploadPath
+      - ./vctgo/uploadPath:/home/vctgo/uploadPath
     environment:
       - NACOS_HOST=192.168.200.188
       - NACOS_PORT=8848
