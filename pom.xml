@@ -281,11 +281,7 @@
                 <artifactId>jsch</artifactId>
                 <version>${jsch.version}</version>
             </dependency>
-            <dependency>
-                <groupId>ch.ethz.ganymed</groupId>
-                <artifactId>ganymed-ssh2</artifactId>
-                <version>${ganymed-ssh2.version}</version>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
