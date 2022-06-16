@@ -8,10 +8,13 @@ usage() {
 
 echo "begin package "
 #打包开始
+cd ..
 mvn clean install -Dmaven.test.skip=true
 #前端
+cd ./vctgo-ui
 npm install --registry=https://registry.npmmirror.com
 npm run build:prod
+cd ../docker
 # copy sql
 echo "begin copy sql "
 cp ../sql/vctgo_platform.sql ./mysql/db
