@@ -109,6 +109,7 @@ services:
     links:
       - vctgo-redis
       - vctgo-mysql
+      - vctgo-file
     environment:
       - NACOS_HOST=192.168.200.188
       - NACOS_PORT=8848
