@@ -7,7 +7,10 @@
        <img src="https://img.shields.io/badge/Vctgo%20Platform-v1.1.0-brightgreen" alt="vctgo-platform">
     </a>
     <a style="margin-right: 5px">
-       <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="vctgo-platform">
+           <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="vctgo-platform">
+    </a>
+   <a style="margin-right: 5px">
+           <img src="https://img.shields.io/github/stars/vctgo/vctgo-platform" alt="vctgo-platform">
     </a>
     <a style="margin-right: 5px">
        <img src="https://gitee.com/vctgo/vctgo-platform/badge/fork.svg?theme=dark" alt="vctgo-platform">
@@ -28,6 +31,9 @@
 
 #### 友情链接 [若依/RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud) Element UI版本。
 star 别忘点上 :kissing_heart:
+## 项目地址
+Gitee: https://gitee.com/vctgo/vctgo-platform
+GitHub: https://github.com/vctgo/vctgo-platform
 ## 演示地址(1M小水管请大家适当忍耐)
 - http://platform.vctgo.cn
 - 账号密码 admin/admin123
@@ -36,6 +42,8 @@ star 别忘点上 :kissing_heart:
 - https://doc.vctgo.cn
 ## 个人blog(偷懒ing....)
 - https://www.vctgo.cn
+## 有问题请issues有限提问,每天会定时处理!
+
 ## 交流
 - 请移步右上角  **一键三连** :kissing_heart:
 - 邮箱:dhr92@163.com
@@ -162,7 +170,7 @@ com.vctgo
 17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
 
-## 有问题请issues提问 或者邮件咨询 邮件详情见blog
+
 
 
 
