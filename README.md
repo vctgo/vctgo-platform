@@ -9,12 +9,16 @@
     <a style="margin-right: 5px">
            <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="vctgo-platform">
     </a>
-   <a style="margin-right: 5px">
-           <img src="https://img.shields.io/github/stars/vctgo/vctgo-platform" alt="vctgo-platform">
-    </a>
     <a style="margin-right: 5px">
        <img src="https://gitee.com/vctgo/vctgo-platform/badge/fork.svg?theme=dark" alt="vctgo-platform">
     </a>
+   <a style="margin-right: 5px">
+           <img src="https://img.shields.io/github/stars/vctgo/vctgo-platform?logo=github" alt="vctgo-platform">
+    </a>
+   <a style="margin-right: 5px">
+           <img src="https://img.shields.io/github/forks/vctgo/vctgo-platform?logo=github" alt="vctgo-platform">
+    </a>
+
 </p>
 
 - 首先感谢若依提供的开源支持!请大家继续关注若依项目!
