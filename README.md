@@ -175,13 +175,6 @@ com.vctgo
 17. 连接池监视：监视当前系统数据库连接池状态，可进行分析SQL找出系统性能瓶颈。
 
 
-# 捐赠支持
-
-::: tip Donate
-如果你觉得这个项目帮助到了你，你可以请作者喝杯咖啡表示鼓励 :coffee:
-:::
-
-![donate](https://www.vctgo.cn:39000/vctgo/pay.png)
 
 
 
