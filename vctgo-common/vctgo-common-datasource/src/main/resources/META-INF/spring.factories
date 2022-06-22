@@ -1,2 +1,2 @@
-org.springframework.boot.env.EnvironmentPostProcessor=\
-    com.vctgo.common.datasource.env.ApplicationSeataInitializer
+#org.springframework.boot.env.EnvironmentPostProcessor=\
+#    com.vctgo.common.datasource.env.ApplicationSeataInitializer
