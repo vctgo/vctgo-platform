@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -39,8 +40,8 @@ public class SysDept extends TenantEntity
     private String deptName;
 
     /** 显示顺序 */
-    @NotBlank(message = "显示顺序不能为空")
-    private String orderNum;
+    @NotNull(message = "显示顺序不能为空")
+    private Integer orderNum;
 
     /** 负责人 */
     private String leader;
