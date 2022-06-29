@@ -191,7 +191,7 @@
 
 <script>
 import { listData, getData, delData, addData, updateData } from "@/api/system/dict/data";
-import { listType, getType } from "@/api/system/dict/type";
+import { optionselect as getDictOptionselect, getType } from "@/api/system/dict/type";
 import {parseTime} from "@/utils/vctgo";
 
 export default {
@@ -288,7 +288,7 @@ export default {
     },
     /** 查询字典类型列表 */
     getTypeList() {
-      listType().then(response => {
+      getDictOptionselect().then(response => {
         this.typeOptions = response.data;
       });
     },
