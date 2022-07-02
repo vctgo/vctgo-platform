@@ -248,7 +248,7 @@ public class SysTenantServiceImpl implements ISysTenantService
     private Long createDept(SysTenant sysTenant) {
         // 创建部门
         SysDept dept = new SysDept();
-        dept.setParentId(0L).setAncestors("0").setDeptName(sysTenant.getTenantName()).setOrderNum("0")
+        dept.setParentId(0L).setAncestors("0").setDeptName(sysTenant.getTenantName()).setOrderNum(0)
                 .setLeader(sysTenant.getTenantName()+"管理员").setPhone(sysTenant.getUserPhone()).setEmail(sysTenant.getUserEmail());
         deptMapper.insert(dept);
         return dept.getDeptId();
