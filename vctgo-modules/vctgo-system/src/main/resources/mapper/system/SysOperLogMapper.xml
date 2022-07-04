@@ -39,7 +39,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			<if test="query.title != null and query.title != ''">
 				AND title like concat('%', #{query.title}, '%')
 			</if>
-			<if test="query.businessType != null and query.businessType != ''">
+			<if test="query.businessType != null ">
 				AND business_type = #{query.businessType}
 			</if>
 			<if test="query.businessTypes != null and query.businessTypes.length > 0">

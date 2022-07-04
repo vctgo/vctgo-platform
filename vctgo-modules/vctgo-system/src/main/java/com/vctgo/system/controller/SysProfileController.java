@@ -1,6 +1,6 @@
 package com.vctgo.system.controller;
 
-import java.io.IOException;
+import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +24,8 @@ import com.vctgo.system.api.domain.SysFile;
 import com.vctgo.system.api.domain.SysUser;
 import com.vctgo.system.api.model.LoginUser;
 import com.vctgo.system.service.ISysUserService;
+import com.vctgo.common.core.utils.file.FileTypeUtils;
+import com.vctgo.common.core.utils.file.MimeTypeUtils;
 
 /**
  * 个人信息 业务处理
@@ -126,11 +128,16 @@ public class SysProfileController extends BaseController
      */
     @Log(title = "用户头像", businessType = BusinessType.UPDATE)
     @PostMapping("/avatar")
-    public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file) throws IOException
+    public AjaxResult avatar(@RequestParam("avatarfile") MultipartFile file)
     {
         if (!file.isEmpty())
         {
             LoginUser loginUser = SecurityUtils.getLoginUser();
+            String extension = FileTypeUtils.getExtension(file);
+            if (!StringUtils.equalsAnyIgnoreCase(extension, MimeTypeUtils.IMAGE_EXTENSION))
+            {
+                return AjaxResult.error("文件格式不正确，请上传" + Arrays.toString(MimeTypeUtils.IMAGE_EXTENSION) + "格式");
+            }
             R<SysFile> fileResult = remoteFileService.upload(file);
             if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData()))
             {

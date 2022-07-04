@@ -12,6 +12,7 @@ import com.vctgo.common.core.exception.file.InvalidExtensionException;
 import com.vctgo.common.core.utils.StringUtils;
 import com.vctgo.common.core.utils.file.MimeTypeUtils;
 import com.vctgo.common.core.utils.uuid.Seq;
+import com.vctgo.common.core.utils.file.FileTypeUtils;
 
 /**
  * 文件上传工具类
@@ -87,7 +88,7 @@ public class FileUploadUtils
     public static final String extractFilename(MultipartFile file)
     {
         return StringUtils.format("{}_{}.{}",
-                FilenameUtils.getBaseName(file.getOriginalFilename()), Seq.getId(Seq.uploadSeqType), getExtension(file));
+                FilenameUtils.getBaseName(file.getOriginalFilename()), Seq.getId(Seq.uploadSeqType), FileTypeUtils.getExtension(file));
     }
 
     private static final File getAbsoluteFile(String uploadDir, String fileName) throws IOException
@@ -127,7 +128,7 @@ public class FileUploadUtils
         }
 
         String fileName = file.getOriginalFilename();
-        String extension = getExtension(file);
+        String extension = FileTypeUtils.getExtension(file);
         if (allowedExtension != null && !isAllowedExtension(extension, allowedExtension))
         {
             if (allowedExtension == MimeTypeUtils.IMAGE_EXTENSION)
@@ -175,20 +176,20 @@ public class FileUploadUtils
         }
         return false;
     }
-
-    /**
-     * 获取文件名的后缀
-     *
-     * @param file 表单文件
-     * @return 后缀名
-     */
-    public static final String getExtension(MultipartFile file)
-    {
-        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
-        if (StringUtils.isEmpty(extension))
-        {
-            extension = MimeTypeUtils.getExtension(Objects.requireNonNull(file.getContentType()));
-        }
-        return extension;
-    }
+//
+//    /**
+//     * 获取文件名的后缀
+//     *
+//     * @param file 表单文件
+//     * @return 后缀名
+//     */
+//    public static final String getExtension(MultipartFile file)
+//    {
+//        String extension = FilenameUtils.getExtension(file.getOriginalFilename());
+//        if (StringUtils.isEmpty(extension))
+//        {
+//            extension = MimeTypeUtils.getExtension(Objects.requireNonNull(file.getContentType()));
+//        }
+//        return extension;
+//    }
 }
