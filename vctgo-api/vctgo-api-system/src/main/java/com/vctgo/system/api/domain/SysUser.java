@@ -9,7 +9,6 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.vctgo.common.core.web.domain.TenantEntity;
 import lombok.Data;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.vctgo.common.core.annotation.Excel;
 import com.vctgo.common.core.annotation.Excel.ColumnType;
 import com.vctgo.common.core.annotation.Excel.Type;
@@ -76,7 +75,6 @@ public class SysUser extends TenantEntity
     private String avatar;
 
     /** 密码 */
-    @JsonProperty
     private String password;
 
     /** 帐号状态（0正常 1停用） */

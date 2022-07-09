@@ -18,7 +18,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.multipart.MultipartFile;
-import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson2.JSON;
 import com.vctgo.common.core.utils.ServletUtils;
 import com.vctgo.common.core.utils.StringUtils;
 import com.vctgo.common.core.utils.ip.IpUtils;

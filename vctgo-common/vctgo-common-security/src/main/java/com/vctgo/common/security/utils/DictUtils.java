@@ -7,6 +7,7 @@ import com.vctgo.common.core.utils.SpringUtils;
 import com.vctgo.common.core.utils.StringUtils;
 import com.vctgo.common.redis.service.RedisService;
 import com.vctgo.system.api.domain.SysDictData;
+import com.alibaba.fastjson2.JSONArray;
 
 /**
  * 字典工具类
@@ -34,10 +35,10 @@ public class DictUtils
      */
     public static List<SysDictData> getDictCache(String key)
     {
-        Object cacheObj = SpringUtils.getBean(RedisService.class).getCacheObject(getCacheKey(key));
-        if (StringUtils.isNotNull(cacheObj))
+        JSONArray arrayCache = SpringUtils.getBean(RedisService.class).getCacheObject(getCacheKey(key));
+        if (StringUtils.isNotNull(arrayCache))
         {
-            return StringUtils.cast(cacheObj);
+            return arrayCache.toList(SysDictData.class);
         }
         return null;
     }
