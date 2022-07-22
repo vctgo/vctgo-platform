@@ -27,7 +27,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
-        <spring-boot.version>2.6.7</spring-boot.version>
+        <spring-boot.version>2.6.8</spring-boot.version>
         <spring-cloud.version>2021.0.1</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
         <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
@@ -39,12 +39,13 @@
         <hutool.version>5.6.1</hutool.version>
         <kaptcha.version>2.3.2</kaptcha.version>
         <pagehelper.boot.version>1.4.1</pagehelper.boot.version>
-        <druid.version>1.2.8</druid.version>
+        <alibaba.seata.version>1.5.1</alibaba.seata.version>
+        <druid.version>1.2.11</druid.version>
         <dynamic-ds.version>3.5.0</dynamic-ds.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <velocity.version>2.3</velocity.version>
-        <fastjson.version>2.0.4</fastjson.version>
+        <fastjson.version>2.0.8</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
@@ -85,6 +86,13 @@
                 <version>${alibaba.nacos.version}</version>
             </dependency>
 
+            <!-- Alibaba Seata 配置 -->
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${alibaba.seata.version}</version>
+            </dependency>
+
             <!-- SpringBoot 依赖配置 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -100,12 +108,7 @@
                 <version>${spring-boot.version}</version>
             </dependency>
 
-            <!--  SpringBoot 监控客户端 -->
-            <dependency>
-                <groupId>de.codecentric</groupId>
-                <artifactId>spring-boot-admin-starter-client</artifactId>
-                <version>${spring-boot-admin.version}</version>
-            </dependency>
+
 
             <!-- FastDFS 分布式文件系统 -->
             <dependency>

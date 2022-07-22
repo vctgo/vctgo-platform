@@ -5,7 +5,6 @@ import java.util.List;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
-import org.apache.ibatis.annotations.Mapper;
 import com.vctgo.system.api.domain.SysDictType;
 import org.apache.ibatis.annotations.Param;
 
@@ -14,7 +13,6 @@ import org.apache.ibatis.annotations.Param;
  *
  * @author vctgo
  */
-@Mapper
  public interface SysDictTypeMapper extends BaseMapperX<SysDictType>
 {
     /**
