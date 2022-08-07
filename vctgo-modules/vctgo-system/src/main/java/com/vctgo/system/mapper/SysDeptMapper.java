@@ -2,6 +2,7 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
 import org.apache.ibatis.annotations.Param;
 import com.vctgo.system.api.domain.SysDept;
@@ -117,4 +118,13 @@ import com.vctgo.system.api.domain.SysDept;
      * @return 结果
      */
      int deleteDeptById(Long deptId);
+
+    /**
+     * 删除部门信息-根据租户ID
+     *
+     * @param ids 租户id
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteDeptByTenantId(Long[] ids);
 }

@@ -128,4 +128,13 @@ import org.apache.ibatis.annotations.Param;
      * @return 结果
      */
      int deleteRoleByIds(Long[] roleIds);
+
+    /**
+     * 批量删除角色信息-根据租户
+     *
+     * @param ids 需要删除的租户id
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteRoleByTenantId(Long[] ids);
 }

@@ -137,4 +137,14 @@ public interface SysUserMapper extends BaseMapperX<SysUser>
      * @return 结果
      */
      SysUser checkEmailUnique(String email);
+
+
+    /**
+     * 批量删除用户信息-根据租户
+     *
+     * @param ids 需要删除的租户ID
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteUserByTenantId(Long[] ids);
 }

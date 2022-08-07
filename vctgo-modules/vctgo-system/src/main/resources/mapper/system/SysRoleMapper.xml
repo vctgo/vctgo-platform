@@ -156,5 +156,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			#{roleId}
         </foreach>
  	</delete>
+    <delete id="deleteRoleByTenantId">
+		delete from sys_role where tenant_id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 
 </mapper>

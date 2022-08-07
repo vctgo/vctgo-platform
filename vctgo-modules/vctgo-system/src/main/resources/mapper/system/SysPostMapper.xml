@@ -118,5 +118,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			#{postId}
         </foreach>
  	</delete>
+	<delete id="deletePostByTenantId">
+		delete from sys_post where tenant_id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 
 </mapper>

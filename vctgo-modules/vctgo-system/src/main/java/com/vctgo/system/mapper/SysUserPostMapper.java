@@ -2,6 +2,7 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
 import com.vctgo.system.domain.SysUserPost;
 
@@ -43,4 +44,14 @@ public interface SysUserPostMapper extends BaseMapperX<SysUserPost>
      * @return 结果
      */
      int batchUserPost(List<SysUserPost> userPostList);
+
+
+    /**
+     * 批量删除用户和岗位关联-根据租户
+     *
+     * @param ids 需要删除的数据租户id
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteUserPostByTenantId(Long[] ids);
 }

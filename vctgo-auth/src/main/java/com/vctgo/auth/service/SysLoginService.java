@@ -92,11 +92,18 @@ public class SysLoginService
             recordLogininfor(username, Constants.LOGIN_FAIL, "用户密码错误");
             throw new ServiceException("用户不存在/密码错误");
         }
+        //先查询是否被停用了租户
+        if (userInfo.getTenantStatus() != null && UserStatus.DISABLE.getCode().equals(userInfo.getTenantStatus().toString()))
+        {
+            recordLogininfor(username, Constants.LOGIN_FAIL, "当前租户已经被停用，请联系管理员");
+            throw new ServiceException("当前租户已经被停用");
+        }
         if (userInfo.getTenantEndDate() != null && userInfo.getTenantEndDate().compareTo(new Date()) < 0)
         {
-            recordLogininfor(username, Constants.LOGIN_FAIL, "当前租户账号已超过租赁日期，请联系管理员");
-            throw new ServiceException("当前租户账号已超过租赁日期");
+            recordLogininfor(username, Constants.LOGIN_FAIL, "当前租户已超过租赁日期，请联系管理员");
+            throw new ServiceException("当前租户已超过租赁日期");
         }
+
         recordLogininfor(username, Constants.LOGIN_SUCCESS, "登录成功");
         return userInfo;
     }

@@ -128,6 +128,7 @@ public class SysUserController extends BaseController
         if(tenant != null)
         {
             sysUserVo.setTenantEndDate(tenant.getTenantTime());
+            sysUserVo.setTenantStatus(tenant.getStatus());
         }
         return R.ok(sysUserVo);
     }

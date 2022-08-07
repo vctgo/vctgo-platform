@@ -52,4 +52,15 @@ import com.vctgo.system.domain.SysRoleMenu;
      * @return 结果
      */
      int batchRoleMenu(List<SysRoleMenu> roleMenuList);
+
+
+
+    /**
+     * 通过租户ID删除角色和菜单关联
+     *
+     * @param ids 租户ID
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteRoleMenuByTenantIds(Long[] ids);
 }

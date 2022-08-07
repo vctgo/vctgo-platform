@@ -2,6 +2,7 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
@@ -108,4 +109,14 @@ import org.apache.ibatis.annotations.Param;
      * @return 结果
      */
      SysPost checkPostCodeUnique(String postCode);
+
+
+    /**
+     * 批量删除岗位信息-根据租户
+     *
+     * @param ids 需要删除的岗位租户id
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deletePostByTenantId(Long[] ids);
 }

@@ -2,6 +2,7 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
 import com.vctgo.system.domain.SysUserRole;
 import org.apache.ibatis.annotations.Param;
@@ -61,4 +62,13 @@ import org.apache.ibatis.annotations.Param;
      * @return 结果
      */
      int deleteUserRoleInfos(@Param("roleId") Long roleId, @Param("userIds") Long[] userIds);
+
+    /**
+     * 批量删除用户和角色关联-根据租户
+     *
+     * @param ids 需要删除的用户租户id
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteUserRoleByTenantId(Long[] ids);
 }

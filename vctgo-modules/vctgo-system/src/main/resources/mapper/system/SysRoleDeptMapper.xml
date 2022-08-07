@@ -23,8 +23,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			#{roleId}
         </foreach>
  	</delete>
+    <delete id="deleteRoleDeptByTenantId">
+		delete from sys_role_dept where tenant_id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 
-	<insert id="batchRoleDept">
+    <insert id="batchRoleDept">
 		insert into sys_role_dept(role_id, dept_id) values
 		<foreach item="item" index="index" collection="list" separator=",">
 			(#{item.roleId},#{item.deptId})

@@ -220,5 +220,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  			#{userId}
         </foreach>
  	</delete>
+    <delete id="deleteUserByTenantId">
+		delete from sys_user where tenant_id in
+		<foreach item="id" collection="array" open="(" separator="," close=")">
+			#{id}
+		</foreach>
+	</delete>
 
 </mapper>

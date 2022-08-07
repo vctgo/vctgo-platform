@@ -142,7 +142,7 @@
     <el-dialog :title="title" :visible.sync="open" width="550px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="120px">
                         <el-form-item label="租户编码" prop="id">
-                          <el-input v-model="form.id" placeholder="请输入租户编码" :disabled="this.updateOrAdd" />
+                          <el-input v-model="form.id" placeholder="请输入租户编码" :disabled="this.updateOrAdd"  />
                         </el-form-item>
                         <el-form-item label="租户名称" prop="tenantName" >
                           <el-input v-model="form.tenantName" placeholder="请输入租户名称" :disabled="this.updateOrAdd" />
@@ -239,7 +239,12 @@
         // 表单校验
         rules: {
                         id: [
-                    { required: true, message: "租户编码不能为空", trigger: "blur" }
+                    { required: true, message: "租户编码不能为空", trigger: "blur" },
+                          {
+                            pattern: /^[1-9]\d*$/,
+                            message: "租户编码只能为数字类型",
+                            trigger: "blur"
+                          }
                   ],
                         tenantName: [
                     { required: true, message: "租户名称不能为空", trigger: "blur" }
@@ -250,7 +255,7 @@
                         userPhone: [
                     { required: true, message: "手机号码不能为空", trigger: "blur" },
                     {
-                      pattern: /^1[3|4|5|6|7|8|9][0-9]\d{8}$/,
+                      pattern: /^((0\d{2,3}-\d{7,8})|(1[34578]\d{9}))$/,
                       message: "请输入正确的手机号码",
                       trigger: "blur"
                     }

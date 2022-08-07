@@ -65,4 +65,9 @@ public class LoginUser implements Serializable
      */
     private Date tenantEndDate;
 
+    /**
+     * 租户状态
+     */
+    private Integer tenantStatus;
+
 }

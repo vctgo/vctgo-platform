@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.context.SecurityContextHolder;
+import com.vctgo.common.core.exception.ServiceException;
 import com.vctgo.common.core.utils.StringUtils;
 import com.vctgo.common.core.web.domain.AjaxResult;
 import com.vctgo.common.message.mail.EmailUtil;
@@ -57,6 +58,9 @@ public class SysTenantServiceImpl implements ISysTenantService
 
     @Autowired
     private SysRoleMenuMapper sysRoleMenuMapper;
+
+    @Autowired
+    private SysRoleDeptMapper sysRoleDeptMapper;
 
     @Autowired
     private SysUserMapper userMapper;
@@ -300,9 +304,30 @@ public class SysTenantServiceImpl implements ISysTenantService
      * @return 结果
      */
     @Override
+    @Transactional(rollbackFor = Exception.class)
     public int deleteSysTenantByIds(Long[] ids)
     {
-        return sysTenantMapper.deleteSysTenantByIds(ids);
+        //优化删除逻辑
+        //1.先删租户
+        int tenantres = sysTenantMapper.deleteSysTenantByIds(ids);
+        if(tenantres>0){
+            //下面才会进行子模块数据的删除
+            //部门模块
+            deptMapper.deleteDeptByTenantId(ids);
+            //职位模块
+            sysPostMapper.deletePostByTenantId(ids);
+            //权限
+            sysRoleMapper.deleteRoleByTenantId(ids);
+            sysRoleMenuMapper.deleteRoleMenuByTenantIds(ids);
+            sysRoleDeptMapper.deleteRoleDeptByTenantId(ids);
+            //账号
+            userMapper.deleteUserByTenantId(ids);
+            userRoleMapper.deleteUserRoleByTenantId(ids);
+            userPostMapper.deleteUserPostByTenantId(ids);
+            return 1;
+        }else {
+            throw new ServiceException("当前租户已被删除不存在！");
+        }
     }
 
     /**
