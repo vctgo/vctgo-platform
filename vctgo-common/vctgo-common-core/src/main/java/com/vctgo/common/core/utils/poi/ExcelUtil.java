@@ -387,12 +387,7 @@ public class ExcelUtil<T>
         exportExcel(response);
     }
 
-    /**
-     * 对list数据源将其里面的数据导入到excel表单
-     *
-     * @param sheetName 工作表的名称
-     * @return 结果
-     */
+
     /**
      * 对list数据源将其里面的数据导入到excel表单
      *

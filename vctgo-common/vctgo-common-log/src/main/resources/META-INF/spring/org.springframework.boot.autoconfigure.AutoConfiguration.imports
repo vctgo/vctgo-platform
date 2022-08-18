@@ -1,0 +1,2 @@
+com.vctgo.common.log.service.AsyncLogService
+com.vctgo.common.log.aspect.LogAspect

@@ -1,4 +1,0 @@
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.vctgo.system.api.factory.RemoteUserFallbackFactory,\
-  com.vctgo.system.api.factory.RemoteLogFallbackFactory, \
-  com.vctgo.system.api.factory.RemoteFileFallbackFactory
