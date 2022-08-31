@@ -95,6 +95,7 @@ GitHub: https://github.com/vctgo/vctgo-platform
      vctgo-file 127.0.0.1
      vctgo-gen 127.0.0.1
      vctgo-monitor 127.0.0.1
+     vctgo-redis 127.0.0.1
 
 #### 3.前后端启动说明
      - 1.nacos和mysql以及redis正常运行后 优先启动gateway网关和 auth服务,其他的就可以同时启动了

@@ -1,5 +1,7 @@
 package com.vctgo.common.datascope.aspect;
 
+import java.util.ArrayList;
+import java.util.List;
 import com.vctgo.common.datascope.annotation.DataScope;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -85,10 +87,14 @@ public class DataScopeAspect
     public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias)
     {
         StringBuilder sqlString = new StringBuilder();
-
+        List<String> conditions = new ArrayList<String>();
         for (SysRole role : user.getRoles())
         {
             String dataScope = role.getDataScope();
+            if (!DATA_SCOPE_CUSTOM.equals(dataScope) && conditions.contains(dataScope))
+            {
+                continue;
+            }
             if (DATA_SCOPE_ALL.equals(dataScope))
             {
                 sqlString = new StringBuilder();
@@ -122,6 +128,7 @@ public class DataScopeAspect
                     sqlString.append(StringUtils.format(" OR {}.dept_id = 0 ", deptAlias));
                 }
             }
+            conditions.add(dataScope);
         }
 
         if (StringUtils.isNotBlank(sqlString.toString()))
