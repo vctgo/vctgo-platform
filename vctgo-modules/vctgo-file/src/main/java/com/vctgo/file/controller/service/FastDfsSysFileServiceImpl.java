@@ -1,6 +1,6 @@
 package com.vctgo.file.controller.service;
 
-import org.apache.commons.io.FilenameUtils;
+import com.vctgo.common.core.utils.file.FileTypeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -36,7 +36,7 @@ public class FastDfsSysFileServiceImpl implements ISysFileService
     public String uploadFile(MultipartFile file) throws Exception
     {
         StorePath storePath = storageClient.uploadFile(file.getInputStream(), file.getSize(),
-                FilenameUtils.getExtension(file.getOriginalFilename()), null);
+                FileTypeUtils.getExtension(file), null);
         return domain + "/" + storePath.getFullPath();
     }
 }
