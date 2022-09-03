@@ -203,7 +203,7 @@ CREATE TABLE `monitor_cache` (
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COMMENT='缓存列表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='缓存列表';
 
 -- ----------------------------
 -- Records of monitor_cache
@@ -237,7 +237,7 @@ CREATE TABLE `monitor_sys` (
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户id',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COMMENT='系统监控表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='系统监控表';
 
 -- ----------------------------
 -- Records of monitor_sys
@@ -265,7 +265,7 @@ CREATE TABLE `monitor_sys_info` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户id',
   PRIMARY KEY (`id`) USING BTREE,
   KEY `idx_monitor_sysinfo_ipid` (`ip_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=1040 DEFAULT CHARSET=utf8mb4 COMMENT='系统监控信息记录表';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='系统监控信息记录表';
 
 -- ----------------------------
 -- Records of monitor_sys_info
@@ -289,7 +289,7 @@ CREATE TABLE `sys_config` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`config_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COMMENT='参数配置表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='参数配置表';
 
 -- ----------------------------
 -- Records of sys_config
@@ -347,7 +347,7 @@ CREATE TABLE `sys_dept` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COMMENT='部门表';
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COMMENT='部门表';
 
 -- ----------------------------
 -- Records of sys_dept
@@ -469,7 +469,7 @@ CREATE TABLE `sys_logininfor` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`info_id`) USING BTREE,
   KEY `idx_logininfo_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=513 DEFAULT CHARSET=utf8mb4 COMMENT='系统访问记录';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='系统访问记录';
 
 -- ----------------------------
 -- Records of sys_logininfor
@@ -664,7 +664,7 @@ CREATE TABLE `sys_oper_log` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`oper_id`) USING BTREE,
   KEY `idx_operlog_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=591 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志记录';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志记录';
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -690,7 +690,7 @@ CREATE TABLE `sys_post` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户id',
   PRIMARY KEY (`post_id`) USING BTREE,
   KEY `idx_post_menu` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COMMENT='岗位信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COMMENT='岗位信息表';
 
 -- ----------------------------
 -- Records of sys_post
@@ -725,7 +725,7 @@ CREATE TABLE `sys_role` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`role_id`) USING BTREE,
   KEY `idx_role_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COMMENT='角色信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COMMENT='角色信息表';
 
 -- ----------------------------
 -- Records of sys_role
@@ -857,7 +857,7 @@ CREATE TABLE `sys_tenant` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=11112 DEFAULT CHARSET=utf8mb4 COMMENT='租户表';
+) ENGINE=InnoDB AUTO_INCREMENT=1001 DEFAULT CHARSET=utf8mb4 COMMENT='租户表';
 
 -- ----------------------------
 -- Records of sys_tenant
@@ -881,7 +881,7 @@ CREATE TABLE `sys_tenant_package` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) CHARACTER SET utf8mb4 DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='租户套餐表';
+) ENGINE=InnoDB AUTO_INCREMENT=101 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='租户套餐表';
 
 -- ----------------------------
 -- Records of sys_tenant_package
@@ -919,7 +919,7 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`user_id`) USING BTREE,
   KEY `idx_user_tenant` (`tenant_id`) USING BTREE,
   KEY `idx_user_name` (`user_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of sys_user
