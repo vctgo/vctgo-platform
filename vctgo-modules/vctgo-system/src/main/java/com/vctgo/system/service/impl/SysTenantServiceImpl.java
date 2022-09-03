@@ -183,7 +183,7 @@ public class SysTenantServiceImpl implements ISysTenantService
     private void createUser(SysTenant sysTenant,Long deptId,Long postid,Long roleid) {
         SysUser user = new SysUser();
         user.setDeptId(deptId).setUserName(sysTenant.getUserName()).setNickName(sysTenant.getTenantName())
-                .setUserType("10")//用户类型 10 表示各租户管理员账号，不允许租户修改删除
+                .setUserType("00")//用户类型 00 表示各管理员账号，不允许租户修改删除 其他账号为10
                 .setEmail(sysTenant.getUserEmail()).setPhonenumber(sysTenant.getUserPhone()).setRemark("租户管理员");
         //默认密码采用随机生成
         String randomPassword = SecurityUtils.randomStr(8);//随机密码8位
@@ -212,27 +212,21 @@ public class SysTenantServiceImpl implements ISysTenantService
         role.setRoleName(sysTenant.getTenantName()+"管理员").setRoleKey("admin")
                 .setRoleSort("1").setDataScope("1").setMenuCheckStrictly(true).setDeptCheckStrictly(true);
         role.setCreateBy(sysTenant.getUserName());
+        role.setRemark("租户管理员");
+        role.setAdminRole(true);
         sysRoleMapper.insert(role);
-
-        //根据租户套餐ids查出套餐编码塞入角色-菜单表（支持多套餐组合）
+        //根据租户套餐ids查出套餐编码塞入角色-菜单表
         createRoleMenu(sysTenant,role);
         return role.getRoleId();
     }
 
-    //根据租户套餐ids查出套餐编码塞入角色-菜单表（支持多套餐组合）
+    //目前为单套餐,跟租户绑定,解耦防止套餐变动影响多个租户
     private void createRoleMenu(SysTenant sysTenant,SysRole role)
     {
-        List<String> tenantPackageIdList =  Arrays.asList(sysTenant.getTenantPackage().split(","));
-        List<String> meuns = new ArrayList<String>();
-        for(String tenantPackageId : tenantPackageIdList)
-        {
-            SysTenantPackage sysTenantPackage = sysTenantPackageMapper.selectById(tenantPackageId);
-            List<String> subMeuns = Arrays.asList(sysTenantPackage.getMenuIds().split(","));
-            meuns.addAll(subMeuns);
-        }
-        List<String> meunsR = meuns.stream().distinct().collect(Collectors.toList());//去重
+        SysTenantPackage sysTenantPackage = sysTenantPackageMapper.selectById(sysTenant.getTenantPackage());
+        List<String> subMeuns = Arrays.asList(sysTenantPackage.getMenuIds().split(","));
 
-        List<SysRoleMenu> roleMenuList = meunsR.stream().map(menuid -> {
+        List<SysRoleMenu> roleMenuList = subMeuns.stream().map(menuid -> {
             SysRoleMenu entity = new SysRoleMenu();
             entity.setRoleId(role.getRoleId());
             entity.setMenuId(Convert.toLong(menuid));
@@ -282,6 +276,7 @@ public class SysTenantServiceImpl implements ISysTenantService
                 TenantUtils.execute(sysTenant.getId(), () -> {
                     createRoleMenu(sysTenant,t_role);
                 });
+                // TODO  此处需要优化,如果当前同时在线人数较多,会出现卡顿
                 //原登租户录账号退出重登 租户二级管理员账号需重新分配三级账号权限
                 Collection<String> keys = redisService.keys(CacheConstants.LOGIN_TOKEN_KEY + "*");
                 for (String key : keys)

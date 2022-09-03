@@ -6,6 +6,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import com.vctgo.common.core.constant.Constants;
 import com.vctgo.common.core.text.StrFormatter;
 import com.vctgo.common.core.utils.bean.RandomType;
+import org.apache.commons.lang3.ArrayUtils;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.Assert;
 
@@ -592,6 +593,43 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
 
             return new String(buffer);
         }
+    }
+
+    /**
+     * @param oldArr 旧数组
+     * @param newArr 新数组
+     * @return Map 包含两个数组，相较于旧数组，新数组多了哪些元素，以及少了哪些元素
+     */
+    public static Map<String, String[]> CompareStringArray(String[] oldArr, String[] newArr){
+        List<String> addList = new ArrayList<>();
+        List<String> deleteList = new ArrayList<>();
+
+        for (String anOldArr : oldArr) {
+            if (!ArrayUtils.contains(newArr, anOldArr)) {
+                deleteList.add(anOldArr);
+            }
+        }
+
+        for (String aNewArr : newArr) {
+            if (!ArrayUtils.contains(oldArr, aNewArr)) {
+                addList.add(aNewArr);
+            }
+        }
+
+        String[] addArr = addList.toArray(new String[addList.size()]);
+        String[] deleteArr = deleteList.toArray(new String[deleteList.size()]);
+        Map<String, String[]> res = new HashMap<>();
+        res.put("addArr", addArr);
+        res.put("deleteArr", deleteArr);
+        return res;
+    }
+
+    public static Long[] StringToLong(String[] str) {
+        Long[] arr = new Long[str.length];
+        for (int i = 0; i < str.length; i++) {
+            arr[i] = Long.parseLong(str[i]);
+        }
+        return arr;
     }
 
 }

@@ -21,6 +21,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getSimpleList" resultType="com.vctgo.system.domain.SysSimplePackage">
         select id, name from sys_tenant_package where 1=1 and status ='0' and del_flag='0'
     </select>
+    <select id="getTenantByPackage" resultType="com.vctgo.system.domain.SysTenant">
+        select id,tenant_name from sys_tenant where tenant_package =#{tenantpackageid}
+    </select>
 
     <delete id="deleteSysTenantPackageByIds" parameterType="String">
         delete from sys_tenant_package  where id in

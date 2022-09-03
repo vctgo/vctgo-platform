@@ -1,14 +1,29 @@
 package com.vctgo.system.service.impl;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.vctgo.common.core.constant.CacheConstants;
+import com.vctgo.common.core.text.Convert;
+import com.vctgo.common.core.utils.StringUtils;
+import com.vctgo.common.redis.service.RedisService;
+import com.vctgo.system.api.domain.SysRole;
+import com.vctgo.system.api.model.LoginUser;
+import com.vctgo.system.domain.SysRoleMenu;
 import com.vctgo.system.domain.SysSimplePackage;
+import com.vctgo.system.domain.SysTenant;
+import com.vctgo.system.mapper.SysRoleMapper;
+import com.vctgo.system.mapper.SysRoleMenuMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.vctgo.system.mapper.SysTenantPackageMapper;
 import com.vctgo.system.domain.SysTenantPackage;
 import com.vctgo.system.service.ISysTenantPackageService;
+import org.springframework.transaction.annotation.Transactional;
 
 
 /**
@@ -22,6 +37,15 @@ public class SysTenantPackageServiceImpl implements ISysTenantPackageService
 {
     @Autowired
     private SysTenantPackageMapper sysTenantPackageMapper;
+
+    @Autowired
+    private SysRoleMenuMapper sysRoleMenuMapper;
+
+    @Autowired
+    private SysRoleMapper sysRoleMapper;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 查询租户套餐
@@ -74,8 +98,53 @@ public class SysTenantPackageServiceImpl implements ISysTenantPackageService
      * @return 结果
      */
     @Override
+    @Transactional
     public int updateSysTenantPackage(SysTenantPackage sysTenantPackage)
     {
+        //租户套餐修改逻辑优化,踢掉当前所有登陆此套餐的用户
+        //先查询租户套餐有没有被改变
+        SysTenantPackage old  = sysTenantPackageMapper.selectById(sysTenantPackage.getId());
+        Map<String, String[]>  packageIsChange = StringUtils.CompareStringArray(old.getMenuIds().split(","),sysTenantPackage.getMenuIds().split(","));
+        boolean excludeUser = packageIsChange.get("deleteArr").length>0 && packageIsChange.get("deleteArr") !=null;
+        boolean addUserMenu = packageIsChange.get("addArr").length>0 && packageIsChange.get("addArr") !=null;
+        if (excludeUser||addUserMenu ){
+            //查询当前套餐跟哪些租户做了绑定
+            List<SysTenant> tenants =  sysTenantPackageMapper.getTenantByPackage(sysTenantPackage.getId());
+            tenants.stream().forEach(tenant->{
+                //先删除被去掉的菜单
+                if (excludeUser){
+                    sysRoleMenuMapper.deleteRoleMenuByTenantIdAndPackage(tenant.getId(),StringUtils.StringToLong(packageIsChange.get("deleteArr")));
+                }
+                //只给租户管理员添加新增的菜单
+                if (addUserMenu){
+                    //查询当前租户的管理员角色id
+                    SysRole role = sysRoleMapper.selectRoleByTenant(tenant.getId());
+                    List<SysRoleMenu> roleMenuList = Arrays.asList(packageIsChange.get("addArr")).stream().map(menuid -> {
+                        SysRoleMenu entity = new SysRoleMenu();
+                        entity.setRoleId(role.getRoleId());
+                        entity.setMenuId(Convert.toLong(menuid));
+                        entity.setTenantId(tenant.getId());
+                        return entity;
+                    }).collect(Collectors.toList());
+                    sysRoleMenuMapper.batchRoleMenuByPackage(roleMenuList);
+                }
+                //踢掉当前租户下的用户
+                //只有原始套餐有菜单被删除的时候才会涉及到用户权限问题
+                if(excludeUser){
+                    //踢掉当前用户,刷新已有权限
+                    // TODO  此处需要优化,如果当前同时在线人数较多,会出现卡顿
+                    Collection<String> keys = redisService.keys(CacheConstants.LOGIN_TOKEN_KEY + "*");
+                    for (String key : keys)
+                    {
+                        LoginUser onlineUser = redisService.getCacheObject(key);
+                        if(onlineUser.getSysUser().getTenantId() != null && onlineUser.getSysUser().getTenantId().equals(tenant.getId()))
+                        {
+                            redisService.deleteObject(key);
+                        }
+                    }
+                }
+            });
+        }
         return sysTenantPackageMapper.updateById(sysTenantPackage);
     }
 

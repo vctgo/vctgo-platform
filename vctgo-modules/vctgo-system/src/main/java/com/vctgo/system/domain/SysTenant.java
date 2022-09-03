@@ -40,9 +40,9 @@ public class SysTenant extends BaseEntity
     @Excel(name = "邮箱地址")
     private String userEmail;
 
-    /** 租户套餐(支持多选 逗号分隔) */
+    /** 租户套餐*/
     @Excel(name = "租户套餐")
-    private String tenantPackage;
+    private Long tenantPackage;
 
     /** 租赁结束时间 */
     @JsonFormat(pattern = "yyyy-MM-dd")

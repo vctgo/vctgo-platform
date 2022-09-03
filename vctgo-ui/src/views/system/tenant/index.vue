@@ -157,7 +157,7 @@
                           <el-input v-model="form.userEmail" placeholder="请输入邮箱地址" />
                         </el-form-item>
                         <el-form-item label="租户套餐" prop="tenantPackage">
-                          <el-select v-model="form.tenantPackage" multiple placeholder="请选择租户套餐" clearable size="small">
+                          <el-select v-model="form.tenantPackage"  placeholder="请选择租户套餐" clearable size="small">
                             <el-option v-for="item in packageList" :key="item.id" :label="item.name" :value="item.id"/>
                           </el-select>
                         </el-form-item>
@@ -365,12 +365,6 @@
         const id = row.id || this.ids
         getTenant(id).then(response => {
           this.form = response.data;
-          //多选下拉框回显(需传入number类型数组，后端返回逗号分隔字符串)
-          var t_package_arr = this.form.tenantPackage.split(",");
-          t_package_arr.forEach((item,index) =>{
-            t_package_arr[index] = parseInt(t_package_arr[index]);
-          });
-          this.form.tenantPackage = t_package_arr;
           this.open = true;
           this.title = "修改租户";
         });
@@ -379,20 +373,6 @@
       submitForm() {
         this.$refs["form"].validate(valid => {
           if (valid) {
-            var t_tenantPackage_arr = this.form.tenantPackage;
-            this.form.tenantPackage = "";
-            for(var i=0;i<t_tenantPackage_arr.length;i++)
-            {
-                if(i == t_tenantPackage_arr.length -1)
-                {
-                  this.form.tenantPackage = this.form.tenantPackage + t_tenantPackage_arr[i];
-                }
-                else
-                {
-                  this.form.tenantPackage = this.form.tenantPackage + t_tenantPackage_arr[i]+",";
-                }
-            }
-
             if (this.form.id != null && this.updateOrAdd) {
               updateTenant(this.form).then(response => {
                 this.$modal.msgSuccess("修改成功");
@@ -425,20 +405,16 @@
           ...this.queryParams
         }, `租户管理_${parseTime(new Date().getTime(), '{y}-{m}-{d}') }.xlsx`)
       } ,
-      /** 套餐名格式化 支持多选*/
+
       getPackageName(packageId) {
-          var t_name = "";
-          var t_packageId_arr = [];
-          t_packageId_arr = packageId.split(",");
-          t_packageId_arr.forEach((item,index) =>{
-            for (const t_item of this.packageList)
-            {
-               if (t_item.id === parseInt(t_packageId_arr[index]))
-               {
-                  t_name = t_name + t_item.name + " ";
-               }
-            }
-          });
+        var t_name = "";
+        for (const t_item of this.packageList)
+        {
+          if (t_item.id === parseInt(packageId))
+          {
+            t_name = t_item.name;
+          }
+        }
         return t_name;
       }
     },

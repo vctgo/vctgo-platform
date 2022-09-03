@@ -137,4 +137,14 @@ import org.apache.ibatis.annotations.Param;
      */
     @InterceptorIgnore(tenantLine = "1")
     int deleteRoleByTenantId(Long[] ids);
+
+    /**
+     * 通过租户id查询当前租户的管理员角色
+     *
+     * @param tenantid 角色ID
+     * @return 角色对象信息
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    SysRole selectRoleByTenant(Long tenantid);
+
 }

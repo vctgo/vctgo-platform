@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.vctgo.system.domain.SysRoleMenu;
+import org.apache.ibatis.annotations.Param;
 
 /**
  * 角色与菜单关联表 数据层
@@ -63,4 +64,24 @@ import com.vctgo.system.domain.SysRoleMenu;
      */
     @InterceptorIgnore(tenantLine = "1")
     int deleteRoleMenuByTenantIds(Long[] ids);
+
+
+    /**
+     * 通过租户ID和菜单id定向删除角色和菜单关联
+     *
+     * @param tenantId 租户ID
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int deleteRoleMenuByTenantIdAndPackage(@Param("tenantId") Long tenantId,@Param("menuids") Long[] menuids);
+
+
+    /**
+     * 批量新增角色菜单信息-根据租户套餐改变
+     *
+     * @param roleMenuList 角色菜单列表
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    int batchRoleMenuByPackage(List<SysRoleMenu> roleMenuList);
 }

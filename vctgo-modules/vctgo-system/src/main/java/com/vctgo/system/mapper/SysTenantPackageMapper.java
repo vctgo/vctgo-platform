@@ -2,10 +2,12 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
 import com.vctgo.common.mybatisplus.query.LambdaQueryWrapperX;
 import com.vctgo.system.domain.SysSimplePackage;
+import com.vctgo.system.domain.SysTenant;
 import com.vctgo.system.domain.SysTenantPackage;
 
 /**
@@ -48,4 +50,12 @@ public interface SysTenantPackageMapper extends BaseMapperX<SysTenantPackage>
      * @return 结果
      */
     int deleteSysTenantPackageByIds(Long[] ids);
+
+    /**
+     * 根据租户套餐获取当前套餐有多少租户使用
+     *
+     * @return 租户列表
+     */
+    List<SysTenant> getTenantByPackage(Long tenantpackageid);
+
 }

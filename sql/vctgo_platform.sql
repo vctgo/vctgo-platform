@@ -11,7 +11,7 @@
  Target Server Version : 50735
  File Encoding         : 65001
 
- Date: 11/06/2022 22:30:36
+ Date: 03/09/2022 22:53:23
 */
 
 SET NAMES utf8mb4;
@@ -323,7 +323,7 @@ CREATE TABLE `sys_demo` (
 -- ----------------------------
 BEGIN;
 INSERT INTO `sys_demo` VALUES (107, '432123123', 'admin', '2022-04-10 13:42:46', 'admin', '2022-04-10 13:43:17', '3241233122342', 9999);
-INSERT INTO `sys_demo` VALUES (113, '311', 'vctgo', '2022-04-12 11:48:42', NULL, NULL, '1313', 1111);
+INSERT INTO `sys_demo` VALUES (113, '311', 'wonders', '2022-04-12 11:48:42', NULL, NULL, '1313', 1111);
 COMMIT;
 
 -- ----------------------------
@@ -347,19 +347,22 @@ CREATE TABLE `sys_dept` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`dept_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8mb4 COMMENT='部门表';
+) ENGINE=InnoDB AUTO_INCREMENT=141 DEFAULT CHARSET=utf8mb4 COMMENT='部门表';
 
 -- ----------------------------
 -- Records of sys_dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_dept` VALUES (100, 0, '0', '菜盟科技', 0, '信息部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
-INSERT INTO `sys_dept` VALUES (101, 100, '0,100', '菜盟集团', 1, '信息部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
-INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '信息部', 1, '信息部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:48:50', 9999);
-INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '人力资源部', 2, '人力资源部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:22:53', 9999);
-INSERT INTO `sys_dept` VALUES (105, 101, '0,100,101', '商务部', 3, '商务部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:01', 9999);
-INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部', 4, '财务部管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:29', 9999);
-INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '总裁办', 5, '总裁办管理员', '1388888888', 'vctgo@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:31:05', 9999);
+INSERT INTO `sys_dept` VALUES (100, 0, '0', '菜盟科技', 0, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
+INSERT INTO `sys_dept` VALUES (101, 100, '0,100', '菜盟集团', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
+INSERT INTO `sys_dept` VALUES (102, 100, '0,100', '斯尔邦石化', 2, '斯尔邦石化管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:32:14', 9999);
+INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '信息部', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:48:50', 9999);
+INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '人力资源部', 2, '人力资源部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:22:53', 9999);
+INSERT INTO `sys_dept` VALUES (105, 101, '0,100,101', '商务部', 3, '商务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:01', 9999);
+INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部', 4, '财务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:29', 9999);
+INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '总裁办', 5, '总裁办管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:31:05', 9999);
+INSERT INTO `sys_dept` VALUES (108, 102, '0,100,102', '数智化部', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:04', 9999);
+INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部', 2, '财务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:13', 9999);
 COMMIT;
 
 -- ----------------------------
@@ -466,16 +469,12 @@ CREATE TABLE `sys_logininfor` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`info_id`) USING BTREE,
   KEY `idx_logininfo_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=443 DEFAULT CHARSET=utf8mb4 COMMENT='系统访问记录';
+) ENGINE=InnoDB AUTO_INCREMENT=513 DEFAULT CHARSET=utf8mb4 COMMENT='系统访问记录';
 
 -- ----------------------------
 -- Records of sys_logininfor
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_logininfor` VALUES (439, 'admin', '127.0.0.1', '0', '退出成功', '2022-06-11 01:05:59', 9999);
-INSERT INTO `sys_logininfor` VALUES (440, 'admin', '127.0.0.1', '0', '登录成功', '2022-06-11 01:06:03', 9999);
-INSERT INTO `sys_logininfor` VALUES (441, 'admin', '127.0.0.1', '0', '退出成功', '2022-06-11 21:06:19', 9999);
-INSERT INTO `sys_logininfor` VALUES (442, 'admin', '127.0.0.1', '0', '登录成功', '2022-06-11 21:06:25', 9999);
 COMMIT;
 
 -- ----------------------------
@@ -503,7 +502,7 @@ CREATE TABLE `sys_menu` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT '' COMMENT '备注',
   PRIMARY KEY (`menu_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=2043 DEFAULT CHARSET=utf8mb4 COMMENT='菜单权限表';
+) ENGINE=InnoDB AUTO_INCREMENT=2044 DEFAULT CHARSET=utf8mb4 COMMENT='菜单权限表';
 
 -- ----------------------------
 -- Records of sys_menu
@@ -665,7 +664,7 @@ CREATE TABLE `sys_oper_log` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`oper_id`) USING BTREE,
   KEY `idx_operlog_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=540 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志记录';
+) ENGINE=InnoDB AUTO_INCREMENT=591 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志记录';
 
 -- ----------------------------
 -- Records of sys_oper_log
@@ -691,7 +690,7 @@ CREATE TABLE `sys_post` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户id',
   PRIMARY KEY (`post_id`) USING BTREE,
   KEY `idx_post_menu` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COMMENT='岗位信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=116 DEFAULT CHARSET=utf8mb4 COMMENT='岗位信息表';
 
 -- ----------------------------
 -- Records of sys_post
@@ -701,7 +700,6 @@ INSERT INTO `sys_post` VALUES (1, 'ceo', '董事长', 1, '0', 'admin', '2022-03-
 INSERT INTO `sys_post` VALUES (2, 'se', '项目经理', 2, '0', 'admin', '2022-03-07 15:41:18', '', NULL, '', 9999);
 INSERT INTO `sys_post` VALUES (3, 'hr', '人力资源', 3, '0', 'admin', '2022-03-07 15:41:18', '', NULL, '', 9999);
 INSERT INTO `sys_post` VALUES (4, 'user', '普通员工', 4, '0', 'admin', '2022-03-07 15:41:18', '', NULL, '', 9999);
-INSERT INTO `sys_post` VALUES (17, 'ceo', '董事长', 1, '0', 'wonders', '2022-04-12 10:36:52', NULL, NULL, NULL, 1111);
 COMMIT;
 
 -- ----------------------------
@@ -718,6 +716,7 @@ CREATE TABLE `sys_role` (
   `dept_check_strictly` tinyint(1) DEFAULT '1' COMMENT '部门树选择项是否关联显示',
   `status` char(1) NOT NULL DEFAULT '0' COMMENT '角色状态（0正常 1停用）',
   `del_flag` char(1) DEFAULT '0' COMMENT '删除标志（0代表存在 1代表删除）',
+  `admin_role` int(1) NOT NULL DEFAULT '0' COMMENT '是否管理员角色（0 不是 1是）',
   `create_by` varchar(64) DEFAULT '' COMMENT '创建者',
   `create_time` datetime DEFAULT NULL COMMENT '创建时间',
   `update_by` varchar(64) DEFAULT '' COMMENT '更新者',
@@ -726,15 +725,14 @@ CREATE TABLE `sys_role` (
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`role_id`) USING BTREE,
   KEY `idx_role_tenant` (`tenant_id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=utf8mb4 COMMENT='角色信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=117 DEFAULT CHARSET=utf8mb4 COMMENT='角色信息表';
 
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 'admin', '2022-03-07 15:41:18', '', NULL, '超级管理员', 9999);
-INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '4', 1, 0, '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-04-27 15:37:00', '普通角色', 9999);
-INSERT INTO `sys_role` VALUES (11, '万达信息管理员', 'admin', 1, '1', 1, 1, '0', '0', 'wonders', '2022-04-12 10:36:52', NULL, NULL, NULL, 1111);
+INSERT INTO `sys_role` VALUES (1, '超级管理员', 'admin', 1, '1', 1, 1, '0', '0', 1, 'admin', '2022-03-07 15:41:18', '', NULL, '超级管理员', 9999);
+INSERT INTO `sys_role` VALUES (2, '普通角色', 'common', 2, '4', 1, 0, '0', '0', 0, 'admin', '2022-03-07 15:41:18', 'admin', '2022-04-27 15:37:00', '普通角色', 9999);
 COMMIT;
 
 -- ----------------------------
@@ -771,38 +769,6 @@ CREATE TABLE `sys_role_menu` (
 -- Records of sys_role_menu
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_role_menu` VALUES (11, 1, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 100, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 101, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 103, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 104, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1001, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1002, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1003, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1004, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1005, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1006, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1007, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1008, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1009, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1010, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1011, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1012, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1017, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1018, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1019, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1020, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1021, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1022, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1023, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1024, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 1025, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2025, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2026, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2027, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2028, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2029, 1111);
-INSERT INTO `sys_role_menu` VALUES (11, 2030, 1111);
 INSERT INTO `sys_role_menu` VALUES (2, 1, 9999);
 INSERT INTO `sys_role_menu` VALUES (2, 2, 9999);
 INSERT INTO `sys_role_menu` VALUES (2, 100, 9999);
@@ -881,7 +847,7 @@ CREATE TABLE `sys_tenant` (
   `user_name` varchar(20) DEFAULT NULL COMMENT '管理员账号',
   `user_phone` varchar(20) DEFAULT NULL COMMENT '手机号码',
   `user_email` varchar(200) DEFAULT NULL COMMENT '邮箱地址',
-  `tenant_package` varchar(1000) DEFAULT NULL COMMENT '租户套餐',
+  `tenant_package` bigint(20) DEFAULT NULL COMMENT '租户套餐',
   `tenant_time` datetime DEFAULT NULL COMMENT '租赁结束时间',
   `status` char(1) NOT NULL DEFAULT '0' COMMENT '角色状态（0正常 1停用）',
   `del_flag` char(1) DEFAULT '0' COMMENT '删除标志（0代表存在 1代表删除）',
@@ -891,7 +857,7 @@ CREATE TABLE `sys_tenant` (
   `update_time` datetime DEFAULT NULL COMMENT '更新时间',
   `remark` varchar(500) DEFAULT NULL COMMENT '备注',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=9999 DEFAULT CHARSET=utf8mb4 COMMENT='租户表';
+) ENGINE=InnoDB AUTO_INCREMENT=11112 DEFAULT CHARSET=utf8mb4 COMMENT='租户表';
 
 -- ----------------------------
 -- Records of sys_tenant
@@ -921,7 +887,7 @@ CREATE TABLE `sys_tenant_package` (
 -- Records of sys_tenant_package
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_tenant_package` VALUES (18, '基础管理套餐', '1,100,1001,1002,1003,1004,1005,1006,1007,101,1008,1009,1010,1011,1012,103,1017,1018,1019,1020,104,1021,1022,1023,1024,1025', '0', '0', 'admin', '2022-04-08 10:07:31', 'admin', '2022-04-08 10:07:31', '');
+INSERT INTO `sys_tenant_package` VALUES (18, '基础管理套餐', '100,1001,1002,1003,1004,1005,1006,1007,101,1008,1009,1010,1011,1012,103,1017,1018,1019,1020,104,1021,1022,1023,1024,1025,1', '0', '0', 'admin', '2022-04-08 10:07:31', 'admin', '2022-04-08 10:07:31', '');
 INSERT INTO `sys_tenant_package` VALUES (100, '系统监控套餐', '2025,2026,2027,2028,2029,2030', '0', '0', 'admin', '2022-04-24 16:28:08', NULL, NULL, NULL);
 COMMIT;
 
@@ -934,7 +900,7 @@ CREATE TABLE `sys_user` (
   `dept_id` bigint(20) DEFAULT NULL COMMENT '部门ID',
   `user_name` varchar(30) NOT NULL COMMENT '用户账号',
   `nick_name` varchar(30) NOT NULL COMMENT '用户昵称',
-  `user_type` varchar(2) DEFAULT '00' COMMENT '用户类型（00系统用户）',
+  `user_type` varchar(2) DEFAULT '10' COMMENT '用户类型（00系统用户,默认10 非管理员）',
   `email` varchar(50) DEFAULT '' COMMENT '用户邮箱',
   `phonenumber` varchar(11) DEFAULT '' COMMENT '手机号码',
   `sex` char(1) DEFAULT '0' COMMENT '用户性别（0男 1女 2未知）',
@@ -953,13 +919,13 @@ CREATE TABLE `sys_user` (
   PRIMARY KEY (`user_id`) USING BTREE,
   KEY `idx_user_tenant` (`tenant_id`) USING BTREE,
   KEY `idx_user_name` (`user_name`) USING BTREE
-) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COMMENT='用户信息表';
 
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user` VALUES (1, 103, 'admin', '管理员', '00', 'dhr92@163.com', '13888888888', '0', 'http://127.0.0.1:39300/statics/blob_20220611004334A001.jpeg', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-03-07 15:41:18', 'admin', '2022-03-07 15:41:18', '', '2022-06-10 23:59:24', '管理员', 9999);
+INSERT INTO `sys_user` VALUES (1, 103, 'admin', '管理员', '00', 'dhr92@163.com', '13888888888', '0', '', '$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', '0', '0', '127.0.0.1', '2022-03-07 15:41:18', 'admin', '2022-03-07 15:41:18', '', '2022-06-10 23:59:24', '管理员', 9999);
 COMMIT;
 
 -- ----------------------------
@@ -978,7 +944,6 @@ CREATE TABLE `sys_user_post` (
 -- Records of sys_user_post
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user_post` VALUES (108, 17, 1111);
 INSERT INTO `sys_user_post` VALUES (1, 1, 9999);
 COMMIT;
 
@@ -998,7 +963,6 @@ CREATE TABLE `sys_user_role` (
 -- Records of sys_user_role
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_user_role` VALUES (108, 11, 1111);
 INSERT INTO `sys_user_role` VALUES (1, 1, 9999);
 COMMIT;
 

@@ -31,7 +31,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<sql id="selectRoleVo">
 	    select distinct r.role_id, r.role_name, r.role_key, r.role_sort, r.data_scope, r.menu_check_strictly, r.dept_check_strictly,
-            r.status, r.del_flag, r.create_time, r.remark
+            r.status, r.del_flag, r.create_time, r.remark,r.admin_role
         from sys_role r
 	        left join sys_user_role ur on ur.role_id = r.role_id
 	        left join sys_user u on u.user_id = ur.user_id
@@ -100,8 +100,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectRoleVo"/>
 		 where r.role_key=#{roleKey} limit 1
 	</select>
+    <select id="selectRoleByTenant" resultType="com.vctgo.system.api.domain.SysRole">
+		select role_id from sys_role where tenant_id= #{tenantid} and admin_role= 1
+	</select>
 
- 	<insert id="insertRole"  useGeneratedKeys="true" keyProperty="roleId">
+    <insert id="insertRole"  useGeneratedKeys="true" keyProperty="roleId">
  		insert into sys_role(
  			<if test="roleId != null and roleId != 0">role_id,</if>
  			<if test="roleName != null and roleName != ''">role_name,</if>
