@@ -3,6 +3,7 @@ package com.vctgo.system.service;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.vctgo.common.core.web.domain.AjaxResult;
 import com.vctgo.system.domain.SysSimplePackage;
 import com.vctgo.system.domain.SysTenantPackage;
 
@@ -50,7 +51,7 @@ public interface ISysTenantPackageService
      * @param sysTenantPackage 租户套餐
      * @return 结果
      */
-    int updateSysTenantPackage(SysTenantPackage sysTenantPackage);
+    AjaxResult updateSysTenantPackage(SysTenantPackage sysTenantPackage);
 
     /**
      * 批量删除租户套餐

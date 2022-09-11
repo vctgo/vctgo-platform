@@ -58,4 +58,12 @@ public interface SysTenantPackageMapper extends BaseMapperX<SysTenantPackage>
      */
     List<SysTenant> getTenantByPackage(Long tenantpackageid);
 
+
+    /**
+     * 根据租户套餐获取当前套餐有多少正常租户正在使用
+     *
+     * @return 租户列表
+     */
+    Integer getActiveTenantByPackage(Long tenantpackageid);
+
 }

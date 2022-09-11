@@ -10,6 +10,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.text.Convert;
 import com.vctgo.common.core.utils.StringUtils;
+import com.vctgo.common.core.web.domain.AjaxResult;
 import com.vctgo.common.redis.service.RedisService;
 import com.vctgo.system.api.domain.SysRole;
 import com.vctgo.system.api.model.LoginUser;
@@ -99,8 +100,16 @@ public class SysTenantPackageServiceImpl implements ISysTenantPackageService
      */
     @Override
     @Transactional
-    public int updateSysTenantPackage(SysTenantPackage sysTenantPackage)
+    public AjaxResult updateSysTenantPackage(SysTenantPackage sysTenantPackage)
     {
+        //判断是否有 租户使用此套餐
+        if(sysTenantPackage.getStatus() == 1){
+           Integer activeTenants =  sysTenantPackageMapper.getActiveTenantByPackage(sysTenantPackage.getId());
+           if (activeTenants > 0){
+               //目前有正常的租户在使用此套餐，不允许关闭套餐
+              return AjaxResult.error("租户套餐已经被使用，无法被停用！");
+           }
+        }
         //租户套餐修改逻辑优化,踢掉当前所有登陆此套餐的用户
         //先查询租户套餐有没有被改变
         SysTenantPackage old  = sysTenantPackageMapper.selectById(sysTenantPackage.getId());
@@ -145,7 +154,7 @@ public class SysTenantPackageServiceImpl implements ISysTenantPackageService
                 }
             });
         }
-        return sysTenantPackageMapper.updateById(sysTenantPackage);
+        return AjaxResult.success(sysTenantPackageMapper.updateById(sysTenantPackage));
     }
 
     /**

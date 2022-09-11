@@ -100,7 +100,7 @@ public class SysTenantPackageController extends BaseController
     @PutMapping
     public AjaxResult edit(@RequestBody SysTenantPackage sysTenantPackage)
     {
-        return toAjax(sysTenantPackageService.updateSysTenantPackage(sysTenantPackage));
+        return sysTenantPackageService.updateSysTenantPackage(sysTenantPackage);
     }
 
     /**

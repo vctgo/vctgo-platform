@@ -24,6 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     <select id="getTenantByPackage" resultType="com.vctgo.system.domain.SysTenant">
         select id,tenant_name from sys_tenant where tenant_package =#{tenantpackageid}
     </select>
+    <select id="getActiveTenantByPackage" resultType="java.lang.Integer">
+        select count(*) from sys_tenant where tenant_package =#{tenantpackageid}
+    </select>
 
     <delete id="deleteSysTenantPackageByIds" parameterType="String">
         delete from sys_tenant_package  where id in
