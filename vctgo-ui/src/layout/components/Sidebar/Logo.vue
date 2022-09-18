@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      title: '菜盟快速开发平台',
+      title: '菜盟开发平台',
       logo: logoImg
     }
   },
@@ -44,7 +44,7 @@ export default {
       getInfo().then(res => {
         if(res.tenantName != '')
         {
-           this.title = res.tenantName + "快速开发平台";
+           this.title = res.tenantName;
            this.logo = '';
         }
       });

@@ -3,7 +3,8 @@
     <el-row :gutter="20">
       <el-col :sm="24" :lg="24">
           <p style="text-align: center;">
-            <img src="https://img.shields.io/badge/Release-V1.2.0-green.svg" alt="Downloads"/>
+            <img src="https://img.shields.io/badge/Release-V1.2.1-green.svg" alt="Downloads"/>
+            <img src="https://img.shields.io/badge/IntelliJ%20IDEA-提供支持-blue.svg" alt="IntelliJ-IDEA">
             <img src="https://img.shields.io/badge/JDK-1.8+-green.svg" alt="Build Status"/>
             <img src="https://img.shields.io/badge/Spring%20Cloud-2021-blue.svg" alt="Coverage Status"/>
             <img src="https://img.shields.io/badge/Spring%20Boot-2.6.6.RELEASE-blue.svg" alt="Downloads"/>
@@ -16,7 +17,7 @@
     </el-row>
     <el-row :gutter="20">
       <el-col :sm="24" :lg="12" style="padding-left: 20px">
-        <h2>菜盟快速开发平台</h2>
+        <h2>菜盟开发平台</h2>
         <p>
           基于Ruoyi-Cloud版本改进而来,吸收了其他项目类似于ruoyi-cloud,ruoyi-vue,ruo-vue-pro,xueyi-vue等等优秀的开源架构,集成租户,低代码,监控,分布式,限流,容器化编排等多种功能集成的企业级开发平台!期待大家的加入,一起开发!目前已经完成开源到gitee上,到时候欢迎大家一起pr!
         </p>

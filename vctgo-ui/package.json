@@ -1,7 +1,7 @@
 {
   "name": "vctgo-platfrom-ui",
   "version": "1.0.0",
-  "description": "菜盟快速开发平台",
+  "description": "菜盟开发平台",
   "author": "董浩然",
   "license": "MIT",
   "scripts": {

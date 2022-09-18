@@ -3,7 +3,7 @@
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <div style="text-align: center">
         <img v-if="logo" :src="logo" style="width: 20px; height: 20px;display: inline-block " />
-        <h3 class="title" style="display: inline-block;font-size: 25px;">菜盟快速开发平台</h3></div>
+        <h3 class="title" style="display: inline-block;font-size: 25px;">菜盟开发平台</h3></div>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
