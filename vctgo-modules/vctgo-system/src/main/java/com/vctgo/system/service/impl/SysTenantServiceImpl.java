@@ -4,21 +4,22 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 import com.vctgo.common.core.constant.CacheConstants;
+import com.vctgo.common.core.constant.Constants;
 import com.vctgo.common.core.context.SecurityContextHolder;
 import com.vctgo.common.core.exception.ServiceException;
 import com.vctgo.common.core.utils.StringUtils;
 import com.vctgo.common.core.web.domain.AjaxResult;
+import com.vctgo.common.log.service.AsyncLogService;
 import com.vctgo.common.message.mail.EmailUtil;
+import com.vctgo.common.message.sms.SmsUtil;
 import com.vctgo.common.mybatisplus.util.TenantUtils;
 import com.vctgo.common.redis.service.RedisService;
 import com.vctgo.common.security.utils.SecurityUtils;
-import com.vctgo.system.api.domain.SmsResult;
-import com.vctgo.system.api.domain.SysDept;
-import com.vctgo.system.api.domain.SysRole;
-import com.vctgo.system.api.domain.SysUser;
+import com.vctgo.system.api.domain.*;
 import com.vctgo.system.api.model.LoginUser;
 import com.vctgo.system.domain.*;
 import com.vctgo.system.mapper.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -29,7 +30,6 @@ import com.vctgo.common.core.text.Convert;
 import com.vctgo.common.core.utils.ServletUtils;
 import com.vctgo.common.mybatisplus.constant.MybatisPageConstants;
 import org.springframework.transaction.annotation.Transactional;
-import com.vctgo.system.api.RemoteSmsService;
 
 
 /**
@@ -38,6 +38,7 @@ import com.vctgo.system.api.RemoteSmsService;
  * @author vctgo
  * @date 2022-04-11
  */
+@Slf4j
 @Service
 public class SysTenantServiceImpl implements ISysTenantService
 {
@@ -72,31 +73,14 @@ public class SysTenantServiceImpl implements ISysTenantService
     private SysUserPostMapper userPostMapper;
 
     @Autowired
-    private RemoteSmsService remoteSmsService;
+    EmailUtil emailUtil;
 
     @Autowired
-    EmailUtil emailUtil;
+    SmsUtil smsUtil;
 
     @Autowired
     private RedisService redisService;
 
-    /**
-     * 短信服务登录验证名
-     */
-    @Value("${sms.account}")
-    private String account;
-
-    /**
-     * 短信服务登录密码
-     */
-    @Value("${sms.password}")
-    private String password;
-
-    /**
-     * 短信标题
-     */
-    @Value("${sms.title}")
-    private String title;
 
     /**
      * 查询租户管理
@@ -186,24 +170,26 @@ public class SysTenantServiceImpl implements ISysTenantService
                 .setUserType("00")//用户类型 00 表示各管理员账号，不允许租户修改删除 其他账号为10
                 .setEmail(sysTenant.getUserEmail()).setPhonenumber(sysTenant.getUserPhone()).setRemark("租户管理员");
         //默认密码采用随机生成
-        String randomPassword = SecurityUtils.randomStr(8);//随机密码8位
+        String randomPassword = SecurityUtils.randomPassword(8);//随机密码8位
 
         String password = SecurityUtils.encryptPassword(randomPassword);
         user.setPassword(password);
         userMapper.insert(user);
         userPostMapper.insert(new SysUserPost().setUserId(user.getUserId()).setPostId(postid));
         userRoleMapper.insert(new SysUserRole().setRoleId(roleid).setUserId(user.getUserId()));
-        /**
-         * 短信功能需要更具需求定制化 目前先关闭 改为发邮件
-         */
-        emailUtil.sendSimpleMail("租户管理员账号注册成功","请牢记登录密码:"+randomPassword,sysTenant.getUserEmail());
-        //发送短信的形式 告知租户管理员登录密码randomPassword
-        //SmsResult ss = remoteSmsService.getToken(this.account,this.password);
-        // String authorization = ss.getData();
-        //Map<String,Object> remoterheader = new HashMap<>();
-        //remoterheader.put("authorization","Bearer "+authorization);
-        //SecurityContextHolder.setRemoteHeader(remoterheader);
-//        remoteSmsService.sendMessage(this.title,"租户管理员账号注册成功，请牢记登录密码:"+randomPassword,sysTenant.getUserPhone(), "Bearer "+authorization);
+        String configValue = Convert.toStr(redisService.getCacheObject( Constants.SYS_CONFIG_KEY + "sys.message.type"));
+        if ("false".equals(configValue)){
+           //短信
+            emailUtil.sendSimpleMail("租户管理员账号注册成功","请牢记登录密码:"+randomPassword,sysTenant.getUserEmail());
+        }else {
+            try {
+                smsUtil.send(sysTenant.getUserPhone(),randomPassword);
+            }catch (Exception e){
+                log.info("短信调用失败:"+e.getMessage());
+                //调用邮件通知
+                emailUtil.sendSimpleMail("租户管理员账号注册成功","请牢记登录密码:"+randomPassword,sysTenant.getUserEmail());
+            }
+        }
     }
 
     private Long createRole(SysTenant sysTenant) {

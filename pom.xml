@@ -55,6 +55,8 @@
         <oshi.version>6.1.2</oshi.version>
         <ganymed-ssh2.version>build250</ganymed-ssh2.version>
         <jsch.version>0.1.55</jsch.version>
+        <aliyun-java-sdk-core.version>4.6.0</aliyun-java-sdk-core.version>
+        <aliyun-java-sdk-dysmsapi.version>2.2.1</aliyun-java-sdk-dysmsapi.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -200,7 +202,17 @@
                 <artifactId>transmittable-thread-local</artifactId>
                 <version>${transmittable-thread-local.version}</version>
             </dependency>
-
+            <!-- 阿里云短信-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-dysmsapi</artifactId>
+                <version>${aliyun-java-sdk-dysmsapi.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>aliyun-java-sdk-core</artifactId>
+                <version>${aliyun-java-sdk-core.version}</version>
+            </dependency>
             <!-- 核心模块 -->
             <dependency>
                 <groupId>com.vctgo</groupId>

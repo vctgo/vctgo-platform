@@ -1,1 +1,2 @@
 com.vctgo.common.message.mail.EmailUtil
+com.vctgo.common.message.sms.SmsUtil

@@ -4,7 +4,10 @@
 <h4 align="center">基于Ruoyi-Cloud版本改造的的多租户SaaS开发框架。</h4>
 <p align="center">
     <a style="margin-right: 5px">
-       <img src="https://img.shields.io/badge/Vctgo%20Platform-v1.2.0-brightgreen" alt="vctgo-platform">
+       <img src="https://img.shields.io/badge/Vctgo%20Platform-v1.2.1-brightgreen" alt="vctgo-platform">
+    </a>
+    <a style="margin-right: 5px" href="ttps://www.jetbrains.com/?from=RuoYi-Vue-Plus">
+       <img src="https://img.shields.io/badge/IntelliJ%20IDEA-提供支持-blue.svg" alt="IntelliJ-IDEA">
     </a>
     <a style="margin-right: 5px">
            <img src="https://gitee.com/vctgo/vctgo-platform/badge/star.svg?theme=dark" alt="vctgo-platform">

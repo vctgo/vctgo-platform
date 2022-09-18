@@ -136,6 +136,22 @@ public class SecurityUtils
     }
 
     /**
+     * 随机生成n位字符串
+     *
+     * @param n 密码
+     * @return 字符串
+     */
+    public static String randomPassword(int n)
+    {
+        StringBuffer bufferStr = new StringBuffer();
+        for(int i=0;i<n;i++)
+        {
+            bufferStr.append("0123456789".charAt((int)(Math.random() * 10)));
+        }
+        return bufferStr.toString();
+    }
+
+    /**
      * 判断密码是否相同
      *
      * @param rawPassword 真实密码
