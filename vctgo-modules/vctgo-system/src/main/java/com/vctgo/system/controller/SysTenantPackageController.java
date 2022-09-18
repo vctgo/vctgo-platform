@@ -111,6 +111,6 @@ public class SysTenantPackageController extends BaseController
 	@DeleteMapping("/{ids}")
     public AjaxResult remove(@PathVariable Long[] ids)
     {
-        return toAjax(sysTenantPackageService.deleteSysTenantPackageByIds(ids));
+        return sysTenantPackageService.deleteSysTenantPackageByIds(ids);
     }
 }

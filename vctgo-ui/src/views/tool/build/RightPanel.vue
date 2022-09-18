@@ -902,7 +902,7 @@ export default {
   margin-top: 4px;
 }
 .select-item.sortable-chosen {
-  border: 1px dashed #409eff;
+  border: 1px dashed #EF8708;
 }
 .select-line-icon {
   line-height: 32px;
@@ -929,7 +929,7 @@ export default {
   top: 0;
   left: 0;
   cursor: pointer;
-  background: #409eff;
+  background: #EF8708;
   z-index: 1;
   border-radius: 0 0 6px 0;
   text-align: center;

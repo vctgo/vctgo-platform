@@ -164,9 +164,15 @@ public class SysTenantPackageServiceImpl implements ISysTenantPackageService
      * @return 结果
      */
     @Override
-    public int deleteSysTenantPackageByIds(Long[] ids)
+    public AjaxResult deleteSysTenantPackageByIds(Long[] ids)
     {
-        return sysTenantPackageMapper.deleteSysTenantPackageByIds(ids);
+        //判断是否有 租户使用此套餐
+        Integer activeTenants =  sysTenantPackageMapper.getActiveTenantByPackage(ids[0]);
+        if (activeTenants > 0){
+            //目前有正常的租户在使用此套餐，不允许关闭套餐
+            return AjaxResult.error("租户套餐已经被使用，无法被删除！");
+        }
+        return AjaxResult.success(sysTenantPackageMapper.deleteSysTenantPackageByIds(ids));
     }
 
     /**

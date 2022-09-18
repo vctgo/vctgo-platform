@@ -89,12 +89,11 @@
     </el-row>
 
     <el-table v-loading="loading" :data="tenantList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="50" align="center" />
-              <el-table-column label="租户编码" align="center" prop="id" />
-              <el-table-column label="租户名称" align="center" prop="tenantName" />
-              <el-table-column label="管理员账号" align="center" prop="userName" />
-              <el-table-column label="手机号码" align="center" prop="userPhone" />
-              <el-table-column label="邮箱地址" align="center" prop="userEmail" />
+        <el-table-column label="租户编码" align="center" prop="id" />
+        <el-table-column label="租户名称" align="center" prop="tenantName" />
+        <el-table-column label="管理员账号" align="center" prop="userName" />
+        <el-table-column label="手机号码" align="center" prop="userPhone" />
+        <el-table-column label="邮箱地址" align="center" prop="userEmail" />
       <el-table-column label="租户套餐" align="center" prop="tenantPackage" width="180">
         <template slot-scope="scope">
           <el-tag>{{ getPackageName(scope.row.tenantPackage)}}</el-tag>

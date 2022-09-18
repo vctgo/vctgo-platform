@@ -72,7 +72,6 @@
     </el-row>
 
     <el-table v-loading="loading" :data="tenantpackageList" @selection-change="handleSelectionChange">
-      <el-table-column type="selection" width="55" align="center" />
       <el-table-column fixed label="序号" min-width="20%"   align="center">
         <template slot-scope="scope">
           <span>{{(queryParams.pageNum-1)*queryParams.pageSize+(scope.$index + 1)}} </span>

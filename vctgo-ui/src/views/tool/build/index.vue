@@ -489,7 +489,7 @@ input, textarea{
     margin-left: 6px;
   }
   .el-icon-plus{
-    color: #409EFF;
+    color: #EF8708;
   }
   .el-icon-delete{
     color: #157a0c;
@@ -509,7 +509,7 @@ input, textarea{
 }
 
 $selectedColor: #f6f7ff;
-$lighterBlue: #409EFF;
+$lighterBlue: #EF8708;
 
 .container {
   position: relative;

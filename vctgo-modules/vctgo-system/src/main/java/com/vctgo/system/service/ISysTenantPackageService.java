@@ -59,7 +59,7 @@ public interface ISysTenantPackageService
      * @param ids 需要删除的租户套餐主键集合
      * @return 结果
      */
-    int deleteSysTenantPackageByIds(Long[] ids);
+    AjaxResult deleteSysTenantPackageByIds(Long[] ids);
 
 
     /**
