@@ -44,6 +44,20 @@ public class LoginUser implements Serializable
      * 登录IP地址
      */
     private String ipaddr;
+    /**
+     * 登录地点
+     */
+    private String loginLocation;
+
+    /**
+     * 浏览器类型
+     */
+    private String browser;
+
+    /**
+     * 操作系统
+     */
+    private String os;
 
     /**
      * 权限列表

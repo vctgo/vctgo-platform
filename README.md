@@ -122,13 +122,13 @@ PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
 
 ## 功能截图
 
-![Vctgo-Platform1](https://www.vctgo.cn:39000/vctgo/vctgo-1.png)
-![Vctgo-Platform2](https://www.vctgo.cn:39000/vctgo/vctgo-2.png)
-![Vctgo-Platform3](https://www.vctgo.cn:39000/vctgo/vctgo-3.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-4.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-5.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-6.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-7.png)
+![Vctgo-Platform4](./doc/readme/vctgo-1.png)
+![Vctgo-Platform1](./doc/readme/vctgo-2.png)
+![Vctgo-Platform3](./doc/readme/vctgo-3.png)
+![Vctgo-Platform4](./doc/readme/vctgo-4.png)
+![Vctgo-Platform4](./doc/readme/vctgo-5.png)
+![Vctgo-Platform2](./doc/readme/vctgo-6.png)
+![Vctgo-Platform4](./doc/readme/vctgo-7.png)
 
 
 

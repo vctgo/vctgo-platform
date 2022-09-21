@@ -57,6 +57,7 @@
         <jsch.version>0.1.55</jsch.version>
         <aliyun-java-sdk-core.version>4.6.0</aliyun-java-sdk-core.version>
         <aliyun-java-sdk-dysmsapi.version>2.2.1</aliyun-java-sdk-dysmsapi.version>
+        <bitwalker.version>1.21</bitwalker.version>
     </properties>
 
     <!-- 依赖声明 -->
@@ -297,6 +298,12 @@
                 <version>${jsch.version}</version>
             </dependency>
 
+            <!-- 解析客户端操作系统、浏览器等 -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

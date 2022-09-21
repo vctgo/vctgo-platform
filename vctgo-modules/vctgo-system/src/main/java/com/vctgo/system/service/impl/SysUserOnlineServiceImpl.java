@@ -8,7 +8,7 @@ import com.vctgo.system.api.model.LoginUser;
 
 /**
  * 在线用户 服务层处理
- * 
+ *
  * @author vctgo
  */
 @Service
@@ -16,7 +16,7 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
 {
     /**
      * 通过登录地址查询信息
-     * 
+     *
      * @param ipaddr 登录地址
      * @param user 用户信息
      * @return 在线用户信息
@@ -33,7 +33,7 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
 
     /**
      * 通过用户名称查询信息
-     * 
+     *
      * @param userName 用户名称
      * @param user 用户信息
      * @return 在线用户信息
@@ -50,7 +50,7 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
 
     /**
      * 通过登录地址/用户名称查询信息
-     * 
+     *
      * @param ipaddr 登录地址
      * @param userName 用户名称
      * @param user 用户信息
@@ -68,7 +68,7 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
 
     /**
      * 设置在线用户信息
-     * 
+     *
      * @param user 用户信息
      * @return 在线用户
      */
@@ -83,6 +83,9 @@ public class SysUserOnlineServiceImpl implements ISysUserOnlineService
         sysUserOnline.setTokenId(user.getToken());
         sysUserOnline.setUserName(user.getUsername());
         sysUserOnline.setIpaddr(user.getIpaddr());
+        sysUserOnline.setLoginLocation(user.getLoginLocation());
+        sysUserOnline.setBrowser(user.getBrowser());
+        sysUserOnline.setOs(user.getOs());
         sysUserOnline.setLoginTime(user.getLoginTime());
         return sysUserOnline;
     }
