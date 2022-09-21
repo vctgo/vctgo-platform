@@ -42,16 +42,17 @@ star 别忘点上 :kissing_heart:
 Gitee: https://gitee.com/vctgo/vctgo-platform
 
 GitHub: https://github.com/vctgo/vctgo-platform
-## 演示地址(1M小水管请大家适当忍耐)
+## 演示地址
+PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
 - http://platform.vctgo.cn
 - 账号密码 admin/admin123
 - 目前演示地址权限全开,请勿随意删除相关数据,本人只做了初始化数据库备份,如果出现异常情况,会选择直接回滚初始版本
-## 文档地址(同步更新若依文档)
+## 文档地址
 - https://doc.vctgo.cn
-## 个人blog(偷懒ing....)
+## 个人blog
 - https://www.vctgo.cn
-## 公众号-VctGo（新建）
-- VctGo 全新公众号，后续会发布一些开发经验和心得，集成文档和移动端小程序
+## 公众号-VctGo
+- VctGo 全新公众号
 ## 有问题请issues有限提问,每天会定时处理!
 
 ## 交流
@@ -121,13 +122,13 @@ GitHub: https://github.com/vctgo/vctgo-platform
 
 ## 功能截图
 
-![Vctgo-Platform1](https://www.vctgo.cn:39000/vctgo/vctgo-1.png)
-![Vctgo-Platform2](https://www.vctgo.cn:39000/vctgo/vctgo-2.png)
-![Vctgo-Platform3](https://www.vctgo.cn:39000/vctgo/vctgo-3.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-4.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-5.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-6.png)
-![Vctgo-Platform4](https://www.vctgo.cn:39000/vctgo/vctgo-7.png)
+![Vctgo-Platform1](http://uploadimg.vctgo.cn/vctgo-1.png)
+![Vctgo-Platform2](http://uploadimg.vctgo.cn/vctgo-2.png)
+![Vctgo-Platform3](http://uploadimg.vctgo.cn/vctgo-3.png)
+![Vctgo-Platform4](http://uploadimg.vctgo.cn/vctgo-4.png)
+![Vctgo-Platform4](http://uploadimg.vctgo.cn/vctgo-5.png)
+![Vctgo-Platform4](http://uploadimg.vctgo.cn/vctgo-6.png)
+![Vctgo-Platform4](http://uploadimg.vctgo.cn/vctgo-7.png)
 
 
 
