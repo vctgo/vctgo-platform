@@ -45,7 +45,8 @@ export default {
         if(res.tenantName != '')
         {
            this.title = res.tenantName;
-           this.logo = '';
+           //后续添加租户自定义图标
+           this.logo = logoImg;
         }
       });
   },
