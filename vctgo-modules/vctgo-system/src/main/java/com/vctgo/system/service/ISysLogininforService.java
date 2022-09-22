@@ -3,6 +3,7 @@ package com.vctgo.system.service;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.vctgo.common.core.web.domain.AjaxResult;
 import com.vctgo.system.api.domain.SysLogininfor;
 
 /**
@@ -47,4 +48,9 @@ import com.vctgo.system.api.domain.SysLogininfor;
      * 清空系统登录日志
      */
      void cleanLogininfor();
+
+    /**
+     * 清空系统登录日志
+     */
+    AjaxResult logincount();
 }

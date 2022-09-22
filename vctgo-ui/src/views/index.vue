@@ -1,5 +1,6 @@
 <template>
   <div class="app-container home">
+    <panel-group v-if="tenantid==9999" />
     <el-row :gutter="20">
       <el-col :sm="24" :lg="24">
           <p style="text-align: center;">
@@ -86,18 +87,25 @@
 </template>
 
 <script>
+import PanelGroup from './dashboard/PanelGroup'
+import {getTenant} from '@/utils/auth'
+
 export default {
   name: "Index",
+  components: {
+    PanelGroup
+  },
   data() {
     return {
       // 版本号
-      version: "1.2.0",
+      version: "1.2.1",
+      tenantid: getTenant()
     };
   },
   methods: {
     goTarget(href) {
       window.open(href, "_blank");
-    },
+    }
   },
 };
 </script>

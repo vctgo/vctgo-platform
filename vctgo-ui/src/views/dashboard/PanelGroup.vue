@@ -1,70 +1,110 @@
 <template>
   <el-row :gutter="40" class="panel-group">
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('newVisitis')">
+      <div class="card-panel" >
         <div class="card-panel-icon-wrapper icon-people">
           <svg-icon icon-class="peoples" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            访客
+            当前在线
           </div>
-          <count-to :start-val="0" :end-val="102400" :duration="2600" class="card-panel-num" />
+          <animate-number
+            from="0"
+            :to="onlineCount"
+            duration="1000"
+            from-color="#44CC00"
+            to-color="#666"
+            :key="onlineCount"
+            style="font-size:20px;text-align:center;display:block;"></animate-number>
         </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('messages')">
-        <div class="card-panel-icon-wrapper icon-message">
-          <svg-icon icon-class="message" class-name="card-panel-icon" />
+      <div class="card-panel" >
+        <div class="card-panel-icon-wrapper icon-register">
+          <svg-icon icon-class="logininfor" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            消息
+            注册用户
           </div>
-          <count-to :start-val="0" :end-val="81212" :duration="3000" class="card-panel-num" />
-        </div>
+          <animate-number
+            from="0"
+            :to="registerCount"
+            duration="1000"
+            from-color="#44CC00"
+            to-color="#666"
+            :key="registerCount"
+            style="font-size:20px;text-align:center;display:block;"></animate-number>        </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('purchases')">
-        <div class="card-panel-icon-wrapper icon-money">
-          <svg-icon icon-class="money" class-name="card-panel-icon" />
+      <div class="card-panel" >
+        <div class="card-panel-icon-wrapper icon-tree">
+          <svg-icon icon-class="tree" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            金额
+            租户入驻
           </div>
-          <count-to :start-val="0" :end-val="9280" :duration="3200" class="card-panel-num" />
-        </div>
+          <animate-number
+            from="0"
+            :to="tenantCount"
+            duration="1000"
+            from-color="#44CC00"
+            to-color="#666"
+            :key="tenantCount"
+            style="font-size:20px;text-align:center;display:block;"></animate-number>        </div>
       </div>
     </el-col>
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
-      <div class="card-panel" @click="handleSetLineChartData('shoppings')">
-        <div class="card-panel-icon-wrapper icon-shopping">
-          <svg-icon icon-class="shopping" class-name="card-panel-icon" />
+      <div class="card-panel">
+        <div class="card-panel-icon-wrapper icon-chart">
+          <svg-icon icon-class="chart" class-name="card-panel-icon" />
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">
-            订单
+            累积访问
           </div>
-          <count-to :start-val="0" :end-val="13600" :duration="3600" class="card-panel-num" />
-        </div>
+          <animate-number
+            from="0"
+            :to="loginCount"
+            duration="1000"
+            from-color="#44CC00"
+            to-color="#666"
+            :key="loginCount"
+            style="font-size:20px;text-align:center;display:block;"></animate-number>        </div>
       </div>
     </el-col>
   </el-row>
 </template>
 
 <script>
-import CountTo from 'vue-count-to'
+import {getLoginInfoList} from "@/api/system/logininfor";
 
 export default {
-  components: {
-    CountTo
+  data() {
+    return {
+      //统计信息
+      loginCount: "0",
+      onlineCount: "0",
+      registerCount: "0",
+      tenantCount: "0"
+    };
+  },
+  created() {
+    this.getLoginInfo();
   },
   methods: {
-    handleSetLineChartData(type) {
-      this.$emit('handleSetLineChartData', type)
+    /** 获取登陆信息,后续考虑加速自动刷新 */
+    getLoginInfo() {
+      getLoginInfoList().then(response => {
+        this.loginCount = response.data.loginCount;
+        this.onlineCount = response.data.onlineCount;
+        this.registerCount = response.data.registerCount;
+        this.tenantCount = response.data.tenantCount;
+      })
     }
   }
 }
@@ -98,16 +138,16 @@ export default {
         background: #40c9c6;
       }
 
-      .icon-message {
+      .icon-register {
         background: #36a3f7;
       }
 
-      .icon-money {
+      .icon-chart {
         background: #f4516c;
       }
 
-      .icon-shopping {
-        background: #34bfa3
+      .icon-tree {
+        color: #34bfa3
       }
     }
 
@@ -115,15 +155,15 @@ export default {
       color: #40c9c6;
     }
 
-    .icon-message {
+    .icon-register {
       color: #36a3f7;
     }
 
-    .icon-money {
+    .icon-chart {
       color: #f4516c;
     }
 
-    .icon-shopping {
+    .icon-tree {
       color: #34bfa3
     }
 

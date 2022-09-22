@@ -24,3 +24,11 @@ export function cleanLogininfor() {
     method: 'delete'
   })
 }
+
+// 查询统计信息
+export function getLoginInfoList() {
+  return request({
+    url: '/system/logininfor/logincount',
+    method: 'get'
+  })
+}

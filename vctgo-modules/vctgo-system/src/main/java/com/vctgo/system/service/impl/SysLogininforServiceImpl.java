@@ -1,12 +1,18 @@
 package com.vctgo.system.service.impl;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.text.Convert;
 import com.vctgo.common.core.utils.ServletUtils;
+import com.vctgo.common.core.web.domain.AjaxResult;
 import com.vctgo.common.mybatisplus.constant.MybatisPageConstants;
+import com.vctgo.common.redis.service.RedisService;
+import com.vctgo.common.security.utils.SecurityUtils;
+import com.vctgo.system.domain.SysLoginCount;
 import com.vctgo.system.mapper.SysLogininforMapper;
 import com.vctgo.system.service.ISysLogininforService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +30,9 @@ public class SysLogininforServiceImpl implements ISysLogininforService
 
     @Autowired
     private SysLogininforMapper logininforMapper;
+
+    @Autowired
+    private RedisService redisService;
 
     /**
      * 新增系统登录日志
@@ -81,5 +90,24 @@ public class SysLogininforServiceImpl implements ISysLogininforService
     public void cleanLogininfor()
     {
         logininforMapper.cleanLogininfor();
+    }
+
+    /**
+     * 查询统计信息
+     * @return
+     */
+    @Override
+    public AjaxResult logincount() {
+        SysLoginCount loginCountInfo = new SysLoginCount();
+        //step1 在线人数
+        Collection<String> online = redisService.keys(CacheConstants.LOGIN_TOKEN_KEY + "*");
+        loginCountInfo.setOnlineCount(String.valueOf(online.size()));
+        //step2 累积登陆人数 超级管理员统计所有
+        loginCountInfo.setLoginCount(String.valueOf(logininforMapper.countLogininfo()));
+        //step 累积租户数
+        loginCountInfo.setTenantCount(String.valueOf(logininforMapper.countTenant()));
+        //step4 累积注册人数
+        loginCountInfo.setRegisterCount(String.valueOf(logininforMapper.countRegister()));
+        return AjaxResult.success(loginCountInfo);
     }
 }

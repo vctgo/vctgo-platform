@@ -75,4 +75,14 @@ public class SysLogininforController extends BaseController
     {
         return toAjax(logininforService.insertLogininfor(logininfor));
     }
+
+    /**
+     * 查询统计信息
+     * @return
+     */
+    @GetMapping("/logincount")
+    public AjaxResult logincount()
+    {
+        return logininforService.logincount();
+    }
 }

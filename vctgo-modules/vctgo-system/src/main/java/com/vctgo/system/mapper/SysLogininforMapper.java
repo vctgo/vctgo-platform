@@ -2,6 +2,7 @@ package com.vctgo.system.mapper;
 
 import java.util.List;
 
+import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.vctgo.common.mybatisplus.mapper.BaseMapperX;
@@ -52,4 +53,27 @@ import org.apache.ibatis.annotations.Param;
      * @return 结果
      */
      int cleanLogininfor();
+
+    /**
+     * 查询访问次数
+     *
+     * @return 结果
+     */
+    Object countLogininfo();
+
+    /**
+     * 查询租户数量
+     *
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    Object countTenant();
+
+    /**
+     * 查询注册用户
+     *
+     * @return 结果
+     */
+    @InterceptorIgnore(tenantLine = "1")
+    Object countRegister();
 }

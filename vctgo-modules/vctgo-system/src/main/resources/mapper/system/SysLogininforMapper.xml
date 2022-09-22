@@ -39,8 +39,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</where>
 		order by info_id desc
 	</select>
+    <select id="countLogininfo" resultType="java.lang.Object">
+		select count(info_id) from sys_logininfor where status =0 and msg='登录成功'
+	</select>
+	<select id="countRegister" resultType="java.lang.Object">
+		select count(user_id) from sys_user
+	</select>
+    <select id="countTenant" resultType="java.lang.Object">
+		select count(id) from sys_tenant;
+	</select>
 
-	<delete id="deleteLogininforByIds" parameterType="Long">
+    <delete id="deleteLogininforByIds" parameterType="Long">
  		delete from sys_logininfor where info_id in
  		<foreach collection="array" item="infoId" open="(" separator="," close=")">
  			#{infoId}
