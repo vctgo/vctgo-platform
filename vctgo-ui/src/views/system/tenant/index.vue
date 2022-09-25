@@ -380,7 +380,7 @@
               });
             } else {
               addTenant(this.form).then(response => {
-                this.$modal.msgSuccess("新增成功");
+                this.$modal.msgSuccess("新增成功,密码已发送至邮箱");
                 this.open = false;
                 this.getList();
               });
