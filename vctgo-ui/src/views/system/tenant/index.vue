@@ -1,5 +1,8 @@
 <template>
   <div class="app-container">
+    <div class="tenanttip" style="padding: 8px 16px;background-color: #ecf8ff;border-radius: 4px;border-left: 5px solid #ef8708;margin: 20px 0;">
+      <p style="font-weight: 400;color: #1f2f3d;">特别提醒,租户管理员初始密码采用邮件通知方式发放,保证安全性,请填写正确的邮箱!</p>
+    </div>
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="100px">
                   <el-form-item label="租户名称" prop="tenantName">
                     <el-input
