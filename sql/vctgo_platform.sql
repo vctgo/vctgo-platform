@@ -636,8 +636,8 @@ CREATE TABLE `sys_notice` (
 -- Records of sys_notice
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_notice` VALUES (1, '温馨提醒：2018-07-01 盛虹新版本发布啦', '2', 0xE696B0E78988E69CACE58685E5AEB9, '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:36:11', '管理员', 9999);
-INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 盛虹系统凌晨维护', '1', 0xE7BBB4E68AA4E58685E5AEB9, '0', 'admin', '2022-03-07 15:41:18', '', NULL, '管理员', 9999);
+INSERT INTO `sys_notice` VALUES (1, '温馨提醒：2018-07-01 Vctgo新版本发布啦', '2', 0xE696B0E78988E69CACE58685E5AEB9, '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:36:11', '管理员', 9999);
+INSERT INTO `sys_notice` VALUES (2, '维护通知：2018-07-01 Vctgo系统凌晨维护', '1', 0xE7BBB4E68AA4E58685E5AEB9, '0', 'admin', '2022-03-07 15:41:18', '', NULL, '管理员', 9999);
 INSERT INTO `sys_notice` VALUES (10, '测试通知功能', '1', 0x3C703EE68891E698AFE4B880E4B8AAE9809AE79FA5E58A9FE883BDE79A84E6B58BE8AF95E4BFA1E681AF3C2F703E, '0', 'admin', '2022-03-07 18:37:27', '', NULL, NULL, 9999);
 COMMIT;
 
