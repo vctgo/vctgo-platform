@@ -8,9 +8,14 @@ package com.vctgo.common.core.constant;
 public class SecurityConstants
 {
     /**
-     * 用户ID字段
+     * 租户ID字段
      */
     public static final String DETAILS_TENANT_ID = "tenant-id";
+
+    /**
+     * 部门ID字段
+     */
+    public static final String DETAILS_DEPT_ID = "dept_id";
 
     /**
      * 用户ID字段

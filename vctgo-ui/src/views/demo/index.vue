@@ -1,18 +1,18 @@
 <template>
   <div class="app-container">
     <el-form :model="queryParams" ref="queryForm" size="small" :inline="true" v-show="showSearch" label-width="68px">
-                  <el-form-item label="测试ID" prop="demoId">
+                  <el-form-item label="样例ID" prop="demoId">
                     <el-input
                         v-model="queryParams.demoId"
-                        placeholder="请输入测试ID"
+                        placeholder="请输入样例ID"
                         clearable
                         @keyup.enter.native="handleQuery"
                     />
                   </el-form-item>
-                  <el-form-item label="测试账号" prop="demoName">
+                  <el-form-item label="样例账号" prop="demoName">
                     <el-input
                         v-model="queryParams.demoName"
-                        placeholder="请输入测试账号"
+                        placeholder="请输入样例账号"
                         clearable
                         @keyup.enter.native="handleQuery"
                     />
@@ -31,7 +31,7 @@
             icon="el-icon-plus"
             size="mini"
             @click="handleAdd"
-            v-hasPermi="['system:demo:add']"
+            v-hasPermi="['demo:demo:add']"
         >新增</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -42,7 +42,7 @@
             size="mini"
             :disabled="single"
             @click="handleUpdate"
-            v-hasPermi="['system:demo:edit']"
+            v-hasPermi="['demo:demo:edit']"
         >修改</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -53,7 +53,7 @@
             size="mini"
             :disabled="multiple"
             @click="handleDelete"
-            v-hasPermi="['system:demo:remove']"
+            v-hasPermi="['demo:demo:remove']"
         >删除</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -63,7 +63,7 @@
             icon="el-icon-download"
             size="mini"
             @click="handleExport"
-            v-hasPermi="['system:demo:export']"
+            v-hasPermi="['demo:demo:export']"
         >导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -71,8 +71,8 @@
 
     <el-table v-loading="loading" :data="demoList" @selection-change="handleSelectionChange">
       <el-table-column type="selection" width="55" align="center" />
-              <el-table-column label="测试ID" align="center" prop="demoId" />
-              <el-table-column label="测试账号" align="center" prop="demoName" />
+              <el-table-column label="样例ID" align="center" prop="demoId" />
+              <el-table-column label="样例账号" align="center" prop="demoName" />
               <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -81,14 +81,14 @@
               type="text"
               icon="el-icon-edit"
               @click="handleUpdate(scope.row)"
-              v-hasPermi="['system:demo:edit']"
+              v-hasPermi="['demo:demo:edit']"
           >修改</el-button>
           <el-button
               size="mini"
               type="text"
               icon="el-icon-delete"
               @click="handleDelete(scope.row)"
-              v-hasPermi="['system:demo:remove']"
+              v-hasPermi="['demo:demo:remove']"
           >删除</el-button>
         </template>
       </el-table-column>
@@ -102,11 +102,11 @@
         @pagination="getList"
     />
 
-    <!-- 添加或修改测试对话框 -->
+    <!-- 添加或修改样例对话框 -->
     <el-dialog :title="title" :visible.sync="open" width="500px" append-to-body>
       <el-form ref="form" :model="form" :rules="rules" label-width="80px">
-                        <el-form-item label="测试账号" prop="demoName">
-                          <el-input v-model="form.demoName" placeholder="请输入测试账号" />
+                        <el-form-item label="样例账号" prop="demoName">
+                          <el-input v-model="form.demoName" placeholder="请输入样例账号" />
                         </el-form-item>
                         <el-form-item label="备注" prop="remark">
                           <el-input v-model="form.remark" type="textarea" placeholder="请输入内容" />
@@ -121,7 +121,7 @@
 </template>
 
 <script>
-  import { listDemo, getDemo, delDemo, addDemo, updateDemo } from "@/api/system/demo";
+  import { listDemo, getDemo, delDemo, addDemo, updateDemo } from "@/api/demo/demo";
   import {parseTime} from "@/utils/vctgo";
 
   export default {
@@ -140,7 +140,7 @@
         showSearch: true,
         // 总条数
         total: 0,
-        // 测试表格数据
+        // 样例表格数据
               demoList: [],
         // 弹出层标题
         title: "",
@@ -158,7 +158,7 @@
         // 表单校验
         rules: {
                         demoName: [
-                    { required: true, message: "测试账号不能为空", trigger: "blur" }
+                    { required: true, message: "样例账号不能为空", trigger: "blur" }
                   ],
         }
       };
@@ -167,7 +167,7 @@
       this.getList();
     },
     methods: {
-      /** 查询测试列表 */
+      /** 查询样例列表 */
       getList() {
         this.loading = true;
         listDemo(this.queryParams).then(response => {
@@ -215,7 +215,7 @@
       handleAdd() {
         this.reset();
         this.open = true;
-        this.title = "添加测试";
+        this.title = "添加样例";
       },
       /** 修改按钮操作 */
       handleUpdate(row) {
@@ -224,7 +224,7 @@
         getDemo(demoId).then(response => {
           this.form = response.data;
           this.open = true;
-          this.title = "修改测试";
+          this.title = "修改样例";
         });
       },
       /** 提交按钮 */
@@ -250,7 +250,7 @@
       /** 删除按钮操作 */
       handleDelete(row) {
         const demoIds = row.demoId || this.ids;
-        this.$modal.confirm('是否确认删除当前测试数据项？').then(function() {
+        this.$modal.confirm('是否确认删除当前样例数据项？').then(function() {
           return delDemo(demoIds);
         }).then(() => {
           this.getList();
@@ -261,7 +261,7 @@
       handleExport() {
         this.download('system/demo/export', {
             ...this.queryParams
-        }, `测试_${parseTime(new Date().getTime(), '{y}-{m}-{d}') }.xlsx`)
+        }, `样例_${parseTime(new Date().getTime(), '{y}-{m}-{d}') }.xlsx`)
       }
    }
   };

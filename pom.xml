@@ -19,6 +19,7 @@
         <module>vctgo-modules</module>
         <module>vctgo-api</module>
         <module>vctgo-common</module>
+        <module>vctgo-demo</module>
     </modules>
 
 

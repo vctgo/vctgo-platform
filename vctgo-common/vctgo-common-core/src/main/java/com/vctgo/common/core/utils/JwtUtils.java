@@ -64,6 +64,29 @@ public class JwtUtils
     }
 
     /**
+     * 根据令牌获取部门ID
+     *
+     * @param token 令牌
+     * @return 部门ID
+     */
+    public static String getDeptId(String token)
+    {
+        Claims claims = parseToken(token);
+        return getValue(claims, SecurityConstants.DETAILS_DEPT_ID);
+    }
+
+    /**
+     * 根据身份信息获取部门ID
+     *
+     * @param claims 身份信息
+     * @return 部门ID
+     */
+    public static String getDeptId(Claims claims)
+    {
+        return getValue(claims, SecurityConstants.DETAILS_DEPT_ID);
+    }
+
+    /**
      * 根据令牌获取用户ID
      *
      * @param token 令牌

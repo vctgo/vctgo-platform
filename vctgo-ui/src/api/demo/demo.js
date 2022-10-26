@@ -3,7 +3,7 @@ import request from '@/utils/request'
 // 查询测试列表
 export function listDemo(query) {
   return request({
-    url: '/system/demo/list',
+    url: '/demo/demo/list',
     method: 'get',
     params: query
   })
@@ -12,7 +12,7 @@ export function listDemo(query) {
 // 查询测试详细
 export function getDemo(demoId) {
   return request({
-    url: '/system/demo/' + demoId,
+    url: '/demo/demo/' + demoId,
     method: 'get'
   })
 }
@@ -20,7 +20,7 @@ export function getDemo(demoId) {
 // 新增测试
 export function addDemo(data) {
   return request({
-    url: '/system/demo',
+    url: '/demo/demo',
     method: 'post',
     data: data
   })
@@ -29,7 +29,7 @@ export function addDemo(data) {
 // 修改测试
 export function updateDemo(data) {
   return request({
-    url: '/system/demo',
+    url: '/demo/demo',
     method: 'put',
     data: data
   })

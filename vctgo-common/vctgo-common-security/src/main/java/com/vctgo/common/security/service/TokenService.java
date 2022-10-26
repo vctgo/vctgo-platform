@@ -50,6 +50,7 @@ public class TokenService
         Long userId = loginUser.getSysUser().getUserId();
         String userName = loginUser.getSysUser().getUserName();
         Long tenantId = loginUser.getSysUser().getTenantId();
+        Long deptId = loginUser.getSysUser().getDeptId();
         loginUser.setToken(token);
         loginUser.setUserid(userId);
         loginUser.setUsername(userName);
@@ -65,6 +66,8 @@ public class TokenService
         claimsMap.put(SecurityConstants.DETAILS_USERNAME, userName);
         //租户id
         claimsMap.put(SecurityConstants.DETAILS_TENANT_ID, tenantId);
+        //部门id
+        claimsMap.put(SecurityConstants.DETAILS_DEPT_ID, deptId);
         // 接口返回信息
         Map<String, Object> rspMap = new HashMap<String, Object>();
         rspMap.put("access_token", JwtUtils.createToken(claimsMap));

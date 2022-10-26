@@ -8,7 +8,7 @@ import com.vctgo.common.core.text.Convert;
 import com.vctgo.common.core.utils.StringUtils;
 
 /**
- * 获取当前线程变量中的 用户id、用户名称、Token等信息
+ * 获取当前线程变量中的 租户id 部门id 用户id、用户名称、Token等信息
  * 注意： 必须在网关通过请求头的方法传入，同时在HeaderInterceptor拦截器设置值。 否则这里无法获取
  *
  * @author vctgo
@@ -58,9 +58,19 @@ public class SecurityContextHolder
         return Convert.toLong(get(SecurityConstants.DETAILS_TENANT_ID), 9999L);
     }
 
-    public static void setTenantId(String account)
+    public static void setTenantId(String tenantId)
     {
-        set(SecurityConstants.DETAILS_TENANT_ID, account);
+        set(SecurityConstants.DETAILS_TENANT_ID, tenantId);
+    }
+
+    public static Long getDeptId()
+    {
+        return Convert.toLong(get(SecurityConstants.DETAILS_DEPT_ID));
+    }
+
+    public static void setDeptId(String deptId)
+    {
+        set(SecurityConstants.DETAILS_DEPT_ID, deptId);
     }
 
     public static void setRemoteHeader(Object account)

@@ -33,6 +33,15 @@ public class SecurityUtils
     {
          SecurityContextHolder.setTenantId(tenantId);
     }
+
+    /**
+     * 获取部门ID
+     */
+    public static Long getDeptId()
+    {
+        return SecurityContextHolder.getDeptId();
+    }
+
     /**
      * 获取用户ID
      */
