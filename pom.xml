@@ -41,7 +41,7 @@
         <kaptcha.version>2.3.2</kaptcha.version>
         <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
         <alibaba.seata.version>1.5.1</alibaba.seata.version>
-        <druid.version>1.2.11</druid.version>
+        <druid.version>1.2.13</druid.version>
         <dynamic-ds.version>3.5.1</dynamic-ds.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>

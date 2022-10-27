@@ -1,8 +1,14 @@
 version : '3.8'
+networks:
+  cloud-net:
+    name: cloud-net
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16
 services:
   vctgo-nacos:
     container_name: vctgo-nacos
-    image: nacos/nacos-server
+    image: nacos/nacos-server:2.0.3-slim
     build:
       context: ./nacos
     environment:
@@ -16,6 +22,9 @@ services:
       - "9849:9849"
     depends_on:
       - vctgo-mysql
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.6
   vctgo-mysql:
     container_name: vctgo-mysql
     image: mysql:5.7
@@ -29,16 +38,19 @@ services:
       - ./mysql/data:/var/lib/mysql
       - ./mysql/db:/docker-entrypoint-initdb.d
     command: [
-          'mysqld',
-          '--innodb-buffer-pool-size=80M',
-          '--character-set-server=utf8mb4',
-          '--collation-server=utf8mb4_unicode_ci',
-          '--default-time-zone=+8:00',
-          '--lower-case-table-names=1'
-        ]
+      'mysqld',
+      '--innodb-buffer-pool-size=80M',
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci',
+      '--default-time-zone=+8:00',
+      '--lower-case-table-names=1'
+    ]
     environment:
       MYSQL_DATABASE: 'vctgo_platform'
       MYSQL_ROOT_PASSWORD: password
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.2
   vctgo-redis:
     container_name: vctgo-redis
     image: redis
@@ -50,13 +62,16 @@ services:
       - ./redis/conf/redis.conf:/home/vctgo/redis/redis.conf
       - ./redis/data:/data
     command: redis-server /home/vctgo/redis/redis.conf
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.3
   vctgo-nginx:
     container_name: vctgo-nginx
     image: nginx
     build:
       context: ./nginx
     ports:
-      - "80:80"
+      - "8001:8001"
     volumes:
       - ./nginx/html/dist:/home/vctgo/projects/vctgo-ui
       - ./nginx/conf/nginx.conf:/etc/nginx/nginx.conf
@@ -66,6 +81,9 @@ services:
       - vctgo-gateway
     links:
       - vctgo-gateway
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.4
   vctgo-gateway:
     container_name: vctgo-gateway
     build:
@@ -78,9 +96,12 @@ services:
     links:
       - vctgo-redis
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.5
   vctgo-auth:
     container_name: vctgo-auth
     build:
@@ -93,9 +114,12 @@ services:
     links:
       - vctgo-redis
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.7
   vctgo-system:
     container_name: vctgo-system
     build:
@@ -111,9 +135,12 @@ services:
       - vctgo-mysql
       - vctgo-file
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.8
   vctgo-gen:
     container_name: vctgo-gen
     build:
@@ -126,9 +153,12 @@ services:
     links:
       - vctgo-mysql
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.9
   vctgo-file:
     container_name: vctgo-file
     build:
@@ -139,9 +169,12 @@ services:
     volumes:
       - ./vctgo/uploadPath:/home/vctgo/uploadPath
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.10
   vctgo-monitor:
     container_name: vctgo-monitor
     build:
@@ -150,6 +183,9 @@ services:
     ports:
       - "39100:39100"
     environment:
-      - NACOS_HOST=192.168.200.188
+      - NACOS_HOST=172.18.0.6
       - NACOS_PORT=8848
-      - NETWORK_IP=192.168.200.188
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.11
