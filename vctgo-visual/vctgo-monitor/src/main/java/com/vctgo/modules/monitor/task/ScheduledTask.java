@@ -58,7 +58,7 @@ public class ScheduledTask {
      *  主机监控信息
      *  启动5s后执行 每隔1分钟监测一次
      */
-    @Scheduled(initialDelay = 5000L, fixedRate = 1 * 60 * 1000)
+    @Scheduled(initialDelay = 5000L, fixedRate = 5 * 60 * 1000)
     public void sysInfo()
     {
         //先查询需要监控的信息
@@ -85,67 +85,12 @@ public class ScheduledTask {
     }
 
     /**
-     *  缓存监控信息
-     *  启动10s后执行 每隔1分钟监控一次
-     */
-    @Scheduled(initialDelay = 10000L, fixedRate = 1 * 60 * 1000)
-    public void cacheInfo(){
-        //先查询需要监控的信息
-        List<MonitorCache> cachelist = monitorCacheMapper.selectList();
-        RedisStandaloneConfiguration redisStandaloneConfiguration = new RedisStandaloneConfiguration();
-        cachelist.stream().forEach(monitorCache ->{
-            redisStandaloneConfiguration.setHostName(monitorCache.getIp());
-            redisStandaloneConfiguration.setDatabase(monitorCache.getDatabaseNum());
-            redisStandaloneConfiguration.setPort(monitorCache.getIpPort());
-            redisStandaloneConfiguration.setPassword(monitorCache.getUserPassword());
-            LettuceClientConfiguration.LettuceClientConfigurationBuilder lettuceClientConfigurationBuilder = LettuceClientConfiguration.builder()
-                    .commandTimeout(Duration.ofMillis(500L));
-            LettuceConnectionFactory factory = new LettuceConnectionFactory(redisStandaloneConfiguration,
-                    lettuceClientConfigurationBuilder.build());
-            factory.afterPropertiesSet();
-            RedisTemplate<String, String> redisTemplate = new RedisTemplate<>();
-            redisTemplate.setConnectionFactory(factory);
-            redisTemplate.afterPropertiesSet();
-            try {
-                Object dbSize = redisTemplate.execute((RedisCallback<Object>) connection -> connection.dbSize());
-                factory.resetConnection();
-                if (monitorCache.getIsOnline() == 1){
-                    monitorCache.setIsOnline(0);
-                    monitorCacheMapper.updateById(monitorCache);
-                }
-            }catch (Exception e){
-                monitorCache.setIsOnline(1);
-                monitorCacheMapper.updateById(monitorCache);
-            }
-        });
-    }
-
-    /**
      *  发送报警信息
      *  启动5分钟后执行 每隔5分钟执行一次
      *  读取所有配置表 监控当前状态 和报警配置
      */
     @Scheduled(initialDelay = 1 * 60 * 1000, fixedRate = 5 *60 * 1000)
     public void sendMessage(){
-        //缓存
-        //发警告
-        List<MonitorCache> cachelist = monitorCacheMapper.selectList("is_online",1);
-        cachelist.stream().forEach(monitorCache ->{
-            if (monitorCache.getMessageType() == 0){
-                //短信业务
-                Runnable runnable = () -> {
-                    //短信工具类
-                };
-                executor.execute(runnable);
-            }else {
-                //邮件业务
-                Runnable runnable = () -> {
-                    //邮件工具类
-                    emailUtil.sendSimpleMail("缓存服务器掉线提醒","您的地址为"+monitorCache.getIp()+"的缓存服务器已经掉线,请尽快恢复!",monitorCache.getUserEmail());
-                };
-                executor.execute(runnable);
-            }
-        });
         //机器监控
         List<MonitorSys> syslist = monitorSysMapper.selectList("is_online",1);
         syslist.stream().forEach(sys ->{

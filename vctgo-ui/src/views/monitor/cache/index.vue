@@ -80,11 +80,6 @@
               <el-table-column label="缓存应用名称" align="center" prop="cacheName" />
               <el-table-column label="IP地址" align="center" prop="ip" />
               <el-table-column label="系统端口" align="center" prop="ipPort" />
-              <el-table-column label="是否在线" align="center" prop="isOnline">
-                <template slot-scope="scope">
-                      <dict-tag :options="dict.type.sys_notice_status" :value="scope.row.isOnline"/>
-                </template>
-              </el-table-column>
               <el-table-column label="备注" align="center" prop="remark" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -175,7 +170,7 @@
 
   export default {
     name: "Cache",
-    dicts: ['sys_notice_status','sys_message_type'],
+    dicts: ['sys_message_type'],
     data() {
       return {
         //通知展示栏目

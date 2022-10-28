@@ -45,10 +45,6 @@ public class MonitorCache extends TenantEntity
     /** 公钥地址 */
     private String rsaAddr;
 
-    /** 是否在线 */
-    @Excel(name = "是否在线")
-    private Integer isOnline;
-
     /** 用户手机*/
     @Excel(name = "用户手机")
     private String userPhone;

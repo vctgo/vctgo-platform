@@ -192,7 +192,6 @@ CREATE TABLE `monitor_cache` (
   `user_password` varchar(255) DEFAULT NULL COMMENT '用户密码',
   `ip_port` int(255) NOT NULL DEFAULT '6379' COMMENT '系统端口',
   `rsa_addr` varchar(500) DEFAULT NULL COMMENT '公钥地址',
-  `is_online` int(2) NOT NULL DEFAULT '0' COMMENT '是否在线 0在线 1离线',
   `user_phone` varchar(255) DEFAULT NULL COMMENT '告警手机',
   `user_email` varchar(255) DEFAULT NULL COMMENT '告警邮件',
   `message_type` int(2) DEFAULT NULL COMMENT '告警类型 0 手机 1邮件',
