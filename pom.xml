@@ -6,7 +6,7 @@
 
     <groupId>com.vctgo</groupId>
     <artifactId>vctgo</artifactId>
-    <version>1.2.0</version>
+    <version>1.2.1</version>
     <packaging>pom</packaging>
     <name>vctgo</name>
     <url>https://www.vctgo.cn</url>
@@ -20,18 +20,19 @@
         <module>vctgo-api</module>
         <module>vctgo-common</module>
         <module>vctgo-demo</module>
+        <module>vctgo-register</module>
     </modules>
 
 
     <properties>
-        <vctgo.version>1.2.0</vctgo.version>
+        <vctgo.version>1.2.1</vctgo.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <spring-boot.version>2.7.1</spring-boot.version>
         <spring-cloud.version>2021.0.3</spring-cloud.version>
         <spring-cloud-alibaba.version>2021.0.1.0</spring-cloud-alibaba.version>
-        <alibaba.nacos.version>2.0.4</alibaba.nacos.version>
+        <alibaba.nacos.version>2.1.1</alibaba.nacos.version>
         <spring-boot-admin.version>2.7.2</spring-boot-admin.version>
         <spring-boot.mybatis.plus>3.5.0</spring-boot.mybatis.plus>
         <swagger.fox.version>3.0.0</swagger.fox.version>

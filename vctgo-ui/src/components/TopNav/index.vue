@@ -95,7 +95,7 @@ export default {
         if (!this.isFrist) {
           this.isFrist = true;
         } else {
-          activePath = "index";
+          //activePath = "index";
         }
       }
       var routes = this.activeRoutes(activePath);
