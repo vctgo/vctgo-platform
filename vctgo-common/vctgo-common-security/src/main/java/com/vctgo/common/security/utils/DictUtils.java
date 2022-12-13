@@ -2,6 +2,8 @@ package com.vctgo.common.security.utils;
 
 import java.util.Collection;
 import java.util.List;
+
+import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.constant.Constants;
 import com.vctgo.common.core.utils.SpringUtils;
 import com.vctgo.common.core.utils.StringUtils;
@@ -58,7 +60,7 @@ public class DictUtils
      */
     public static void clearDictCache()
     {
-        Collection<String> keys = SpringUtils.getBean(RedisService.class).keys(Constants.SYS_DICT_KEY + "*");
+        Collection<String> keys = SpringUtils.getBean(RedisService.class).keys(CacheConstants.SYS_DICT_KEY + "*");
         SpringUtils.getBean(RedisService.class).deleteObject(keys);
     }
 
@@ -70,6 +72,6 @@ public class DictUtils
      */
     public static String getCacheKey(String configKey)
     {
-        return Constants.SYS_DICT_KEY + configKey;
+        return CacheConstants.SYS_DICT_KEY + configKey;
     }
 }

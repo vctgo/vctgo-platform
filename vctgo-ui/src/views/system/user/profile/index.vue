@@ -1,7 +1,7 @@
 <template>
   <div class="app-container">
     <el-row :gutter="20">
-      <el-col :span="8" :xs="24">
+      <el-col :span="6" :xs="24">
         <el-card class="box-card">
           <div slot="header" class="clearfix">
             <span>个人信息</span>
@@ -39,7 +39,7 @@
           </div>
         </el-card>
       </el-col>
-      <el-col :span="16" :xs="24">
+      <el-col :span="18" :xs="24">
         <el-card>
           <div slot="header" class="clearfix">
             <span>基本资料</span>
@@ -49,7 +49,7 @@
               <userInfo :user="user" />
             </el-tab-pane>
             <el-tab-pane label="修改密码" name="resetPwd">
-              <resetPwd :user="user" />
+              <resetPwd />
             </el-tab-pane>
           </el-tabs>
         </el-card>

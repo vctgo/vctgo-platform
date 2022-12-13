@@ -21,6 +21,10 @@ import com.vctgo.common.security.annotation.InnerAuth;
 import com.vctgo.common.security.annotation.RequiresPermissions;
 import com.vctgo.system.api.domain.SysLogininfor;
 import com.vctgo.system.service.ISysLogininforService;
+import com.vctgo.common.redis.service.RedisService;
+import com.vctgo.common.core.constant.CacheConstants;
+
+
 
 /**
  * 系统访问记录
@@ -33,6 +37,10 @@ public class SysLogininforController extends BaseController
 {
     @Autowired
     private ISysLogininforService logininforService;
+
+    @Autowired
+    private RedisService redisService;
+
 
     @RequiresPermissions("system:logininfor:list")
     @GetMapping("/list")
@@ -68,6 +76,16 @@ public class SysLogininforController extends BaseController
         logininforService.cleanLogininfor();
         return AjaxResult.success();
     }
+
+    @RequiresPermissions("system:logininfor:unlock")
+    @Log(title = "账户解锁", businessType = BusinessType.OTHER)
+    @GetMapping("/unlock/{userName}")
+    public AjaxResult unlock(@PathVariable("userName") String userName)
+    {
+        redisService.deleteObject(CacheConstants.PWD_ERR_CNT_KEY + userName);
+        return success();
+    }
+
 
     @InnerAuth
     @PostMapping

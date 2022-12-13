@@ -82,6 +82,10 @@ public @interface Excel
      * 设置只能选择不能输入的列内容.
      */
     public String[] combo() default {};
+    /**
+     * 是否需要纵向合并单元格,应对需求:含有list集合单元格)
+     */
+    public boolean needMerge() default false;
 
     /**
      * 是否导出数据,应对需求:有时我们需要导出一份模板,这是标题需要但内容需要用户手工填写.

@@ -177,7 +177,7 @@ public class SysTenantServiceImpl implements ISysTenantService
         userMapper.insert(user);
         userPostMapper.insert(new SysUserPost().setUserId(user.getUserId()).setPostId(postid));
         userRoleMapper.insert(new SysUserRole().setRoleId(roleid).setUserId(user.getUserId()));
-        String configValue = Convert.toStr(redisService.getCacheObject( Constants.SYS_CONFIG_KEY + "sys.message.type"));
+        String configValue = Convert.toStr(redisService.getCacheObject( CacheConstants.SYS_CONFIG_KEY + "sys.message.type"));
         if ("false".equals(configValue)){
            //短信
             emailUtil.sendSimpleMail("租户管理员账号注册成功","请牢记登录密码:"+randomPassword,sysTenant.getUserEmail());

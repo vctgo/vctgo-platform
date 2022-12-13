@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vctgo.common.log.annotation.Log;
+import com.vctgo.common.log.filter.PropertyPreExcludeFilter;
 import com.vctgo.common.log.service.AsyncLogService;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -36,6 +37,10 @@ import com.vctgo.system.api.domain.SysOperLog;
 public class LogAspect
 {
     private static final Logger log = LoggerFactory.getLogger(LogAspect.class);
+
+    /** 排除敏感属性字段 */
+    public static final String[] EXCLUDE_PROPERTIES = { "password", "oldPassword", "newPassword", "confirmPassword" };
+
 
     @Autowired
     private AsyncLogService asyncLogService;
@@ -163,7 +168,7 @@ public class LogAspect
                 {
                     try
                     {
-                        Object jsonObj = JSON.toJSON(o);
+                        String jsonObj = JSON.toJSONString(o, excludePropertyPreFilter());
                         params += jsonObj.toString() + " ";
                     }
                     catch (Exception e)
@@ -174,7 +179,13 @@ public class LogAspect
         }
         return params.trim();
     }
-
+    /**
+     * 忽略敏感属性
+     */
+    public PropertyPreExcludeFilter excludePropertyPreFilter()
+    {
+        return new PropertyPreExcludeFilter().addExcludes(EXCLUDE_PROPERTIES);
+    }
     /**
      * 判断是否需要过滤的对象。
      *

@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.utils.ServletUtils;
 import com.vctgo.common.mybatisplus.constant.MybatisPageConstants;
 import com.vctgo.system.domain.SysConfig;
@@ -181,7 +182,7 @@ public class SysConfigServiceImpl implements ISysConfigService
     @Override
     public void clearConfigCache()
     {
-        Collection<String> keys = redisService.keys(Constants.SYS_CONFIG_KEY + "*");
+        Collection<String> keys = redisService.keys(CacheConstants.SYS_CONFIG_KEY + "*");
         redisService.deleteObject(keys);
     }
 
@@ -221,7 +222,7 @@ public class SysConfigServiceImpl implements ISysConfigService
      */
     private String getCacheKey(String configKey)
     {
-        return Constants.SYS_CONFIG_KEY + configKey;
+        return CacheConstants.SYS_CONFIG_KEY + configKey;
     }
 
 
