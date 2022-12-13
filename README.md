@@ -87,6 +87,7 @@ PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
 ### 请参考保姆级教程  - [Vctgo项目启动教程](https://www.vctgo.cn/archives/vctgo-xiang-mu-qi-dong-jiao-cheng)
 
 ### 其他细节说明
+### 最新更新,项目已内置Nacos,直接启动即可
 #### 1.nacos自行运行 如果是 M1的芯片 会出现内核报错 采用下方nacos镜像即可  docker pull zhusaidong/nacos-server-m1:2.0.3
      - 运行指令如下 
      docker run --name nacos-standalone -e MODE=standalone -e JVM_XMS=512m -e JVM_XMX=512m -e JVM_XMN=256m -p 8848:8848 -d zhusaidong/nacos-server-m1:2.0.3
