@@ -2,6 +2,9 @@ package com.vctgo.common.datascope.aspect;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.vctgo.common.core.context.SecurityContextHolder;
+import com.vctgo.common.core.text.Convert;
 import com.vctgo.common.datascope.annotation.DataScope;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
@@ -70,8 +73,9 @@ public class DataScopeAspect
             // 如果是超级管理员，则不过滤数据
             if (StringUtils.isNotNull(currentUser) && !currentUser.isAdmin())
             {
+                String permission = StringUtils.defaultIfEmpty(controllerDataScope.permission(), SecurityContextHolder.getPermission());
                 dataScopeFilter(joinPoint, currentUser, controllerDataScope.deptAlias(),
-                        controllerDataScope.userAlias());
+                        controllerDataScope.userAlias(), permission);
             }
         }
     }
@@ -83,8 +87,9 @@ public class DataScopeAspect
      * @param user 用户
      * @param deptAlias 部门别名
      * @param userAlias 用户别名
+     * @param permission 权限字符
      */
-    public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias)
+    public static void dataScopeFilter(JoinPoint joinPoint, SysUser user, String deptAlias, String userAlias, String permission)
     {
         StringBuilder sqlString = new StringBuilder();
         List<String> conditions = new ArrayList<String>();
@@ -92,6 +97,11 @@ public class DataScopeAspect
         {
             String dataScope = role.getDataScope();
             if (!DATA_SCOPE_CUSTOM.equals(dataScope) && conditions.contains(dataScope))
+            {
+                continue;
+            }
+            if (StringUtils.isNotEmpty(permission) && StringUtils.isNotEmpty(role.getPermissions())
+                    && !StringUtils.containsAny(role.getPermissions(), Convert.toStrArray(permission)))
             {
                 continue;
             }

@@ -12,6 +12,8 @@ import lombok.NoArgsConstructor;
 import com.vctgo.common.core.annotation.Excel;
 import com.vctgo.common.core.annotation.Excel.ColumnType;
 
+import java.util.Set;
+
 /**
  * 角色表 sys_role
  *
@@ -80,6 +82,9 @@ public class SysRole extends TenantEntity
     @TableField(exist = false)
     /** 部门组（数据权限） */
     private Long[] deptIds;
+
+    /** 角色菜单权限 */
+    private Set<String> permissions;
 
     public SysRole(Long roleId)
     {

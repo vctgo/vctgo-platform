@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.vctgo.common.core.context.SecurityContextHolder;
 import com.vctgo.common.security.annotation.RequiresPermissions;
 import org.springframework.util.PatternMatchUtils;
 import com.vctgo.common.core.exception.auth.NotLoginException;
@@ -20,7 +21,7 @@ import com.vctgo.system.api.model.LoginUser;
 
 /**
  * Token 权限验证，逻辑实现类
- * 
+ *
  * @author vctgo
  */
 public class AuthLogic
@@ -64,7 +65,7 @@ public class AuthLogic
 
     /**
      * 获取当前用户缓存信息, 如果未登录，则抛出异常
-     * 
+     *
      * @return 用户缓存信息
      */
     public LoginUser getLoginUser()
@@ -84,7 +85,7 @@ public class AuthLogic
 
     /**
      * 获取当前用户缓存信息, 如果未登录，则抛出异常
-     * 
+     *
      * @param token 前端传递的认证信息
      * @return 用户缓存信息
      */
@@ -95,7 +96,7 @@ public class AuthLogic
 
     /**
      * 验证当前用户有效期, 如果相差不足120分钟，自动刷新缓存
-     * 
+     *
      * @param loginUser 当前用户信息
      */
     public void verifyLoginUserExpire(LoginUser loginUser)
@@ -105,7 +106,7 @@ public class AuthLogic
 
     /**
      * 验证用户是否具备某权限
-     * 
+     *
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
@@ -116,7 +117,7 @@ public class AuthLogic
 
     /**
      * 验证用户是否具备某权限, 如果验证未通过，则抛出异常: NotPermissionException
-     * 
+     *
      * @param permission 权限字符串
      * @return 用户是否具备某权限
      */
@@ -130,11 +131,12 @@ public class AuthLogic
 
     /**
      * 根据注解(@RequiresPermissions)鉴权, 如果验证未通过，则抛出异常: NotPermissionException
-     * 
+     *
      * @param requiresPermissions 注解对象
      */
     public void checkPermi(RequiresPermissions requiresPermissions)
     {
+        SecurityContextHolder.setPermission(StringUtils.join(requiresPermissions.value(), ","));
         if (requiresPermissions.logical() == Logical.AND)
         {
             checkPermiAnd(requiresPermissions.value());
@@ -164,7 +166,7 @@ public class AuthLogic
 
     /**
      * 验证用户是否含有指定权限，只需包含其中一个
-     * 
+     *
      * @param permissions 权限码数组
      */
     public void checkPermiOr(String... permissions)
@@ -185,7 +187,7 @@ public class AuthLogic
 
     /**
      * 判断用户是否拥有某个角色
-     * 
+     *
      * @param role 角色标识
      * @return 用户是否具备某角色
      */
@@ -196,7 +198,7 @@ public class AuthLogic
 
     /**
      * 判断用户是否拥有某个角色, 如果验证未通过，则抛出异常: NotRoleException
-     * 
+     *
      * @param role 角色标识
      */
     public void checkRole(String role)
@@ -209,7 +211,7 @@ public class AuthLogic
 
     /**
      * 根据注解(@RequiresRoles)鉴权
-     * 
+     *
      * @param requiresRoles 注解对象
      */
     public void checkRole(RequiresRoles requiresRoles)
@@ -226,7 +228,7 @@ public class AuthLogic
 
     /**
      * 验证用户是否含有指定角色，必须全部拥有
-     * 
+     *
      * @param roles 角色标识数组
      */
     public void checkRoleAnd(String... roles)
@@ -243,7 +245,7 @@ public class AuthLogic
 
     /**
      * 验证用户是否含有指定角色，只需包含其中一个
-     * 
+     *
      * @param roles 角色标识数组
      */
     public void checkRoleOr(String... roles)
@@ -264,7 +266,7 @@ public class AuthLogic
 
     /**
      * 根据注解(@RequiresLogin)鉴权
-     * 
+     *
      * @param at 注解对象
      */
     public void checkByAnnotation(RequiresLogin at)
@@ -274,7 +276,7 @@ public class AuthLogic
 
     /**
      * 根据注解(@RequiresRoles)鉴权
-     * 
+     *
      * @param at 注解对象
      */
     public void checkByAnnotation(RequiresRoles at)
@@ -292,7 +294,7 @@ public class AuthLogic
 
     /**
      * 根据注解(@RequiresPermissions)鉴权
-     * 
+     *
      * @param at 注解对象
      */
     public void checkByAnnotation(RequiresPermissions at)
@@ -310,7 +312,7 @@ public class AuthLogic
 
     /**
      * 获取当前账号的角色列表
-     * 
+     *
      * @return 角色列表
      */
     public Set<String> getRoleList()
@@ -328,7 +330,7 @@ public class AuthLogic
 
     /**
      * 获取当前账号的权限列表
-     * 
+     *
      * @return 权限列表
      */
     public Set<String> getPermiList()
@@ -346,7 +348,7 @@ public class AuthLogic
 
     /**
      * 判断是否包含权限
-     * 
+     *
      * @param authorities 权限列表
      * @param permission 权限字符串
      * @return 用户是否具备某权限
@@ -359,7 +361,7 @@ public class AuthLogic
 
     /**
      * 判断是否包含角色
-     * 
+     *
      * @param roles 角色列表
      * @param role 角色
      * @return 用户是否具备某角色权限

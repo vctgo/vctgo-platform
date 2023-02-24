@@ -32,6 +32,7 @@ import com.vctgo.common.log.enums.BusinessType;
 import com.vctgo.common.security.annotation.InnerAuth;
 import com.vctgo.common.security.annotation.RequiresPermissions;
 import com.vctgo.common.security.utils.SecurityUtils;
+import com.vctgo.system.api.domain.SysDept;
 import com.vctgo.system.api.domain.SysRole;
 import com.vctgo.system.api.domain.SysUser;
 import com.vctgo.system.api.model.LoginUser;
@@ -50,6 +51,9 @@ public class SysUserController extends BaseController
 
     @Autowired
     private ISysRoleService roleService;
+
+    @Autowired
+    private ISysDeptService deptService;
 
     @Autowired
     private ISysPostService postService;
@@ -116,9 +120,9 @@ public class SysUserController extends BaseController
             return R.fail("用户名或密码错误");
         }
         // 角色集合
-        Set<String> roles = permissionService.getRolePermission(sysUser.getUserId());
+        Set<String> roles = permissionService.getRolePermission(sysUser);
         // 权限集合
-        Set<String> permissions = permissionService.getMenuPermission(sysUser.getUserId());
+        Set<String> permissions = permissionService.getMenuPermission(sysUser);
         // 查询租户信息
         SysTenant tenant = sysTenantService.selectSysTenantById(sysUser.getTenantId());
         LoginUser sysUserVo = new LoginUser();
@@ -160,13 +164,12 @@ public class SysUserController extends BaseController
     @GetMapping("getInfo")
     public AjaxResult getInfo()
     {
-        Long userId = SecurityUtils.getUserId();
         //调整下查询顺序 将租户id塞入当前查询线程 --或者直接让权限过滤忽略租户查询 毕竟账号id唯一 目前选择直接忽略查询 后续此处修改
-        SysUser user = userService.selectUserById(userId);
+        SysUser user = userService.selectUserById(SecurityUtils.getUserId());
         // 角色集合
-        Set<String> roles = permissionService.getRolePermission(userId);
+        Set<String> roles = permissionService.getRolePermission(user);
         // 权限集合
-        Set<String> permissions = permissionService.getMenuPermission(userId);
+        Set<String> permissions = permissionService.getMenuPermission(user);
         // 查询租户信息
         SysTenant tenant = sysTenantService.selectSysTenantById(user.getTenantId());
         AjaxResult ajax = AjaxResult.success();
@@ -320,5 +323,15 @@ public class SysUserController extends BaseController
         userService.checkUserDataScope(userId);
         userService.insertUserAuth(userId, roleIds);
         return success();
+    }
+
+    /**
+     * 获取部门树列表
+     */
+    @RequiresPermissions("system:user:list")
+    @GetMapping("/deptTree")
+    public AjaxResult deptTree(SysDept dept)
+    {
+        return AjaxResult.success(deptService.selectDeptTreeList(dept));
     }
 }

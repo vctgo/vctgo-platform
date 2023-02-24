@@ -1,5 +1,7 @@
 package com.vctgo.system.service;
 
+import com.vctgo.system.api.domain.SysUser;
+
 import java.util.Set;
 
  public interface ISysPermissionService
@@ -10,7 +12,7 @@ import java.util.Set;
      * @param userId 用户Id
      * @return 角色权限信息
      */
-     Set<String> getRolePermission(Long userId);
+    Set<String> getRolePermission(SysUser user);
 
     /**
      * 获取菜单数据权限
@@ -18,5 +20,5 @@ import java.util.Set;
      * @param userId 用户Id
      * @return 菜单权限信息
      */
-     Set<String> getMenuPermission(Long userId);
+    Set<String> getMenuPermission(SysUser user);
 }
