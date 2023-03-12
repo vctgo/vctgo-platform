@@ -142,9 +142,9 @@ public class SysTenantServiceImpl implements ISysTenantService
         if (StringUtils.isEmpty(sysTenant.getUserName())){
             return res.error("管理员账号为空,请重新设置!");
         }
-        //先判断admin账号是否存在
-        int usercount = userMapper.checkUserNameUnique(sysTenant.getUserName());
-        if (usercount > 0)
+        //先判断租户管理员设置的账号是否存在
+        SysUser usercount = userMapper.checkUserNameUnique(sysTenant.getUserName());
+        if (!(usercount == null))
         {
             return res.error("用户名已存在,请重新设置!");
         }
