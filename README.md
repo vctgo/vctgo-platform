@@ -98,18 +98,18 @@ PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
      - Windows处于 C:\Windows\System32\drivers\etc
      - Linux和Mac都属于 /etc/hosts下
      
-     主要添加以下几个部分,不理解的自行百度,其中127.0.0.1为你自己的本机ip
-     vctgo-platform 127.0.0.1
-     vctgo-nginx 127.0.0.1
-     vctgo-nacos 127.0.0.1
-     vctgo-mysql 127.0.0.1
-     vctgo-gateway 127.0.0.1
-     vctgo-auth 127.0.0.1
-     vctgo-system 127.0.0.1
-     vctgo-file 127.0.0.1
-     vctgo-gen 127.0.0.1
-     vctgo-monitor 127.0.0.1
-     vctgo-redis 127.0.0.1
+    主要添加以下几个部分,不理解的自行百度,其中127.0.0.1为你自己的本机ip
+    127.0.0.1 vctgo-platform 
+    127.0.0.1 vctgo-nginx 
+    127.0.0.1 vctgo-nacos 
+    127.0.0.1 vctgo-mysql 
+    127.0.0.1 vctgo-gateway 
+    127.0.0.1 vctgo-auth 
+    127.0.0.1 vctgo-system 
+    127.0.0.1 vctgo-file 
+    127.0.0.1 vctgo-gen 
+    127.0.0.1 vctgo-monitor 
+    127.0.0.1 vctgo-redis 
 
 #### 3.前后端启动说明
      - 1.nacos和mysql以及redis正常运行后 优先启动gateway网关和 auth服务,其他的就可以同时启动了
