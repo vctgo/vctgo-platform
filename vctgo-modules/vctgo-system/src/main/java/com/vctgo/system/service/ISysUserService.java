@@ -82,7 +82,7 @@ import com.vctgo.system.api.domain.SysUser;
      * @param userName 用户名称
      * @return 结果
      */
-     String checkUserNameUnique(String userName);
+    String checkUserNameUnique(SysUser user);
 
     /**
      * 校验手机号码是否唯一

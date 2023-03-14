@@ -121,7 +121,7 @@ public interface SysUserMapper extends BaseMapperX<SysUser>
      * @return 结果
      */
      @InterceptorIgnore(tenantLine = "1")
-     int checkUserNameUnique(String userName);
+     SysUser checkUserNameUnique(String userName);
 
     /**
      * 校验手机号码是否唯一

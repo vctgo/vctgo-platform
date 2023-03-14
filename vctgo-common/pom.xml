@@ -12,6 +12,7 @@
         <module>vctgo-common-log</module>
         <module>vctgo-common-core</module>
         <module>vctgo-common-redis</module>
+        <module>ruoyi-common-seata</module>
         <module>vctgo-common-swagger</module>
         <module>vctgo-common-security</module>
         <module>vctgo-common-datascope</module>

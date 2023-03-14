@@ -12,7 +12,7 @@
       :show-file-list="false"
       :headers="headers"
       class="upload-file-uploader"
-      ref="upload"
+      ref="fileUpload"
     >
       <!-- 上传按钮 -->
       <el-button size="mini" type="primary">选取文件</el-button>
@@ -72,7 +72,7 @@ export default {
     return {
       number: 0,
       uploadList: [],
-      uploadFileUrl: process.env.VUE_APP_BASE_API + "/file/upload", // 上传的图片服务器地址
+      uploadFileUrl: process.env.VUE_APP_BASE_API + "/file/upload", // 上传文件服务器地址
       headers: {
         Authorization: "Bearer " + getToken(),
       },
@@ -146,24 +146,36 @@ export default {
     },
     // 上传失败
     handleUploadError(err) {
-      this.$modal.msgError("上传图片失败，请重试");
+      this.$modal.msgError("上传文件失败，请重试");
       this.$modal.closeLoading()
     },
     // 上传成功回调
-    handleUploadSuccess(res) {
-      this.uploadList.push({ name: res.data.url, url: res.data.url });
-      if (this.uploadList.length === this.number) {
-        this.fileList = this.fileList.concat(this.uploadList);
-        this.uploadList = [];
-        this.number = 0;
-        this.$emit("input", this.listToString(this.fileList));
+    handleUploadSuccess(res, file) {
+      if (res.code === 200) {
+        this.uploadList.push({ name: res.data.url, url: res.data.url });
+        this.uploadedSuccessfully();
+      } else {
+        this.number--;
         this.$modal.closeLoading();
+        this.$modal.msgError(res.msg);
+        this.$refs.fileUpload.handleRemove(file);
+        this.uploadedSuccessfully();
       }
     },
     // 删除文件
     handleDelete(index) {
       this.fileList.splice(index, 1);
       this.$emit("input", this.listToString(this.fileList));
+    },
+    // 上传结束处理
+    uploadedSuccessfully() {
+      if (this.number > 0 && this.uploadList.length === this.number) {
+        this.fileList = this.fileList.concat(this.uploadList);
+        this.uploadList = [];
+        this.number = 0;
+        this.$emit("input", this.listToString(this.fileList));
+        this.$modal.closeLoading();
+      }
     },
     // 获取文件名称
     getFileName(name) {

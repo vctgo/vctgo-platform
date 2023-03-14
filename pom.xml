@@ -47,7 +47,7 @@
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <velocity.version>2.3</velocity.version>
-        <fastjson.version>2.0.12</fastjson.version>
+        <fastjson.version>2.0.14</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
@@ -248,6 +248,13 @@
             <dependency>
                 <groupId>com.vctgo</groupId>
                 <artifactId>vctgo-common-datasource</artifactId>
+                <version>${vctgo.version}</version>
+            </dependency>
+
+            <!-- 分布式事务 -->
+            <dependency>
+                <groupId>com.vctgo</groupId>
+                <artifactId>vctgo-common-seata</artifactId>
                 <version>${vctgo.version}</version>
             </dependency>
 
