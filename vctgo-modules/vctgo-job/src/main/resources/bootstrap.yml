@@ -1,0 +1,28 @@
+# Tomcat
+server:
+  port: 39204
+
+# Spring
+spring:
+  application:
+    # ????
+    name: @artifactId@
+  profiles:
+    # ????
+    active: @profiles.active@
+  cloud:
+    nacos:
+      discovery:
+        # ??????
+        server-addr: ${NACOS_HOST:127.0.0.1}:${NACOS_PORT:8848}
+        #????ip???
+        ip: ${NETWORK_IP:127.0.0.1}
+        port: ${server.port}
+      config:
+        # ??????
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        # ??????
+        file-extension: yml
+        # ????
+        shared-configs:
+          - application-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}

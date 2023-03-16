@@ -4,20 +4,32 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <groupId>com.vctgo</groupId>
-        <artifactId>vctgo</artifactId>
+        <artifactId>vctgo-modules</artifactId>
         <version>1.2.1</version>
     </parent>
+
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>vctgo-demo</artifactId>
+    <artifactId>vctgo-job</artifactId>
 
     <description>
-        vctgo-demo样例模块
+        vctgo-job定时任务
     </description>
+
+    <properties>
+        <xxl.job.version>2.3.0</xxl.job.version>
+    </properties>
 
     <dependencies>
 
-    	<!-- SpringCloud Alibaba Nacos -->
+        <!-- xxl-job-core -->
+        <dependency>
+            <groupId>com.xuxueli</groupId>
+            <artifactId>xxl-job-core</artifactId>
+            <version>${xxl.job.version}</version>
+        </dependency>
+
+        <!-- SpringCloud Alibaba Nacos -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
@@ -29,13 +41,13 @@
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
 
-    	<!-- SpringCloud Alibaba Sentinel -->
+        <!-- SpringCloud Alibaba Sentinel -->
         <dependency>
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
         </dependency>
 
-    	<!-- SpringBoot Actuator -->
+        <!-- SpringBoot Actuator -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
@@ -48,16 +60,22 @@
             <version>${swagger.fox.version}</version>
         </dependency>
 
+        <!-- Apache Velocity -->
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity-engine-core</artifactId>
+        </dependency>
+
+        <!-- Commons Collections -->
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+        </dependency>
+
         <!-- Mysql Connector -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-
-        <!-- vctgo Common DataScope -->
-        <dependency>
-            <groupId>com.vctgo</groupId>
-            <artifactId>vctgo-common-datascope</artifactId>
         </dependency>
 
         <!-- vctgo Common Log -->
@@ -72,23 +90,11 @@
             <artifactId>vctgo-common-swagger</artifactId>
         </dependency>
 
-        <!-- vctgo Common tenant -->
+        <!-- vctgo Common mybatisplus -->
         <dependency>
             <groupId>com.vctgo</groupId>
             <artifactId>vctgo-common-mybatisplus</artifactId>
         </dependency>
-
-        <dependency>
-            <groupId>com.vctgo</groupId>
-            <artifactId>vctgo-common-message</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.xuxueli</groupId>
-            <artifactId>xxl-job-core</artifactId>
-            <version>2.3.0</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 
     <build>

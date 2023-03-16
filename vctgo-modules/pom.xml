@@ -12,6 +12,7 @@
         <module>vctgo-system</module>
         <module>vctgo-gen</module>
         <module>vctgo-file</module>
+        <module>vctgo-job</module>
     </modules>
 
     <artifactId>vctgo-modules</artifactId>
