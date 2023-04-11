@@ -20,7 +20,7 @@ export function getGroup(id) {
 // 新增定时任务分组
 export function addGroup(data) {
   return request({
-    url: '/job/group',
+    url: '/job/group/add',
     method: 'post',
     data: data
   })
@@ -29,7 +29,7 @@ export function addGroup(data) {
 // 修改定时任务分组
 export function updateGroup(data) {
   return request({
-    url: '/job/group',
+    url: '/job/group/edit',
     method: 'put',
     data: data
   })

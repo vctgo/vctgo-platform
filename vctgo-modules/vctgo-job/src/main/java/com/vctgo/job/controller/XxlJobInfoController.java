@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.vctgo.common.core.utils.StringUtils;
@@ -13,7 +12,6 @@ import com.vctgo.job.core.thread.JobTriggerPoolHelper;
 import com.vctgo.job.core.trigger.TriggerTypeEnum;
 import com.vctgo.job.core.util.I18nUtil;
 import com.vctgo.job.domain.XxlJobLog;
-import com.xxl.job.core.biz.model.ReturnT;
 import com.xxl.job.core.util.DateUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -39,13 +37,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  * 任务Controller
  *
  * @author vctgo
- * @date 2022-12-31
  */
 @RestController
 @RequestMapping("/info")
 public class XxlJobInfoController extends BaseController
 {
-    private Logger logger = LoggerFactory.getLogger(XxlJobInfoController.class);
+    private final Logger logger = LoggerFactory.getLogger(XxlJobInfoController.class);
 
     @Resource
     private IXxlJobInfoService xxlJobInfoService;
@@ -70,7 +67,7 @@ public class XxlJobInfoController extends BaseController
     public void export(HttpServletResponse response, XxlJobInfo xxlJobInfo)
     {
         List<XxlJobInfo> list = xxlJobInfoService.selectXxlJobInfoList(xxlJobInfo);
-        ExcelUtil<XxlJobInfo> util = new ExcelUtil<XxlJobInfo>(XxlJobInfo.class);
+        ExcelUtil<XxlJobInfo> util = new ExcelUtil<>(XxlJobInfo.class);
         util.exportExcel(response, list, "任务数据");
     }
 
@@ -131,7 +128,7 @@ public class XxlJobInfoController extends BaseController
         }
         String executorParam = xxlJobLog.getExecutorParam();
         String addressList = xxlJobLog.getExecutorAddress();
-        Integer id = xxlJobLog.getId().intValue();
+        int id = xxlJobLog.getId().intValue();
         JobTriggerPoolHelper.trigger(id, TriggerTypeEnum.MANUAL, -1, null, executorParam, addressList);
         return toAjax(true);
     }
@@ -139,6 +136,7 @@ public class XxlJobInfoController extends BaseController
     /**
      * 开启任务
      */
+    @RequiresPermissions("job:info:start")
     @Log(title = "开启任务", businessType = BusinessType.INSERT)
     @GetMapping(value = "/start/{id}")
     public AjaxResult start(@PathVariable(value = "id") Integer id)
@@ -149,6 +147,7 @@ public class XxlJobInfoController extends BaseController
     /**
      * 停止任务
      */
+    @RequiresPermissions("job:info:stop")
     @Log(title = "停止任务", businessType = BusinessType.INSERT)
     @GetMapping(value = "/stop/{id}")
     public AjaxResult stop(@PathVariable(value = "id") Integer id)
@@ -158,9 +157,8 @@ public class XxlJobInfoController extends BaseController
 
     /**
      * 下次执行时间
-     * @param id
-     * @return
      */
+    @RequiresPermissions("job:info:nextTriggerTime")
     @Log(title = "下次执行时间", businessType = BusinessType.INSERT)
     @PostMapping(value = "/nextTriggerTime")
     public AjaxResult nextTriggerTime(@RequestBody XxlJobInfo paramXxlJobInfo)

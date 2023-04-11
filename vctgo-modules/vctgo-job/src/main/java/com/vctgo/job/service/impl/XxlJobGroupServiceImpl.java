@@ -15,7 +15,6 @@ import com.vctgo.common.mybatisplus.constant.MybatisPageConstants;
  * 定时任务分组Service业务层处理
  *
  * @author vctgo
- * @date 2023-01-01
  */
 @Service
 public class XxlJobGroupServiceImpl implements IXxlJobGroupService
@@ -82,7 +81,8 @@ public class XxlJobGroupServiceImpl implements IXxlJobGroupService
     @Override
     public int updateXxlJobGroup(XxlJobGroup xxlJobGroup)
     {
-        return xxlJobGroupMapper.updateById(xxlJobGroup);
+        xxlJobGroupMapper.update(xxlJobGroup);
+        return 1;
     }
 
     /**
@@ -111,8 +111,6 @@ public class XxlJobGroupServiceImpl implements IXxlJobGroupService
 
     /**
      * 根据ID查询
-     * @param id
-     * @return
      */
     @Override
     public XxlJobGroup getById(Long id) {

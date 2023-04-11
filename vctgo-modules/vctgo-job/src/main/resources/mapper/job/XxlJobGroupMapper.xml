@@ -14,6 +14,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         <result property="tenantId"    column="tenant_id"    />
     </resultMap>
 
+    <insert id="insert" parameterType="com.vctgo.job.domain.XxlJobGroup" useGeneratedKeys="true" keyProperty="id" >
+        INSERT INTO xxl_job_group ( `app_name`, `title`, `address_type`, `address_list`, `update_time`)
+        values ( #{appname}, #{title}, #{addressType}, #{addressList}, #{updateTime} );
+    </insert>
 
 
     <sql id="selectXxlJobGroupVo">

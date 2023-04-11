@@ -25,7 +25,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  * 定时任务分组Controller
  *
  * @author vctgo
- * @date 2023-01-01
  */
 @RestController
 @RequestMapping("/group")
@@ -54,7 +53,7 @@ public class XxlJobGroupController extends BaseController
     public void export(HttpServletResponse response, XxlJobGroup xxlJobGroup)
     {
         List<XxlJobGroup> list = xxlJobGroupService.selectXxlJobGroupList(xxlJobGroup);
-        ExcelUtil<XxlJobGroup> util = new ExcelUtil<XxlJobGroup>(XxlJobGroup.class);
+        ExcelUtil<XxlJobGroup> util = new ExcelUtil<>(XxlJobGroup.class);
         util.exportExcel(response, list, "定时任务分组数据");
     }
 
@@ -73,7 +72,7 @@ public class XxlJobGroupController extends BaseController
      */
     @RequiresPermissions("job:group:add")
     @Log(title = "定时任务分组", businessType = BusinessType.INSERT)
-    @PostMapping
+    @PostMapping("add")
     public AjaxResult add(@RequestBody XxlJobGroup xxlJobGroup)
     {
         return toAjax(xxlJobGroupService.insertXxlJobGroup(xxlJobGroup));
@@ -84,7 +83,7 @@ public class XxlJobGroupController extends BaseController
      */
     @RequiresPermissions("job:group:edit")
     @Log(title = "定时任务分组", businessType = BusinessType.UPDATE)
-    @PutMapping
+    @PutMapping("edit")
     public AjaxResult edit(@RequestBody XxlJobGroup xxlJobGroup)
     {
         return toAjax(xxlJobGroupService.updateXxlJobGroup(xxlJobGroup));

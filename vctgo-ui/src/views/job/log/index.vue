@@ -54,7 +54,7 @@
             icon="el-icon-delete"
             size="mini"
             @click="handleDelete"
-            v-hasPermi="['job:log:remove']"
+            v-hasPermi="['job:log:clearLog']"
         >清理</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -98,7 +98,7 @@
           <el-button
             size="mini"
             type="text"
-            v-if="scope.row.handleCode == 200"
+            v-if="scope.row.handleCode === 200"
             @click="handleRowDialog(scope.row, 3)"
             v-hasPermi="['job:log:remove']"
           >执行日志</el-button>
@@ -174,7 +174,7 @@
 </template>
 
 <script>
-  import { listLog, getLog, delLog, addLog, updateLog, logDetailCat, clearLog } from "@/api/job/log";
+  import { listLog, getLog, addLog, updateLog, logDetailCat, clearLog } from "@/api/job/log";
   import {parseTime} from "@/utils/vctgo";
   import {getSelectAll} from "@/api/job/group";
 
@@ -295,7 +295,7 @@
       clearLog(){
         this.$refs["clearForm"].validate(valid => {
           if (valid) {
-            clearLog(this.clearForm).then(res => {
+            clearLog(this.clearForm).then(() => {
               this.$modal.msgSuccess("操作成功");
               this.showClearLogFlag = false;
               this.getList();
@@ -317,11 +317,11 @@
       // 行点击事件
       handleRowDialog(row, type) {
         this.selectRow = row;
-        if (type == 1) { // 查看调度备注
+        if (type === 1) { // 查看调度备注
           this.showViewTriggerMsgFlag = true;
-        } else if (type == 2) { // 查看执行备注
+        } else if (type === 2) { // 查看执行备注
           this.showRemarkFlag = true;
-        } else if (type == 3) { // 查看执行日志
+        } else if (type === 3) { // 查看执行日志
           this.getExecLog(row);
           this.showExecLogFlag = true;
         } else {
@@ -334,11 +334,9 @@
         getLog(that.selectRow.id).then(res => {
           console.log('查看执行日志', res)
           let data = res.data;
-          let logDateTim = null;
-          logDateTim = Date.parse(data.triggerTime);
           logDetailCat({
             executorAddress: data.executorAddress,
-            logDateTim: logDateTim,
+            logDateTim: Date.parse(data.triggerTime),
             id: data.id,
             fromLineNum: 1,
           }).then(res =>{
@@ -358,7 +356,7 @@
       /** 查询定时任务日志列表 */
       getList() {
         this.loading = true;
-        if (this.queryParams.triggerTimeArr && this.queryParams.triggerTimeArr.length == 2) {
+        if (this.queryParams.triggerTimeArr && this.queryParams.triggerTimeArr.length === 2) {
           console.log('this.queryParams.triggerTimeArr', this.queryParams.triggerTimeArr)
           this.queryParams.triggerTimeStart = this.queryParams.triggerTimeArr[0];
           this.queryParams.triggerTimeEnd = this.queryParams.triggerTimeArr[1];

@@ -31,7 +31,6 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  * 定时任务日志Controller
  *
  * @author vctgo
- * @date 2023-01-03
  */
 @RestController
 @RequestMapping("/log")
@@ -60,7 +59,7 @@ public class XxlJobLogController extends BaseController
     public void export(HttpServletResponse response, XxlJobLog xxlJobLog)
     {
         List<XxlJobLog> list = xxlJobLogService.selectXxlJobLogList(xxlJobLog);
-        ExcelUtil<XxlJobLog> util = new ExcelUtil<XxlJobLog>(XxlJobLog.class);
+        ExcelUtil<XxlJobLog> util = new ExcelUtil<>(XxlJobLog.class);
         util.exportExcel(response, list, "定时任务日志数据");
     }
 
@@ -108,8 +107,7 @@ public class XxlJobLogController extends BaseController
     }
 
     /**
-     *
-     * @return
+     *定时任务日志
      */
     @Log(title = "定时任务日志", businessType = BusinessType.OTHER)
     @PostMapping("/logDetailCat")
@@ -130,6 +128,7 @@ public class XxlJobLogController extends BaseController
         return AjaxResult.error();
     }
 
+    @RequiresPermissions("job:log:clearLog")
     @Log(title = "清理定时任务日志", businessType = BusinessType.DELETE)
     @PostMapping("/clearLog")
     public AjaxResult clearLog(@RequestBody XxlJobLog log) {

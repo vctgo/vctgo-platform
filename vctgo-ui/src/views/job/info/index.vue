@@ -103,7 +103,7 @@
               type="text"
               icon="el-icon-caret-right"
               @click="executeOnce(scope.row)"
-              v-hasPermi="['job:info:edit']"
+              v-hasPermi="['job:info:trigger']"
           >执行一次</el-button>
           <el-button
             size="mini"
@@ -118,30 +118,34 @@
 <!--            @click="viewRegisterNode(scope.row)"-->
 <!--          >注册节点</el-button>-->
           <el-button
-            v-if="scope.row.triggerStatus == 0"
+            v-if="scope.row.triggerStatus === 0"
             size="mini"
             type="text"
             icon="el-icon-video-play"
             @click="start(scope.row)"
+            v-hasPermi="['job:info:start']"
           >开启</el-button>
           <el-button
-            v-if="scope.row.triggerStatus == 1"
+            v-if="scope.row.triggerStatus === 1"
             size="mini"
             type="text"
             icon="el-icon-video-pause"
             @click="stop(scope.row)"
+            v-hasPermi="['job:info:stop']"
           >停止</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-document-copy"
             @click="copy(scope.row)"
+            v-hasPermi="['job:info:copy']"
           >复制</el-button>
           <el-button
             size="mini"
             type="text"
             icon="el-icon-view"
             @click="viewNextTriggerTime(scope.row)"
+            v-hasPermi="['job:info:nextTriggerTime']"
           >查看下次执行时间</el-button>
         </template>
       </el-table-column>
@@ -205,7 +209,7 @@
             </el-form-item>
           </el-col>
           <el-col :span="12">
-            <el-form-item label="Cron" prop="scheduleConf" v-if="form.scheduleType == 'CRON'">
+            <el-form-item label="Cron" prop="scheduleConf" v-if="form.scheduleType === 'CRON'">
               <el-input v-model="form.scheduleConf" placeholder="cron表达式" />
             </el-form-item>
           </el-col>
@@ -226,7 +230,7 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="JobHandler" prop="executorHandler">
-              <el-input :disabled="form.glueType != 'BEAN'" v-model="form.executorHandler" placeholder="请输入JobHandler" />
+              <el-input :disabled="form.glueType !== 'BEAN'" v-model="form.executorHandler" placeholder="请输入JobHandler" />
             </el-form-item>
           </el-col>
         </el-row>
@@ -478,7 +482,7 @@
           scheduleConf: row.scheduleConf
         }).then(response => {
           console.log('查看下次执行时间', response)
-          if (response.code == 200) {
+          if (response.code === 200) {
             this.$modal.msg('下次执行时间：\n' + response.data)
           } else {
             this.$modal.msgError(response.data)
