@@ -135,9 +135,8 @@
 }
 
 /** 表格更多操作下拉样式 */
-.el-table .el-dropdown-link {
+ .el-table .el-dropdown-link,.el-table .el-dropdown-selfdefine {
 	cursor: pointer;
-	color: #409EFF;
 	margin-left: 5px;
 }
 
@@ -250,9 +249,10 @@
 }
 
 .avatar-upload-preview {
-	position: absolute;
+  position: relative;
 	top: 50%;
-	transform: translate(50%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 	width: 200px;
 	height: 200px;
 	border-radius: 50%;

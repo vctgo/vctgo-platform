@@ -555,15 +555,25 @@ public class ExcelUtil<T>
         int rowNo = (1 + rownum) - startNo;
         for (int i = startNo; i < endNo; i++)
         {
-            rowNo = i > 1 ? rowNo + 1 : rowNo + i;
+            rowNo = isSubList() ? (i > 1 ? rowNo + 1 : rowNo + i) : i + 1 + rownum - startNo;
             row = sheet.createRow(rowNo);
             // 得到导出对象.
             T vo = (T) list.get(i);
             Collection<?> subList = null;
-            if (isSubListValue(vo))
+            if (isSubList())
             {
-                subList = getListCellValue(vo);
-                subMergedLastRowNum = subMergedLastRowNum + subList.size();
+//                subList = getListCellValue(vo);
+//                subMergedLastRowNum = subMergedLastRowNum + subList.size();
+                if (isSubListValue(vo))
+                {
+                    subList = getListCellValue(vo);
+                    subMergedLastRowNum = subMergedLastRowNum + subList.size();
+                }
+                else
+                {
+                    subMergedFirstRowNum++;
+                    subMergedLastRowNum++;
+                }
             }
 
             int column = 0;
@@ -783,6 +793,10 @@ public class ExcelUtil<T>
             if (StringUtils.startsWithAny(cellValue, FORMULA_STR))
             {
                 cellValue = RegExUtils.replaceFirst(cellValue, FORMULA_REGEX_STR, "\t$0");
+            }
+            if (value instanceof Collection && StringUtils.equals("[]", cellValue))
+            {
+                cellValue = StringUtils.EMPTY;
             }
             cell.setCellValue(StringUtils.isNull(cellValue) ? attr.defaultValue() : cellValue + attr.suffix());
         }

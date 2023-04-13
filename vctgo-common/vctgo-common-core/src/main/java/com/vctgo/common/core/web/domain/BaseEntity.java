@@ -8,6 +8,8 @@ import java.util.Map;
 import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +26,7 @@ public class BaseEntity implements Serializable
 
     /** 搜索值 */
     @TableField(exist = false)
+    @JsonIgnore
     private String searchValue;
 
     /** 创建者 */
@@ -47,8 +50,10 @@ public class BaseEntity implements Serializable
     /** 备注 */
     private String remark;
 
-    @TableField(exist = false)
+
     /** 请求参数 */
+    @TableField(exist = false)
+    @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private Map<String, Object> params = new HashMap<>();
 
 }

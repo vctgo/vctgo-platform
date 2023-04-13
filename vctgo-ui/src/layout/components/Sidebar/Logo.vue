@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      title: '菜盟开发平台',
+      title: 'Vctgo开发平台',
       logo: logoImg
     }
   },

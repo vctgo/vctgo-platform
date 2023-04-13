@@ -2,8 +2,8 @@
   <div class="login">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form">
       <div style="text-align: center">
-        <img v-if="logo" :src="logo" style="width: 20px; height: 20px;display: inline-block " />
-        <h3 class="title" style="display: inline-block;font-size: 25px;">菜盟开发平台</h3></div>
+        <img v-if="logo" :src="logo" style="width: 20px; height: 20px;display: inline-block;margin-right: 10px; " />
+        <h3 class="title" style="display: inline-block;font-size: 25px;">Vctgo开发平台</h3></div>
       <el-form-item prop="username">
         <el-input
           v-model="loginForm.username"
@@ -58,10 +58,10 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <strong>版权所有 Copyright &copy; 2022-2025 &nbsp;
-        <a href="http://www.vctgopec.com/" target="_blank" >菜盟开发平台</a>&nbsp;&nbsp;技术支持：菜盟开发平台
+      <strong>版权所有 Copyright &copy; 2023-2025 &nbsp;
+        <a href="http://www.vctgo.com/" target="_blank" >Vctgo开发平台</a>&nbsp;&nbsp;技术支持：Vctgo开发平台
       </strong><!-- All rights reserved. -->
-<!--      <span>Copyright © 2018-2022 www.vctgopec.com All Rights Reserved.</span>-->
+<!--      <span>Copyright © 2018-2022 www.vctgo.com All Rights Reserved.</span>-->
     </div>
   </div>
 </template>
@@ -182,6 +182,7 @@ export default {
   background: #ffffff;
   width: 400px;
   padding: 25px 25px 5px 25px;
+  margin-left: 60%;
   .el-input {
     height: 38px;
     input {
@@ -215,7 +216,7 @@ export default {
   bottom: 0;
   width: 100%;
   text-align: center;
-  color: #fff;
+  color: #000000;
   font-family: Arial;
   font-size: 12px;
   letter-spacing: 1px;

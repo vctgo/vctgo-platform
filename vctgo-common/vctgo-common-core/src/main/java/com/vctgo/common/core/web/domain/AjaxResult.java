@@ -129,6 +129,28 @@ public class AjaxResult extends HashMap<String, Object>
     {
         return new AjaxResult(HttpStatus.SUCCESS, msg, data);
     }
+    /**
+     * 返回警告消息
+     *
+     * @param msg 返回内容
+     * @return 警告消息
+     */
+    public static AjaxResult warn(String msg)
+    {
+        return AjaxResult.warn(msg, null);
+    }
+
+    /**
+     * 返回警告消息
+     *
+     * @param msg 返回内容
+     * @param data 数据对象
+     * @return 警告消息
+     */
+    public static AjaxResult warn(String msg, Object data)
+    {
+        return new AjaxResult(HttpStatus.WARN, msg, data);
+    }
 
     /**
      * 返回错误消息

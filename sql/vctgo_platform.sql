@@ -347,8 +347,8 @@ CREATE TABLE `sys_dept` (
 -- Records of sys_dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_dept` VALUES (100, 0, '0', '菜盟科技', 0, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
-INSERT INTO `sys_dept` VALUES (101, 100, '0,100', '菜盟集团', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
+INSERT INTO `sys_dept` VALUES (100, 0, '0', 'Vctgo科技', 0, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
+INSERT INTO `sys_dept` VALUES (101, 100, '0,100', 'Vctgo集团', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
 INSERT INTO `sys_dept` VALUES (102, 100, '0,100', '斯尔邦石化', 2, '斯尔邦石化管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:32:14', 9999);
 INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '信息部', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:48:50', 9999);
 INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '人力资源部', 2, '人力资源部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:22:53', 9999);

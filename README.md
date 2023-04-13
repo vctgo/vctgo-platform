@@ -26,8 +26,6 @@
 
 - 首先感谢若依提供的开源支持!请大家继续关注若依项目!
 
-- 菜盟由来-菜鸟联盟,由当时我和2个好朋友一起拟定的名字 vct代表了我们三个菜鸟的字母,go 代表了我们要菜鸟起飞!
-
 - 本项目基于 [RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud) 进行二次开发的租户版本,主要致力于租户模式和服务治理相关的部分。
 
 - 本项目主要针对企业租户场景开发，脚手架功能同步更新  [RuoYi-Cloud](https://gitee.com/y_project/RuoYi-Cloud)  项目。

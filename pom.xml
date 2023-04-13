@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
     <name>vctgo</name>
     <url>https://www.vctgo.cn</url>
-    <description>菜盟微服务系统</description>
+    <description>Vctgo微服务系统</description>
 
     <modules>
         <module>vctgo-auth</module>
@@ -42,12 +42,12 @@
         <kaptcha.version>2.3.2</kaptcha.version>
         <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
         <alibaba.seata.version>1.5.1</alibaba.seata.version>
-        <druid.version>1.2.13</druid.version>
+        <druid.version>1.2.14</druid.version>
         <dynamic-ds.version>3.5.1</dynamic-ds.version>
         <commons.io.version>2.11.0</commons.io.version>
         <commons.fileupload.version>1.4</commons.fileupload.version>
         <velocity.version>2.3</velocity.version>
-        <fastjson.version>2.0.14</fastjson.version>
+        <fastjson.version>2.0.16</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
