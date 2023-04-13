@@ -148,5 +148,5 @@ import com.vctgo.system.domain.vo.TreeSelect;
      * @param menu 菜单信息
      * @return 结果
      */
-     String checkMenuNameUnique(SysMenu menu);
+    boolean checkMenuNameUnique(SysMenu menu);
 }

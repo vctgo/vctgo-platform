@@ -54,7 +54,7 @@ public class TokenService
         loginUser.setToken(token);
         loginUser.setUserid(userId);
         loginUser.setUsername(userName);
-        loginUser.setIpaddr(IpUtils.getIpAddr(ServletUtils.getRequest()));
+        loginUser.setIpaddr(IpUtils.getIpAddr());
         //添加地址信息
         setUserAgent(loginUser);
         refreshToken(loginUser);

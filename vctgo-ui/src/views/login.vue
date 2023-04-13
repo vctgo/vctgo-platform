@@ -58,7 +58,7 @@
     </el-form>
     <!--  底部  -->
     <div class="el-login-footer">
-      <strong>版权所有 Copyright &copy; 2023-2025 &nbsp;
+      <strong>版权所有 Copyright &copy; 2022-2023 &nbsp;
         <a href="http://www.vctgo.com/" target="_blank" >Vctgo开发平台</a>&nbsp;&nbsp;技术支持：Vctgo开发平台
       </strong><!-- All rights reserved. -->
 <!--      <span>Copyright © 2018-2022 www.vctgo.com All Rights Reserved.</span>-->

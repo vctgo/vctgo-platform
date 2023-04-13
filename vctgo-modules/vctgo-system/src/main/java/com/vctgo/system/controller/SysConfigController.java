@@ -84,7 +84,7 @@ public class SysConfigController extends BaseController
     @PostMapping
     public AjaxResult add(@Validated @RequestBody SysConfig config)
     {
-        if (UserConstants.NOT_UNIQUE.equals(configService.checkConfigKeyUnique(config)))
+        if (!configService.checkConfigKeyUnique(config))
         {
             return error("新增参数'" + config.getConfigName() + "'失败，参数键名已存在");
         }
@@ -100,7 +100,7 @@ public class SysConfigController extends BaseController
     @PutMapping
     public AjaxResult edit(@Validated @RequestBody SysConfig config)
     {
-        if (UserConstants.NOT_UNIQUE.equals(configService.checkConfigKeyUnique(config)))
+        if (!configService.checkConfigKeyUnique(config))
         {
             return error("修改参数'" + config.getConfigName() + "'失败，参数键名已存在");
         }

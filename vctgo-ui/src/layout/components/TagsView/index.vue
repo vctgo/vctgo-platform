@@ -87,7 +87,7 @@ export default {
     },
     isFirstView() {
       try {
-        return this.selectedTag.fullPath === this.visitedViews[1].fullPath || this.selectedTag.fullPath === '/index'
+        return this.selectedTag.fullPath === '/index' || this.selectedTag.fullPath === this.visitedViews[1].fullPath
       } catch (err) {
         return false
       }
@@ -182,7 +182,7 @@ export default {
       })
     },
     closeOthersTags() {
-      this.$router.push(this.selectedTag).catch(()=>{});
+      this.$router.push(this.selectedTag.fullPath).catch(()=>{});
       this.$tab.closeOtherPage(this.selectedTag).then(() => {
         this.moveToCurrentTag()
       })

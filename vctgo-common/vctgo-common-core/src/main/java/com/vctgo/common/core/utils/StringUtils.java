@@ -322,9 +322,9 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
     }
 
     /**
-     * 判断给定的set列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
+     * 判断给定的collection列表中是否包含数组array 判断给定的数组array中是否包含给定的元素value
      *
-     * @param set 给定的集合
+     * @param collection 给定的集合
      * @param array 给定的数组
      * @return boolean 结果
      */
@@ -456,13 +456,18 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils
     }
 
     /**
-     * 驼峰式命名法 例如：user_name->userName
+     * 驼峰式命名法
+     * 例如：user_name->userName
      */
     public static String toCamelCase(String s)
     {
         if (s == null)
         {
             return null;
+        }
+        if (s.indexOf(SEPARATOR) == -1)
+        {
+            return s;
         }
         s = s.toLowerCase();
         StringBuilder sb = new StringBuilder(s.length());

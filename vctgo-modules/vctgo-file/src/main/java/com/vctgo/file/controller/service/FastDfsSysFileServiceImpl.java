@@ -8,6 +8,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.github.tobato.fastdfs.domain.fdfs.StorePath;
 import com.github.tobato.fastdfs.service.FastFileStorageClient;
 
+import java.io.InputStream;
+
 /**
  * FastDFS 文件存储
  *
@@ -35,8 +37,10 @@ public class FastDfsSysFileServiceImpl implements ISysFileService
     @Override
     public String uploadFile(MultipartFile file) throws Exception
     {
-        StorePath storePath = storageClient.uploadFile(file.getInputStream(), file.getSize(),
+        InputStream inputStream = file.getInputStream();
+        StorePath storePath = storageClient.uploadFile(inputStream, file.getSize(),
                 FileTypeUtils.getExtension(file), null);
+        inputStream.close();
         return domain + "/" + storePath.getFullPath();
     }
 }

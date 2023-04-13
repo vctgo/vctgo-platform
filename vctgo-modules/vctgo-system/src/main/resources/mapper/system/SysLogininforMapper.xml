@@ -31,10 +31,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND user_name like concat('%', #{query.userName}, '%')
 			</if>
 			<if test="query.params.beginTime != null and query.params.beginTime != ''">
-				and date_format(access_time,'%y%m%d') &gt;= date_format(#{query.params.beginTime},'%y%m%d')
+				AND access_time &gt;= #{query.params.beginTime}
 			</if>
 			<if test="query.params.endTime != null and query.params.endTime != ''">
-				and date_format(access_time,'%y%m%d') &lt;= date_format(#{query.params.endTime},'%y%m%d')
+				AND access_time &lt;= #{query.params.endTime}
 			</if>
 		</where>
 		order by info_id desc

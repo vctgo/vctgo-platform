@@ -186,11 +186,11 @@ public class SysUserServiceImpl implements ISysUserService
     /**
      * 校验用户名称是否唯一
      *
-     * @param userName 用户名称
+     * @param user 用户名称
      * @return 结果
      */
     @Override
-    public String checkUserNameUnique(SysUser user)
+    public boolean checkUserNameUnique(SysUser user)
     {
         Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
         SysUser info = userMapper.checkUserNameUnique(user.getUserName());
@@ -208,7 +208,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return
      */
     @Override
-    public String checkPhoneUnique(SysUser user)
+    public boolean checkPhoneUnique(SysUser user)
     {
         Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
         SysUser info = userMapper.checkPhoneUnique(user.getPhonenumber());
@@ -226,7 +226,7 @@ public class SysUserServiceImpl implements ISysUserService
      * @return
      */
     @Override
-    public String checkEmailUnique(SysUser user)
+    public boolean checkEmailUnique(SysUser user)
     {
         Long userId = StringUtils.isNull(user.getUserId()) ? -1L : user.getUserId();
         SysUser info = userMapper.checkEmailUnique(user.getEmail());
@@ -526,17 +526,18 @@ public class SysUserServiceImpl implements ISysUserService
                     BeanValidators.validateWithException(validator, user);
                     user.setPassword(SecurityUtils.encryptPassword(password));
                     user.setCreateBy(operName);
-                    this.insertUser(user);
+                    userMapper.insertUser(user);
                     successNum++;
                     successMsg.append("<br/>" + successNum + "、账号 " + user.getUserName() + " 导入成功");
                 }
                 else if (isUpdateSupport)
                 {
                     BeanValidators.validateWithException(validator, user);
-                    checkUserAllowed(user);
-                    checkUserDataScope(user.getUserId());
+                    checkUserAllowed(u);
+                    checkUserDataScope(u.getUserId());
+                    user.setUserId(u.getUserId());
                     user.setUpdateBy(operName);
-                    this.updateUser(user);
+                    userMapper.updateUser(user);
                     successNum++;
                     successMsg.append("<br/>" + successNum + "、账号 " + user.getUserName() + " 更新成功");
                 }

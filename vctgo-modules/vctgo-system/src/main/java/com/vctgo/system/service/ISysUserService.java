@@ -79,10 +79,10 @@ import com.vctgo.system.api.domain.SysUser;
     /**
      * 校验用户名称是否唯一
      *
-     * @param userName 用户名称
+     * @param user 用户名称
      * @return 结果
      */
-    String checkUserNameUnique(SysUser user);
+    boolean checkUserNameUnique(SysUser user);
 
     /**
      * 校验手机号码是否唯一
@@ -90,7 +90,7 @@ import com.vctgo.system.api.domain.SysUser;
      * @param user 用户信息
      * @return 结果
      */
-     String checkPhoneUnique(SysUser user);
+    boolean checkPhoneUnique(SysUser user);
 
     /**
      * 校验email是否唯一
@@ -98,7 +98,7 @@ import com.vctgo.system.api.domain.SysUser;
      * @param user 用户信息
      * @return 结果
      */
-     String checkEmailUnique(SysUser user);
+    boolean checkEmailUnique(SysUser user);
 
     /**
      * 校验用户是否允许操作

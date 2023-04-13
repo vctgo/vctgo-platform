@@ -49,13 +49,13 @@ CREATE TABLE `gen_table` (
 -- Records of gen_table
 -- ----------------------------
 BEGIN;
-INSERT INTO `gen_table` VALUES (1, 'sys_role', '角色信息表', NULL, NULL, 'SysRole', 'crud', 'com.shenghong.system', 'system', 'role', '角色信息', 'shenghong', '0', '/', NULL, 'admin', '2022-03-07 19:28:14', '', NULL, NULL);
-INSERT INTO `gen_table` VALUES (2, 'sys_tenant', '租户表', '', '', 'SysTenant', 'crud', 'com.shenghong.system', 'system', 'tenant', '租户管理', 'shenghong', '0', '/', '{\"parentMenuId\":\"1\"}', 'admin', '2022-03-15 15:26:05', '', '2022-04-11 12:16:49', NULL);
-INSERT INTO `gen_table` VALUES (4, 'sys_tenant_package', '租户套餐表', '', '', 'SysTenantPackage', 'crud', 'com.shenghong.system', 'system', 'tenantpackage', '租户套餐', 'shenghong', '0', '/', '{\"parentMenuId\":\"1\"}', 'admin', '2022-03-19 20:59:00', '', '2022-03-25 16:58:34', NULL);
-INSERT INTO `gen_table` VALUES (5, 'sys_demo', '测试表', NULL, NULL, 'SysDemo', 'crud', 'com.shenghong.system', 'system', 'demo', '测试', 'shenghong', '0', '/', '{}', 'admin', '2022-04-09 16:18:07', '', '2022-04-10 00:40:02', NULL);
-INSERT INTO `gen_table` VALUES (6, 'monitor_sys', '系统监控表', NULL, NULL, 'MonitorSys', 'crud', 'com.shenghong.modules.monitor', 'monitor', 'monitor', '服务器管理', 'shenghong', '0', '/', '{\"parentMenuId\":\"2\"}', 'admin', '2022-04-26 15:02:19', '', '2022-04-26 15:07:06', NULL);
-INSERT INTO `gen_table` VALUES (7, 'monitor_sys_info', '系统监控信息记录表', NULL, NULL, 'MonitorSysInfo', 'crud', 'com.shenghong.modules.monitor', 'monitor', 'monitor', '系统监控信息记录', 'shenghong', '0', '/', '{\"parentMenuId\":\"2\"}', 'admin', '2022-04-26 16:26:36', '', '2022-04-26 16:27:42', NULL);
-INSERT INTO `gen_table` VALUES (8, 'monitor_cache', '缓存列表', NULL, NULL, 'MonitorCache', 'crud', 'com.shenghong.modules.monitor', 'monitor', 'monitor', '缓存管理', 'shenghong', '0', '/', '{\"parentMenuId\":2}', 'admin', '2022-04-27 09:01:48', '', '2022-04-27 09:10:51', NULL);
+INSERT INTO `gen_table` VALUES (1, 'sys_role', '角色信息表', NULL, NULL, 'SysRole', 'crud', 'com.vctgo.system', 'system', 'role', '角色信息', 'vctgo', '0', '/', NULL, 'admin', '2022-03-07 19:28:14', '', '2022-04-11 12:16:49', NULL);
+INSERT INTO `gen_table` VALUES (2, 'sys_tenant', '租户表', '', '', 'SysTenant', 'crud', 'com.vctgo.system', 'system', 'tenant', '租户管理', 'vctgo', '0', '/', '{\"parentMenuId\":\"1\"}', 'admin', '2022-03-15 15:26:05', '', '2022-04-11 12:16:49', NULL);
+INSERT INTO `gen_table` VALUES (4, 'sys_tenant_package', '租户套餐表', '', '', 'SysTenantPackage', 'crud', 'com.vctgo.system', 'system', 'tenantpackage', '租户套餐', 'vctgo', '0', '/', '{\"parentMenuId\":\"1\"}', 'admin', '2022-03-19 20:59:00', '', '2022-03-25 16:58:34', NULL);
+INSERT INTO `gen_table` VALUES (5, 'sys_demo', '测试表', NULL, NULL, 'SysDemo', 'crud', 'com.vctgo.system', 'system', 'demo', '测试', 'vctgo', '0', '/', '{}', 'admin', '2022-04-09 16:18:07', '', '2022-04-10 00:40:02', NULL);
+INSERT INTO `gen_table` VALUES (6, 'monitor_sys', '系统监控表', NULL, NULL, 'MonitorSys', 'crud', 'com.vctgo.modules.monitor', 'monitor', 'monitor', '服务器管理', 'vctgo', '0', '/', '{\"parentMenuId\":\"2\"}', 'admin', '2022-04-26 15:02:19', '', '2022-04-26 15:07:06', NULL);
+INSERT INTO `gen_table` VALUES (7, 'monitor_sys_info', '系统监控信息记录表', NULL, NULL, 'MonitorSysInfo', 'crud', 'com.vctgo.modules.monitor', 'monitor', 'monitor', '系统监控信息记录', 'vctgo', '0', '/', '{\"parentMenuId\":\"2\"}', 'admin', '2022-04-26 16:26:36', '', '2022-04-26 16:27:42', NULL);
+INSERT INTO `gen_table` VALUES (8, 'monitor_cache', '缓存列表', NULL, NULL, 'MonitorCache', 'crud', 'com.vctgo.modules.monitor', 'monitor', 'monitor', '缓存管理', 'vctgo', '0', '/', '{\"parentMenuId\":2}', 'admin', '2022-04-27 09:01:48', '', '2022-04-27 09:10:51', NULL);
 COMMIT;
 
 -- ----------------------------
@@ -299,6 +299,7 @@ INSERT INTO `sys_config` VALUES (2, '用户管理-账号初始密码', 'sys.user
 INSERT INTO `sys_config` VALUES (3, '主框架页-侧边栏主题', 'sys.index.sideTheme', 'theme-light', 'Y', 'admin', '2022-03-07 15:41:18', '', NULL, '深色主题theme-dark，浅色主题theme-light');
 INSERT INTO `sys_config` VALUES (4, '账号自助-是否开启用户注册功能', 'sys.account.registerUser', 'false', 'Y', 'admin', '2022-03-07 15:41:18', '', NULL, '是否开启注册用户功能（true开启，false关闭）');
 INSERT INTO `sys_config` VALUES (5, '通知管理-通知方式', 'sys.message.type', 'false', 'Y', 'admin', '2022-09-14 20:59:08', 'admin', '2022-09-14 20:59:24', '是否开启短信通知(开启后会替代所有通知模块)');
+INSERT INTO `sys_config` VALUES (6, '用户登录-黑名单列表', 'sys.login.blackIPList', '', 'Y', 'admin', sysdate(), '', null, '设置登录IP黑名单限制，多个匹配项以;分隔，支持匹配（*通配、网段）');
 COMMIT;
 
 -- ----------------------------
@@ -347,16 +348,16 @@ CREATE TABLE `sys_dept` (
 -- Records of sys_dept
 -- ----------------------------
 BEGIN;
-INSERT INTO `sys_dept` VALUES (100, 0, '0', 'Vctgo科技', 0, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
-INSERT INTO `sys_dept` VALUES (101, 100, '0,100', 'Vctgo集团', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
-INSERT INTO `sys_dept` VALUES (102, 100, '0,100', '斯尔邦石化', 2, '斯尔邦石化管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:32:14', 9999);
-INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '信息部', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:48:50', 9999);
-INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '人力资源部', 2, '人力资源部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:22:53', 9999);
-INSERT INTO `sys_dept` VALUES (105, 101, '0,100,101', '商务部', 3, '商务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:01', 9999);
-INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部', 4, '财务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:29', 9999);
-INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '总裁办', 5, '总裁办管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:31:05', 9999);
-INSERT INTO `sys_dept` VALUES (108, 102, '0,100,102', '数智化部', 1, '数智化部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:04', 9999);
-INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部', 2, '财务部管理员', '13851202705', 'donghaoran@shenghongpec.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:13', 9999);
+INSERT INTO `sys_dept` VALUES (100, 0, '0', 'Vctgo科技', 0, '数智化部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:10', 9999);
+INSERT INTO `sys_dept` VALUES (101, 100, '0,100', 'Vctgo集团', 1, '数智化部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:49:02', 9999);
+INSERT INTO `sys_dept` VALUES (102, 100, '0,100', '斯尔邦石化', 2, '斯尔邦石化管理员', '13851202705', 'dhr92@163.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:32:14', 9999);
+INSERT INTO `sys_dept` VALUES (103, 101, '0,100,101', '信息部', 1, '数智化部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-06-11 00:48:50', 9999);
+INSERT INTO `sys_dept` VALUES (104, 101, '0,100,101', '人力资源部', 2, '人力资源部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:22:53', 9999);
+INSERT INTO `sys_dept` VALUES (105, 101, '0,100,101', '商务部', 3, '商务部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:01', 9999);
+INSERT INTO `sys_dept` VALUES (106, 101, '0,100,101', '财务部', 4, '财务部管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:24:29', 9999);
+INSERT INTO `sys_dept` VALUES (107, 101, '0,100,101', '总裁办', 5, '总裁办管理员', '13851202705', 'dhr92@163.com', '0', '0', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:31:05', 9999);
+INSERT INTO `sys_dept` VALUES (108, 102, '0,100,102', '数智化部', 1, '数智化部管理员', '13851202705', 'dhr92@163.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:04', 9999);
+INSERT INTO `sys_dept` VALUES (109, 102, '0,100,102', '财务部', 2, '财务部管理员', '13851202705', 'dhr92@163.com', '0', '1', 'admin', '2022-03-07 15:41:18', 'admin', '2022-03-07 18:33:13', 9999);
 COMMIT;
 
 -- ----------------------------
@@ -463,6 +464,8 @@ CREATE TABLE `sys_logininfor` (
   `access_time` datetime DEFAULT NULL COMMENT '访问时间',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`info_id`) USING BTREE,
+  KEY `idx_sys_logininfor_s`  (`status`),
+  KEY `idx_sys_logininfor_lt` (`access_time`),
   KEY `idx_logininfo_tenant` (`tenant_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='系统访问记录';
 
@@ -657,8 +660,12 @@ CREATE TABLE `sys_oper_log` (
   `status` int(11) DEFAULT '0' COMMENT '操作状态（0正常 1异常）',
   `error_msg` varchar(2000) DEFAULT '' COMMENT '错误消息',
   `oper_time` datetime DEFAULT NULL COMMENT '操作时间',
+  `cost_time` bigint(20) DEFAULT 0 COMMENT '消耗时间',
   `tenant_id` bigint(20) NOT NULL COMMENT '租户ID',
   PRIMARY KEY (`oper_id`) USING BTREE,
+  KEY `idx_sys_oper_log_bt` (`business_type`),
+  KEY `idx_sys_oper_log_s`  (`status`),
+  KEY `idx_sys_oper_log_ot` (`oper_time`),
   KEY `idx_operlog_tenant` (`tenant_id`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COMMENT='操作日志记录';
 
@@ -977,7 +984,7 @@ CREATE TABLE `xxl_job_group`  (
 -- ----------------------------
 -- Records of xxl_job_group
 -- ----------------------------
-INSERT INTO `xxl_job_group` VALUES (1, 'xxl-job-executor-sample', '示例执行器', 0, 'http://192.168.2.12:9999/', '2023-03-18 20:21:24', 9999);
+INSERT INTO `xxl_job_group` VALUES (1, 'xxl-job-executor-sample', '示例执行器', 0, 'http://127.0.0.1:9999/', '2023-03-18 20:21:24', 9999);
 
 -- ----------------------------
 -- Table structure for xxl_job_info
@@ -1015,8 +1022,7 @@ CREATE TABLE `xxl_job_info`  (
 -- ----------------------------
 -- Records of xxl_job_info
 -- ----------------------------
-INSERT INTO `xxl_job_info` VALUES (1, 1, '测试任务1', '2018-11-03 22:21:31', '2023-03-14 08:54:15', '迪卢克', 'weicj0426@163.com', 'CRON', '0/10 * * * * ? *', 'DO_NOTHING', 'FIRST', 'demoJobHandler', '222', 'COVER_EARLY', 60, 0, 'BEAN', '', 'GLUE代码初始化', '2018-11-03 00:00:00', NULL, 0, 0, 0, 9999);
-INSERT INTO `xxl_job_info` VALUES (4, 1, '测试任务2', '2023-03-16 11:36:47', '2023-03-16 11:36:47', '可莉', 'weicj0426@163.com', 'CRON', '0/10 * * * * ? *', 'DO_NOTHING', 'FIRST', 'demoJobHandler', '222', 'COVER_EARLY', 60, 1, 'BEAN', '', 'GLUE代码初始化', '2023-03-16 11:36:47', NULL, 0, 0, 0, 9999);
+INSERT INTO `xxl_job_info` VALUES (1, 1, '测试任务', '2018-11-03 22:21:31', '2023-03-14 08:54:15', '迪卢克', 'weicj0426@163.com', 'CRON', '0/10 * * * * ? *', 'DO_NOTHING', 'FIRST', 'demoJobHandler', '222', 'COVER_EARLY', 60, 0, 'BEAN', '', 'GLUE代码初始化', '2018-11-03 00:00:00', NULL, 0, 0, 0, 9999);
 
 -- ----------------------------
 -- Table structure for xxl_job_lock
@@ -1062,11 +1068,6 @@ CREATE TABLE `xxl_job_log`  (
 -- ----------------------------
 -- Records of xxl_job_log
 -- ----------------------------
-INSERT INTO `xxl_job_log` VALUES (428, 1, 1, 'http://100.100.251.188:9999/', 'demoJobHandler', '', NULL, 0, '2023-03-16 11:35:24', 200, '任务触发类型：手动触发<br>调度机器：100.100.251.188<br>执行器-注册方式：自动注册<br>执行器-地址列表：[http://100.100.251.188:9999/]<br>路由策略：第一个<br>阻塞处理策略：覆盖之前调度<br>任务超时时间：60<br>失败重试次数：0<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>触发调度<<<<<<<<<<< </span><br>触发调度：<br>address：http://100.100.251.188:9999/<br>code：200<br>msg：null', '2023-03-16 11:35:34', 200, '', 0, 9999);
-INSERT INTO `xxl_job_log` VALUES (429, 1, 1, 'http://192.168.71.1:9999/', 'demoJobHandler', '', NULL, 0, '2023-03-16 21:08:23', 200, '任务触发类型：手动触发<br>调度机器：192.168.71.1<br>执行器-注册方式：自动注册<br>执行器-地址列表：[http://192.168.71.1:9999/]<br>路由策略：第一个<br>阻塞处理策略：覆盖之前调度<br>任务超时时间：60<br>失败重试次数：0<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>触发调度<<<<<<<<<<< </span><br>触发调度：<br>address：http://192.168.71.1:9999/<br>code：200<br>msg：null', '2023-03-16 21:08:33', 200, '', 0, 9999);
-INSERT INTO `xxl_job_log` VALUES (430, 1, 1, 'http://192.168.2.12:9999/', 'demoJobHandler', '', NULL, 0, '2023-03-18 13:31:54', 200, '任务触发类型：手动触发<br>调度机器：192.168.2.12<br>执行器-注册方式：自动注册<br>执行器-地址列表：[http://192.168.2.12:9999/]<br>路由策略：第一个<br>阻塞处理策略：覆盖之前调度<br>任务超时时间：60<br>失败重试次数：0<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>触发调度<<<<<<<<<<< </span><br>触发调度：<br>address：http://192.168.2.12:9999/<br>code：200<br>msg：null', '2023-03-18 13:32:04', 200, '', 0, 9999);
-INSERT INTO `xxl_job_log` VALUES (431, 1, 1, 'http://192.168.2.12:9999/', 'demoJobHandler', '', NULL, 0, '2023-03-18 13:32:29', 200, '任务触发类型：手动触发<br>调度机器：192.168.2.12<br>执行器-注册方式：自动注册<br>执行器-地址列表：[http://192.168.2.12:9999/]<br>路由策略：第一个<br>阻塞处理策略：覆盖之前调度<br>任务超时时间：60<br>失败重试次数：0<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>触发调度<<<<<<<<<<< </span><br>触发调度：<br>address：http://192.168.2.12:9999/<br>code：200<br>msg：null', '2023-03-18 13:32:39', 200, '', 0, 9999);
-INSERT INTO `xxl_job_log` VALUES (432, 1, 1, 'http://192.168.2.12:9999/', 'demoJobHandler', '', NULL, 0, '2023-03-18 13:35:01', 200, '任务触发类型：手动触发<br>调度机器：192.168.2.12<br>执行器-注册方式：自动注册<br>执行器-地址列表：[http://192.168.2.12:9999/]<br>路由策略：第一个<br>阻塞处理策略：覆盖之前调度<br>任务超时时间：60<br>失败重试次数：0<br><br><span style=\"color:#00c0ef;\" > >>>>>>>>>>>触发调度<<<<<<<<<<< </span><br>触发调度：<br>address：http://192.168.2.12:9999/<br>code：200<br>msg：null', '2023-03-18 13:35:11', 200, '', 0, 9999);
 
 -- ----------------------------
 -- Table structure for xxl_job_log_report
@@ -1087,63 +1088,6 @@ CREATE TABLE `xxl_job_log_report`  (
 -- ----------------------------
 -- Records of xxl_job_log_report
 -- ----------------------------
-INSERT INTO `xxl_job_log_report` VALUES (1, '2022-10-27 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (2, '2022-10-26 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (3, '2022-10-25 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (4, '2022-10-31 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (5, '2022-10-30 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (6, '2022-10-29 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (7, '2022-11-01 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (8, '2022-11-02 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (9, '2022-11-03 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (10, '2022-11-09 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (11, '2022-11-08 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (12, '2022-11-07 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (13, '2022-11-10 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (14, '2022-11-12 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (15, '2022-11-11 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (16, '2022-11-13 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (17, '2022-12-31 00:00:00', 0, 0, 1, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (18, '2022-12-30 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (19, '2022-12-29 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (20, '2023-01-01 00:00:00', 0, 0, 1, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (21, '2023-01-03 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (22, '2023-01-02 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (23, '2023-01-04 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (24, '2023-01-11 00:00:00', 2, 0, 7, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (25, '2023-01-10 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (26, '2023-01-09 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (27, '2023-01-15 00:00:00', 0, 0, 1, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (28, '2023-01-14 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (29, '2023-01-13 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (30, '2023-01-18 00:00:00', 0, 0, 1, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (31, '2023-01-17 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (32, '2023-01-16 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (33, '2023-01-19 00:00:00', 0, 0, 1, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (34, '2023-01-20 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (35, '2023-01-23 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (36, '2023-01-22 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (37, '2023-01-21 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (38, '2023-01-28 00:00:00', 0, 0, 3, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (39, '2023-01-27 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (40, '2023-01-26 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (407, '2023-01-29 00:00:00', 0, 0, 0, NULL, NULL);
-INSERT INTO `xxl_job_log_report` VALUES (800, '2023-03-02 00:00:00', 0, 2, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (801, '2023-03-01 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (802, '2023-02-28 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (803, '2023-03-08 00:00:00', 0, 1, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (804, '2023-03-07 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (805, '2023-03-06 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (806, '2023-03-10 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (807, '2023-03-09 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (808, '2023-03-11 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (809, '2023-03-13 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (810, '2023-03-12 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (811, '2023-03-14 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (812, '2023-03-15 00:00:00', 0, 0, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (813, '2023-03-16 00:00:00', 0, 2, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (814, '2023-03-18 00:00:00', 0, 3, 0, NULL, 9999);
-INSERT INTO `xxl_job_log_report` VALUES (815, '2023-03-17 00:00:00', 0, 0, 0, NULL, 9999);
 
 -- ----------------------------
 -- Table structure for xxl_job_logglue
@@ -1183,7 +1127,7 @@ CREATE TABLE `xxl_job_registry`  (
 -- ----------------------------
 -- Records of xxl_job_registry
 -- ----------------------------
-INSERT INTO `xxl_job_registry` VALUES (12, 'EXECUTOR', 'xxl-job-executor-sample', 'http://192.168.2.12:9999/', '2023-03-18 20:20:57', 9999);
+INSERT INTO `xxl_job_registry` VALUES (12, 'EXECUTOR', 'xxl-job-executor-sample', 'http://127.0.0.1:9999/', '2023-03-18 20:20:57', 9999);
 
 -- ----------------------------
 -- Table structure for xxl_job_user

@@ -74,7 +74,7 @@ import com.vctgo.system.domain.SysUserRole;
      * @param role 角色信息
      * @return 结果
      */
-     String checkRoleNameUnique(SysRole role);
+    boolean checkRoleNameUnique(SysRole role);
 
     /**
      * 校验角色权限是否唯一
@@ -82,7 +82,7 @@ import com.vctgo.system.domain.SysUserRole;
      * @param role 角色信息
      * @return 结果
      */
-     String checkRoleKeyUnique(SysRole role);
+    boolean checkRoleKeyUnique(SysRole role);
 
     /**
      * 校验角色是否允许操作

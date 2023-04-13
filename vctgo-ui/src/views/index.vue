@@ -4,7 +4,7 @@
     <el-row :gutter="20">
       <el-col :sm="24" :lg="24">
           <p style="text-align: center;">
-            <img src="https://img.shields.io/badge/Release-V1.2.1-green.svg" alt="Downloads"/>
+            <img src="https://img.shields.io/badge/Release-V1.2.2-green.svg" alt="Downloads"/>
             <img src="https://img.shields.io/badge/IntelliJ%20IDEA-提供支持-blue.svg" alt="IntelliJ-IDEA">
             <img src="https://img.shields.io/badge/JDK-1.8+-green.svg" alt="Build Status"/>
             <img src="https://img.shields.io/badge/Spring%20Cloud-2021-blue.svg" alt="Coverage Status"/>
@@ -98,7 +98,7 @@ export default {
   data() {
     return {
       // 版本号
-      version: "1.2.1",
+      version: "1.2.2",
       tenantid: getTenant()
     };
   },

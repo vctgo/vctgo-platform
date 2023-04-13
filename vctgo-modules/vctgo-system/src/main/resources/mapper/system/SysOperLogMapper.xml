@@ -20,16 +20,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="status"         column="status"         />
 		<result property="errorMsg"       column="error_msg"      />
 		<result property="operTime"       column="oper_time"      />
+		<result property="costTime"       column="cost_time"      />
 	</resultMap>
 
 	<sql id="selectOperLogVo">
-        select oper_id, title, business_type, method, request_method, operator_type, oper_name, dept_name, oper_url, oper_ip, oper_param, json_result, status, error_msg, oper_time
+        select oper_id, title, business_type, method, request_method, operator_type, oper_name, dept_name, oper_url, oper_ip, oper_param, json_result, status, error_msg, oper_time, cost_time
         from sys_oper_log
     </sql>
 
 	<insert id="insertOperlog" >
-		insert into sys_oper_log(title, business_type, method, request_method, operator_type, oper_name, dept_name, oper_url, oper_ip, oper_param, json_result, status, error_msg, oper_time,tenant_id)
-        values (#{title}, #{businessType}, #{method}, #{requestMethod}, #{operatorType}, #{operName}, #{deptName}, #{operUrl}, #{operIp}, #{operParam}, #{jsonResult}, #{status}, #{errorMsg}, sysdate()
+		insert into sys_oper_log(title, business_type, method, request_method, operator_type, oper_name, dept_name, oper_url, oper_ip, oper_param, json_result, status, error_msg, cost_time, oper_time,tenant_id)
+        values (#{title}, #{businessType}, #{method}, #{requestMethod}, #{operatorType}, #{operName}, #{deptName}, #{operUrl}, #{operIp}, #{operParam}, #{jsonResult}, #{status}, #{errorMsg}, #{costTime}, sysdate()
 			,#{tenantId})
 	</insert>
 
@@ -55,10 +56,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 				AND oper_name like concat('%', #{query.operName}, '%')
 			</if>
 			<if test="query.params.beginTime != null and query.params.beginTime != ''">
-				and date_format(oper_time,'%y%m%d') &gt;= date_format(#{query.params.beginTime},'%y%m%d')
+				AND oper_time &gt;= #{query.params.beginTime}
 			</if>
 			<if test="query.params.endTime != null and query.params.endTime != ''">
-				and date_format(oper_time,'%y%m%d') &lt;= date_format(#{query.params.endTime},'%y%m%d')
+				AND oper_time &lt;= #{query.params.endTime}
 			</if>
 		</where>
 		order by oper_id desc

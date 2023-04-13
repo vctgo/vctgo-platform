@@ -1,6 +1,8 @@
 package com.vctgo.auth.service;
 
+import com.vctgo.common.core.constant.CacheConstants;
 import com.vctgo.common.core.text.Convert;
+import com.vctgo.common.redis.service.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.vctgo.common.core.constant.Constants;
@@ -38,6 +40,8 @@ public class SysLoginService
     @Autowired
     private SysRecordLogService recordLogService;
 
+    @Autowired
+    private RedisService redisService;
     /**
      * 登录
      */
@@ -62,6 +66,13 @@ public class SysLoginService
         {
             recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "用户名不在指定范围");
             throw new ServiceException("用户名不在指定范围");
+        }
+        // IP黑名单校验
+        String blackStr = Convert.toStr(redisService.getCacheObject(CacheConstants.SYS_LOGIN_BLACKIPLIST));
+        if (IpUtils.isMatchedIp(blackStr, IpUtils.getIpAddr()))
+        {
+            recordLogService.recordLogininfor(username, Constants.LOGIN_FAIL, "很遗憾，访问IP已被列入系统黑名单");
+            throw new ServiceException("很遗憾，访问IP已被列入系统黑名单");
         }
         // 查询用户信息
         R<LoginUser> userResult = remoteUserService.getUserInfo(username, SecurityConstants.INNER);

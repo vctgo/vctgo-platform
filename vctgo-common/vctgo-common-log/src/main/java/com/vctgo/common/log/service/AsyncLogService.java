@@ -23,8 +23,7 @@ public class AsyncLogService
      * 保存系统日志记录
      */
     @Async
-    public void saveSysLog(SysOperLog sysOperLog)
-    {
+    public void saveSysLog(SysOperLog sysOperLog) throws Exception {
         sysOperLog.setTenantId(SecurityUtils.getTenantId());
         remoteLogService.saveLog(sysOperLog, SecurityConstants.INNER);
     }

@@ -16,7 +16,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     </resultMap>
 
     <sql id="selectDemoVo">
-        select demo_id, demo_name, create_by, create_time, update_by, update_time, remark, tenant_id from sys_demo a
+        select a.demo_id, a.demo_name, a.create_by, a.create_time, a.update_by, a.update_time, a.remark, a.tenant_id from sys_demo a
     </sql>
 
     <select id="selectDemoList"   resultMap="DemoResult">

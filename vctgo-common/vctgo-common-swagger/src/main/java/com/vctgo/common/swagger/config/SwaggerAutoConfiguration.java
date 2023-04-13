@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Predicate;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -26,8 +26,9 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @Configuration
 @EnableSwagger2
-@EnableAutoConfiguration
+@EnableConfigurationProperties(SwaggerProperties.class)
 @ConditionalOnProperty(name = "swagger.enabled", matchIfMissing = true)
+@Import({SwaggerBeanPostProcessor.class, SwaggerWebConfiguration.class})
 public class SwaggerAutoConfiguration
 {
     /**
@@ -37,12 +38,6 @@ public class SwaggerAutoConfiguration
 
     private static final String BASE_PATH = "/**";
 
-    @Bean
-    @ConditionalOnMissingBean
-    public SwaggerProperties swaggerProperties()
-    {
-        return new SwaggerProperties();
-    }
 
     @Bean
     public Docket api(SwaggerProperties swaggerProperties)
