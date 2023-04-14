@@ -9,10 +9,10 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ruoyi-common-seata</artifactId>
+    <artifactId>vctgo-common-seata</artifactId>
 
     <description>
-        ruoyi-common-seata分布式事务
+        vctgo-common-seata分布式事务
     </description>
 
     <dependencies>
