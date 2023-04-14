@@ -13,6 +13,7 @@ port(){
 	firewall-cmd --add-port=8848/tcp --permanent
 	firewall-cmd --add-port=9848/tcp --permanent
 	firewall-cmd --add-port=9849/tcp --permanent
+	firewall-cmd --add-port=9999/tcp --permanent
 	firewall-cmd --add-port=6379/tcp --permanent
 	firewall-cmd --add-port=3306/tcp --permanent
 	firewall-cmd --add-port=39100/tcp --permanent
@@ -21,6 +22,7 @@ port(){
 	firewall-cmd --add-port=39202/tcp --permanent
 	firewall-cmd --add-port=39203/tcp --permanent
 	firewall-cmd --add-port=39300/tcp --permanent
+	firewall-cmd --add-port=39204/tcp --permanent
 	service firewalld restart
 }
 
@@ -31,7 +33,7 @@ base(){
 
 # 启动程序模块（必须）
 modules(){
-	docker-compose up -d vctgo-nginx vctgo-gateway vctgo-auth vctgo-system vctgo-gen vctgo-file vctgo-monitor
+	docker-compose up -d vctgo-nginx vctgo-gateway vctgo-auth vctgo-system vctgo-gen vctgo-file vctgo-monitor vctgo-demo vctgo-job
 }
 
 # 关闭所有环境/模块

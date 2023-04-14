@@ -32,6 +32,9 @@ cp ../vctgo-gateway/target/vctgo-gateway.jar ./vctgo/gateway/jar
 echo "begin copy vctgo-auth "
 cp ../vctgo-auth/target/vctgo-auth.jar ./vctgo/auth/jar
 
+echo "begin copy vctgo-demo "
+cp ../vctgo-demo/target/vctgo-demo.jar ./vctgo/demo/jar
+
 echo "begin copy vctgo-monitor "
 cp ../vctgo-visual/vctgo-monitor/target/vctgo-monitor.jar  ./vctgo/visual/monitor/jar
 
@@ -43,4 +46,7 @@ cp ../vctgo-modules/vctgo-file/target/vctgo-file.jar ./vctgo/modules/file/jar
 
 echo "begin copy vctgo-gen "
 cp ../vctgo-modules/vctgo-gen/target/vctgo-gen.jar ./vctgo/modules/gen/jar
+
+echo "begin copy vctgo-job "
+cp ../vctgo-modules/vctgo-job/target/vctgo-job.jar ./vctgo/modules/job/jar
 

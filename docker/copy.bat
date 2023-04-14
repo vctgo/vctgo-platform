@@ -28,6 +28,9 @@ xcopy ..\vctgo-gateway\target\vctgo-gateway.jar .\vctgo\gateway\jar  /y
 echo 复制 vctgo-auth
 xcopy ..\vctgo-auth\target\vctgo-auth.jar .\vctgo\auth\jar  /y
 
+echo 复制 vctgo-demo
+xcopy ..\vctgo-demo\target\vctgo-demo.jar .\vctgo\demo\jar  /y
+
 echo 复制 vctgo-monitor
 xcopy ..\vctgo-visual\vctgo-monitor\target\vctgo-monitor.jar  .\vctgo\visual\monitor\jar  /y
 
@@ -39,5 +42,8 @@ xcopy ..\vctgo-modules\vctgo-file\target\vctgo-file.jar .\vctgo\modules\file\jar
 
 echo 复制 vctgo-gen
 xcopy ..\vctgo-modules\vctgo-gen\target\vctgo-gen.jar .\vctgo\modules\gen\jar  /y
+
+echo 复制 vctgo-job
+xcopy ..\vctgo-modules\vctgo-job\target\vctgo-job.jar .\vctgo\modules\job\jar  /y
 
 pause

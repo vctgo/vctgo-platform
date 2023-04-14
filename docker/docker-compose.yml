@@ -189,3 +189,45 @@ services:
     networks:
       cloud-net:
         ipv4_address: 172.18.0.11
+  vctgo-demo:
+    container_name: vctgo-demo
+    build:
+      context: vctgo/demo
+      dockerfile: dockerfile
+    ports:
+      - "39203:39203"
+    depends_on:
+      - vctgo-redis
+      - vctgo-mysql
+    links:
+      - vctgo-redis
+      - vctgo-mysql
+      - vctgo-file
+    environment:
+      - NACOS_HOST=172.18.0.6
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.12
+  vctgo-job:
+    container_name: vctgo-job
+    build:
+      context: vctgo/modules/job
+      dockerfile: dockerfile
+    ports:
+      - "39204:39204"
+    depends_on:
+      - vctgo-redis
+      - vctgo-mysql
+    links:
+      - vctgo-redis
+      - vctgo-mysql
+      - vctgo-file
+    environment:
+      - NACOS_HOST=172.18.0.6
+      - NACOS_PORT=8848
+      - NETWORK_IP=192.168.1.4
+    networks:
+      cloud-net:
+        ipv4_address: 172.18.0.13
