@@ -1,8 +1,8 @@
 package com.vctgo.job.controller;
 
 import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -25,13 +25,12 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
  * 注册Controller
  *
  * @author vctgo
- * @date 2023-01-03
  */
 @RestController
 @RequestMapping("/registry")
 public class XxlJobRegistryController extends BaseController
 {
-    @Autowired
+    @Resource
     private IXxlJobRegistryService xxlJobRegistryService;
 
     /**

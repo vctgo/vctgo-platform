@@ -2,7 +2,9 @@ package com.vctgo.common.core.utils.bean;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -106,5 +108,54 @@ public class BeanUtils extends org.springframework.beans.BeanUtils
     public static boolean isMethodPropEquals(String m1, String m2)
     {
         return m1.substring(BEAN_METHOD_PROP_INDEX).equals(m2.substring(BEAN_METHOD_PROP_INDEX));
+    }
+
+    /**
+     * 可以用于判断 Map,Collection,String,Array,Long是否为空
+     * @param o java.lang.Object.
+     * @return boolean.
+     */
+    public static boolean isEmpty(Object o)
+    {
+        if (o == null)
+            return true;
+        if (o instanceof String)
+        {
+            return ((String) o).trim().length() == 0;
+        }
+        else if (o instanceof Collection)
+        {
+            return ((Collection) o).isEmpty();
+        }
+        else if (o.getClass().isArray())
+        {
+            return ((Object[]) o).length == 0;
+        }
+        else if (o instanceof Map)
+        {
+            return ((Map) o).isEmpty();
+        }
+        else if (o instanceof Long)
+        {
+            return ((Long) o) == null;
+        }
+        else if (o instanceof Short)
+        {
+            return ((Short) o) == null;
+        }
+        else
+        {
+            return false;
+        }
+
+    }
+
+
+    /**
+     * 可以用于判断 Map,Collection,String,Array是否不为空
+     */
+    public static boolean isNotEmpty(Object o)
+    {
+        return !isEmpty(o);
     }
 }

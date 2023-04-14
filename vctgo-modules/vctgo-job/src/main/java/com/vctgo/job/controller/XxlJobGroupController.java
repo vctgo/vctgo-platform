@@ -1,8 +1,8 @@
 package com.vctgo.job.controller;
 
 import java.util.List;
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -30,7 +30,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 @RequestMapping("/group")
 public class XxlJobGroupController extends BaseController
 {
-    @Autowired
+    @Resource
     private IXxlJobGroupService xxlJobGroupService;
 
     /**

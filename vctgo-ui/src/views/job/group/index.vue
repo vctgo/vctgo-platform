@@ -56,16 +56,6 @@
             v-hasPermi="['job:group:remove']"
         >删除</el-button>
       </el-col>
-<!--      <el-col :span="1.5">-->
-<!--        <el-button-->
-<!--            type="warning"-->
-<!--            plain-->
-<!--            icon="el-icon-download"-->
-<!--            size="mini"-->
-<!--            @click="handleExport"-->
-<!--            v-hasPermi="['job:group:export']"-->
-<!--        >导出</el-button>-->
-<!--      </el-col>-->
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
     </el-row>
 
@@ -73,7 +63,11 @@
       <el-table-column type="selection" width="55" align="center" />
               <el-table-column label="执行器AppName" align="center" prop="appname" />
               <el-table-column label="执行器名称" align="center" prop="title" />
-              <el-table-column label="执行器地址类型" align="center" prop="addressType" />
+              <el-table-column label="执行器地址类型" align="center" prop="addressType" >
+                <template slot-scope="scope">
+                  <dict-tag :options="dict.type.sys_job_address_type" :value="scope.row.addressType"/>
+                </template>
+              </el-table-column>
               <el-table-column label="执行器地址列表" align="center" prop="addressList" />
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
@@ -134,6 +128,9 @@
 
   export default {
     name: "Group",
+    dicts: [
+      'sys_job_address_type',
+    ],
     data() {
       return {
         // 遮罩层

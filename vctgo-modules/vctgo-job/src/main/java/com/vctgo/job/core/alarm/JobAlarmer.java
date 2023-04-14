@@ -1,5 +1,6 @@
 package com.vctgo.job.core.alarm;
 
+import com.vctgo.common.core.utils.bean.BeanUtils;
 import com.vctgo.job.domain.XxlJobInfo;
 import com.vctgo.job.domain.XxlJobLog;
 import org.slf4j.Logger;
@@ -17,7 +18,7 @@ import java.util.Map;
 @Component
 public class JobAlarmer implements ApplicationContextAware, InitializingBean {
 
-    private static Logger logger = LoggerFactory.getLogger(JobAlarmer.class);
+    private final static Logger logger = LoggerFactory.getLogger(JobAlarmer.class);
 
     private ApplicationContext applicationContext;
     private List<JobAlarm> jobAlarmList;
@@ -30,8 +31,8 @@ public class JobAlarmer implements ApplicationContextAware, InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         Map<String, JobAlarm> serviceBeanMap = applicationContext.getBeansOfType(JobAlarm.class);
-        if (serviceBeanMap != null && serviceBeanMap.size() > 0) {
-            jobAlarmList = new ArrayList<JobAlarm>(serviceBeanMap.values());
+        if (BeanUtils.isNotEmpty(serviceBeanMap) && serviceBeanMap.size() > 0) {
+            jobAlarmList = new ArrayList<>(serviceBeanMap.values());
         }
     }
 
