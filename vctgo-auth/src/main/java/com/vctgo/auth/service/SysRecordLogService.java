@@ -1,5 +1,6 @@
 package com.vctgo.auth.service;
 
+import com.vctgo.common.security.utils.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.vctgo.common.core.constant.Constants;
@@ -35,6 +36,7 @@ public class SysRecordLogService
         logininfor.setUserName(username);
         logininfor.setIpaddr(IpUtils.getIpAddr());
         logininfor.setMsg(message);
+        logininfor.setTenantId(SecurityUtils.getTenantId());
         // 日志状态
         if (StringUtils.equalsAny(status, Constants.LOGIN_SUCCESS, Constants.LOGOUT, Constants.REGISTER))
         {
