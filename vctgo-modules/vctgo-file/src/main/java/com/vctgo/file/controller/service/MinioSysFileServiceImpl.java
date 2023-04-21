@@ -1,5 +1,6 @@
 package com.vctgo.file.controller.service;
 
+import com.alibaba.nacos.common.utils.IoUtils;
 import com.vctgo.file.config.MinioConfig;
 import com.vctgo.file.utils.FileUploadUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +46,7 @@ public class MinioSysFileServiceImpl implements ISysFileService
                 .contentType(file.getContentType())
                 .build();
         client.putObject(args);
-        inputStream.close();
+        IoUtils.closeQuietly(inputStream);
         return minioConfig.getUrl() + "/" + minioConfig.getBucketName() + "/" + fileName;
     }
 }

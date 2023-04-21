@@ -1,5 +1,6 @@
 package com.vctgo.file.controller.service;
 
+import com.alibaba.nacos.common.utils.IoUtils;
 import com.vctgo.common.core.utils.file.FileTypeUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,7 +41,7 @@ public class FastDfsSysFileServiceImpl implements ISysFileService
         InputStream inputStream = file.getInputStream();
         StorePath storePath = storageClient.uploadFile(inputStream, file.getSize(),
                 FileTypeUtils.getExtension(file), null);
-        inputStream.close();
+        IoUtils.closeQuietly(inputStream);
         return domain + "/" + storePath.getFullPath();
     }
 }
