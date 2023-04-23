@@ -17,13 +17,29 @@ public class SampleXxlJob {
      */
     @XxlJob("demoJobHandler")
     public void demoJobHandler() throws Exception {
-        XxlJobHelper.log("XXL-JOB, Hello World.");
+        XxlJobHelper.log("VCTGO-JOB, Hello World.");
 
         for (int i = 0; i < 5; i++) {
             XxlJobHelper.log("beat at:" + i);
             TimeUnit.SECONDS.sleep(2);
         }
         logger.error("===============定时任务测试用例========================");
+        // default success
+    }
+
+
+    /**
+     * 1、简单任务示例（Bean模式）-租户演示
+     */
+    @XxlJob("zhJobHandler")
+    public void zhJobHandler() throws Exception {
+        XxlJobHelper.log("ZH-VCTGO-JOB, Hello World.");
+
+        for (int i = 0; i < 5; i++) {
+            XxlJobHelper.log("beat at:" + i);
+            TimeUnit.SECONDS.sleep(2);
+        }
+        logger.error("===============租户-定时任务测试用例========================");
         // default success
     }
 }
