@@ -103,7 +103,7 @@ export default {
     // 查询表数据
     getList() {
       unallocatedUserList(this.queryParams).then(res => {
-        this.userList = res.rows;
+        this.userList = res.data;
         this.total = res.total;
       });
     },
