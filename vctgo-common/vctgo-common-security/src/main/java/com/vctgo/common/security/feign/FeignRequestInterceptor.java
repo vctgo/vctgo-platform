@@ -70,7 +70,7 @@ public class FeignRequestInterceptor implements RequestInterceptor
             }
 
             String deptid = headers.get(SecurityConstants.DETAILS_DEPT_ID);
-            if (StringUtils.isNotEmpty(tenantid))
+            if (StringUtils.isNotEmpty(deptid))
             {
                 requestTemplate.header(SecurityConstants.DETAILS_DEPT_ID, deptid);
             }
