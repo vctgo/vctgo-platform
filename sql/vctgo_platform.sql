@@ -535,6 +535,7 @@ INSERT INTO `sys_dict_data` VALUES (130, 2, '覆盖之前调度', 'COVER_EARLY',
 INSERT INTO `sys_dict_data` VALUES (131, 0, '成功', '200', 'sys_job_trigger_code', NULL, 'success', 'N', '0', 'admin', '2023-03-13 20:31:40', 'admin', '2023-03-13 20:32:32', '');
 INSERT INTO `sys_dict_data` VALUES (132, 1, '失败', '500', 'sys_job_trigger_code', NULL, 'danger', 'N', '0', 'admin', '2023-03-13 20:32:05', 'admin', '2023-03-13 20:32:44', '');
 INSERT INTO `sys_dict_data` VALUES (133, 2, '失败(超时)', '502', 'sys_job_trigger_code', NULL, 'danger', 'N', '0', 'admin', '2023-03-13 20:32:23', 'admin', '2023-03-13 20:32:50', '');
+INSERT INTO `sys_dict_data` VALUES (149, 3, '失败', '0', 'sys_job_trigger_code', NULL, 'danger', 'N', '0', 'admin', '2023-05-31 22:47:01', 'admin', '2023-05-31 22:47:13', '');
 INSERT INTO `sys_dict_data` VALUES (134, 0, '全部', '0', 'sys_job_log_status', NULL, 'default', 'N', '0', 'admin', '2023-03-15 12:56:46', '', NULL, NULL);
 INSERT INTO `sys_dict_data` VALUES (135, 1, '成功', '1', 'sys_job_log_status', NULL, 'default', 'N', '0', 'admin', '2023-03-15 12:56:54', '', NULL, NULL);
 INSERT INTO `sys_dict_data` VALUES (136, 2, '失败', '2', 'sys_job_log_status', NULL, 'default', 'N', '0', 'admin', '2023-03-15 12:57:07', '', NULL, NULL);
