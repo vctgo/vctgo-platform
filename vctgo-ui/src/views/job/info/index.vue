@@ -359,7 +359,8 @@
         },
         // 执行一次 弹框表单
         executeOnceForm: {
-          jobGroup: null
+          executorParam: null,
+          jobDesc: null
         },
         // 执行一次标题
         executeOnceTitle: '执行一次',
