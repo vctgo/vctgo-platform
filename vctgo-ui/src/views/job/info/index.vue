@@ -210,7 +210,11 @@
           </el-col>
           <el-col :span="12">
             <el-form-item label="Cron" prop="scheduleConf" v-if="form.scheduleType === 'CRON'">
-              <el-input v-model="form.scheduleConf" placeholder="cron表达式" />
+<!--              <el-input v-model="form.scheduleConf" placeholder="cron表达式" />-->
+              <el-popover v-model="cronPopover">
+                <cron @change="changeCron" @close="cronPopover=false" i18n="cn"></cron>
+                <el-input slot="reference" @click="cronPopover=true" v-model="form.scheduleConf" placeholder="请输入定时策略"></el-input>
+              </el-popover>
             </el-form-item>
           </el-col>
         </el-row>
@@ -328,9 +332,11 @@
   import { listInfo, getInfo, delInfo, addInfo, updateInfo, trigger, viewRegisterNode, start, stop, nextTriggerTime } from "@/api/job/info";
   import { getSelectAll } from "@/api/job/group";
   import { parseTime } from "@/utils/vctgo";
+  import {cron} from 'vue-cron';
 
   export default {
     name: "Info",
+    components: { cron },
     dicts: [
       'sys_job_trigger_status',
       'sys_job_schedule_type',
@@ -341,6 +347,7 @@
     ],
     data() {
       return {
+        cronPopover:false,
         // 执行器选择
         jobGroupOptions: [],
         // 选中的item
@@ -457,6 +464,9 @@
       this.initPageDicData();
     },
     methods: {
+      changeCron(val){
+        this.form.scheduleConf=val
+      },
       // 复制
       copy(row) {
         this.reset();
