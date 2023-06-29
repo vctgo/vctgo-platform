@@ -134,6 +134,10 @@ public class SysTenantServiceImpl implements ISysTenantService
             return res.error("租户编码为空,请重新设置!");
         }
         //先判断租户编码是否存在
+        if ("9999".equals(sysTenant.getId())){
+            //优化租户列表里不存在9999的超级管理员租户导致查出结果为0跳过校验
+            return res.error("租户编码已存在,请重新设置!");
+        }
         Long tenantcount = sysTenantMapper.selectCount("id",sysTenant.getId());
         if (tenantcount > 0)
         {
