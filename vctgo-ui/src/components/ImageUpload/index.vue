@@ -55,7 +55,7 @@ export default {
     },
     // 大小限制(MB)
     fileSize: {
-       type: Number,
+      type: Number,
       default: 5,
     },
     // 文件类型, 例如['png', 'jpg', 'jpeg']
@@ -150,7 +150,7 @@ export default {
     // 上传成功回调
     handleUploadSuccess(res, file) {
       if (res.code === 200) {
-        this.uploadList.push({ name: res.data.url, url: res.data.url });
+        this.uploadList.push({ name: res.data.name, url: process.env.VUE_APP_BASE_API+'/file'+res.data.url });
         this.uploadedSuccessfully();
       } else {
         this.number--;
@@ -205,17 +205,17 @@ export default {
 <style scoped lang="scss">
 // .el-upload--picture-card 控制加号部分
 ::v-deep.hide .el-upload--picture-card {
-    display: none;
+  display: none;
 }
 // 去掉动画效果
 ::v-deep .el-list-enter-active,
 ::v-deep .el-list-leave-active {
-    transition: all 0s;
+  transition: all 0s;
 }
 
 ::v-deep .el-list-enter, .el-list-leave-active {
-    opacity: 0;
-    transform: translateY(0);
+  opacity: 0;
+  transform: translateY(0);
 }
 </style>
 

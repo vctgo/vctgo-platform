@@ -55,7 +55,7 @@ export default {
     // 大小限制(MB)
     fileSize: {
       type: Number,
-      default: 5,
+      default: 500,
     },
     // 文件类型, 例如['png', 'jpg', 'jpeg']
     fileType: {
@@ -146,7 +146,7 @@ export default {
     // 上传成功回调
     handleUploadSuccess(res, file) {
       if (res.code === 200) {
-        this.uploadList.push({ name: res.data.url, url: res.data.url });
+        this.uploadList.push({ name: res.data.name, url: process.env.VUE_APP_BASE_API+'/file'+res.data.url });
         this.uploadedSuccessfully();
       } else {
         this.number--;
