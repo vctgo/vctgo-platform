@@ -19,11 +19,25 @@
 
 <script>
 import Quill from "quill";
+const Clipboard = Quill.import("modules/clipboard");
 import "quill/dist/quill.core.css";
 import "quill/dist/quill.snow.css";
 import "quill/dist/quill.bubble.css";
 import { getToken } from "@/utils/auth";
+class CustomClipboard extends Clipboard {
+  onPaste(e) {
+    const top = window.pageYOffset;
+    const left = window.pageXOffset;
+    setTimeout(() => {
+      // scroll window to previous position after paste
+      window.scrollTo({ top, left });
+    }, 1);
 
+  }
+}
+
+//此处需要注册
+Quill.register("modules/clipboard", CustomClipboard, true);
 export default {
   name: "Editor",
   props: {
