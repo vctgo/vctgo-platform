@@ -7,6 +7,7 @@ import java.util.Set;
 import com.vctgo.system.api.domain.SysRole;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import com.vctgo.system.api.domain.SysUser;
 import com.vctgo.system.service.ISysMenuService;
 import com.vctgo.system.service.ISysPermissionService;
@@ -61,7 +62,7 @@ public class SysPermissionServiceImpl implements ISysPermissionService
         else
         {
             List<SysRole> roles = user.getRoles();
-            if (!roles.isEmpty() && roles.size() > 1)
+            if (!CollectionUtils.isEmpty(roles))
             {
                 // 多角色设置permissions属性，以便数据权限匹配权限
                 for (SysRole role : roles)

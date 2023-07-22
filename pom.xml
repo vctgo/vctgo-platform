@@ -40,17 +40,17 @@
         <tobato.version>1.27.2</tobato.version>
         <hutool.version>5.6.1</hutool.version>
         <kaptcha.version>2.3.3</kaptcha.version>
-        <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
+        <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
         <alibaba.seata.version>1.5.1</alibaba.seata.version>
         <druid.version>1.2.16</druid.version>
         <dynamic-ds.version>3.5.2</dynamic-ds.version>
         <commons.io.version>2.11.0</commons.io.version>
         <velocity.version>2.3</velocity.version>
-        <fastjson.version>2.0.25</fastjson.version>
+        <fastjson.version>2.0.34</fastjson.version>
         <jjwt.version>0.9.1</jjwt.version>
         <minio.version>8.2.2</minio.version>
         <poi.version>4.1.2</poi.version>
-        <transmittable-thread-local.version>2.14.2</transmittable-thread-local.version>
+        <transmittable-thread-local.version>2.14.3</transmittable-thread-local.version>
         <lombok.version>1.18.22</lombok.version>
         <oshi.version>6.1.2</oshi.version>
         <ganymed-ssh2.version>build250</ganymed-ssh2.version>

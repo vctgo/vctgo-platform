@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      title: 'Vctgo开发平台',
+      title: process.env.VUE_APP_TITLE,
       logo: logoImg
     }
   },
