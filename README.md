@@ -66,7 +66,7 @@ PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
 - 6.优化代码生成模块-代码生成默认集成mybatis-plus的CRUD模块
 - 7.添加通知模块,和OSS存储模块,已经集成阿里云短信,后续会集成七牛云和腾讯等第三方
 - 8.集成xxl-job到系统,重构定时任务管理界面,账号权限通用
-- 9.等待建议添加....
+- 9.优化文件服务
 ## 后续开发任务
 - 1.继续同步RuoYi-Cloud相关版本性更新
 - 2.优化租户增删改查时候的数据处理逻辑,以及租户到期提前一星期通知功能(完成)
@@ -85,12 +85,12 @@ PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
 
 ### 其他细节说明
 ### 最新更新,项目已内置Nacos,直接启动即可
-#### 1.nacos自行运行 如果是 M1的芯片 会出现内核报错 采用下方nacos镜像即可  docker pull zhusaidong/nacos-server-m1:2.0.3
+#### 1.如果nacos自行运行 如果是 M1的芯片 会出现内核报错 采用下方nacos镜像即可  docker pull zhusaidong/nacos-server-m1:2.0.3
      - 运行指令如下 
      docker run --name nacos-standalone -e MODE=standalone -e JVM_XMS=512m -e JVM_XMX=512m -e JVM_XMN=256m -p 8848:8848 -d zhusaidong/nacos-server-m1:2.0.3
      
 - 非M1芯片或者非docker环境请自行参考文档里的相关部署说明
-    
+### 以下非必须，如果感觉修改host比较麻烦，可以自行都修改为127.0.0.1    
 #### 2.mysql,redis等自行安装根据需求修改配置文件里的端口和连接,目前nacos初始化的配置文件里写的地址都是host映射的地址,如果需要指定指定地址请自行修改
      - Windows处于 C:\Windows\System32\drivers\etc
      - Linux和Mac都属于 /etc/hosts下
@@ -148,6 +148,7 @@ com.vctgo
 ├── vctgo-auth            // 认证中心 [39200]
 ├── vctgo-api             // 接口模块
 │       └── vctgo-api-system                          // 系统接口
+├── vctgo-demo         // 样例代码模块 [39203]
 ├── vctgo-common          // 通用模块
 │       └── vctgo-common-core                         // 核心模块
 │       └── vctgo-common-datascope                    // 权限范围
@@ -157,11 +158,13 @@ com.vctgo
 │       └── vctgo-common-security                     // 安全模块
 │       └── vctgo-common-swagger                      // 系统接口
 │       └── vctgo-common-message                      // 消息通知
-│       └── vctgo-common-mybatisplus                  // mybatis增强组件
+│       └── vctgo-common-mybatisplus                  // mybatis租户增强组件
+│       └── vctgo-common-seata                        // seata组件(未启用)
 ├── vctgo-modules         // 业务模块
 │       └── vctgo-system                              // 系统模块 [39201]
 │       └── vctgo-gen                                 // 代码生成 [39202]
 │       └── vctgo-file                                // 文件服务 [39300]
+│       └── vctgo-job                                 // 定时任务服务 [39024]
 ├── vctgo-visual          // 图形化管理模块
 │       └── vctgo-visual-monitor                      // 监控中心 [39100]
 ├──pom.xml                // 公共依赖
