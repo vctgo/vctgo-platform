@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import com.vctgo.common.core.utils.ip.AddressUtils;
 import eu.bitwalker.useragentutils.UserAgent;
 import com.vctgo.common.security.utils.SecurityUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.vctgo.common.core.constant.CacheConstants;
@@ -20,11 +21,13 @@ import com.vctgo.common.core.utils.uuid.IdUtils;
 import com.vctgo.common.redis.service.RedisService;
 import com.vctgo.system.api.model.LoginUser;
 
+
 /**
  * token验证处理
  *
  * @author vctgo
  */
+@Slf4j
 @Component
 public class TokenService
 {
@@ -117,6 +120,7 @@ public class TokenService
         }
         catch (Exception e)
         {
+            log.error("获取用户信息异常'{}'", e.getMessage());
         }
         return user;
     }
