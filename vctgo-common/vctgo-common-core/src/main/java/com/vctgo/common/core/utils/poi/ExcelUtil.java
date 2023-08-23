@@ -13,6 +13,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vctgo.common.core.exception.UtilException;
 import com.vctgo.common.core.utils.reflect.ReflectUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.RegExUtils;
@@ -233,9 +234,23 @@ public class ExcelUtil<T>
      * @param is 输入流
      * @return 转换后集合
      */
-    public List<T> importExcel(InputStream is) throws Exception
+    public List<T> importExcel(InputStream is)
     {
-        return importExcel(is, 0);
+        List<T> list = null;
+        try
+        {
+            list = importExcel(is, 0);
+        }
+        catch (Exception e)
+        {
+            log.error("导入Excel异常{}", e.getMessage());
+            throw new UtilException(e.getMessage());
+        }
+        finally
+        {
+            IOUtils.closeQuietly(is);
+        }
+        return list;
     }
 
     /**
@@ -387,7 +402,7 @@ public class ExcelUtil<T>
                         {
                             propertyName = field.getName() + "." + attr.targetAttr();
                         }
-                        else if (StringUtils.isNotEmpty(attr.readConverterExp()))
+                        if (StringUtils.isNotEmpty(attr.readConverterExp()))
                         {
                             val = reverseByExp(Convert.toStr(val), attr.readConverterExp(), attr.separator());
                         }
