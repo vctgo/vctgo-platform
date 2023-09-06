@@ -25,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="updateTime"   column="update_time"  />
 		<result property="remark"       column="remark"       />
 		<result property="userType"     column="user_type"   />
-		<association property="dept"    column="dept_id" javaType="com.vctgo.system.api.domain.SysDept" resultMap="deptResult" />
+		<association property="dept"      javaType="com.vctgo.system.api.domain.SysDept" resultMap="deptResult" />
 		<collection  property="roles"   javaType="java.util.List"           resultMap="RoleResult" />
 	</resultMap>
 
