@@ -6,6 +6,7 @@ import ${import};
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.vctgo.common.core.annotation.Excel;
+import com.vctgo.common.core.web.domain.TenantEntity;
 import lombok.Data;
 #if($table.crud)
 #elseif($table.tree)
