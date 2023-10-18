@@ -51,6 +51,7 @@ import org.apache.ibatis.annotations.Param;
      * @param roleId 角色ID
      * @return 权限列表
      */
+    @InterceptorIgnore(tenantLine = "1")
     List<String> selectMenuPermsByRoleId(Long roleId);
 
     /**
