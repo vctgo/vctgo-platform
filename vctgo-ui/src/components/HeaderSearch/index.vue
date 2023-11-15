@@ -76,7 +76,11 @@ export default {
         const pindex = path.indexOf("http");
         window.open(path.substr(pindex, path.length), "_blank");
       } else {
-        this.$router.push(val.path)
+        if (query) {
+          this.$router.push({ path: path, query: JSON.parse(query) });
+        } else {
+          this.$router.push(path)
+        }
       }
       this.search = ''
       this.options = []

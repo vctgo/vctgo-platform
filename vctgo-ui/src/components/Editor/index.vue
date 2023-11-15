@@ -144,7 +144,7 @@ export default {
       if (this.type == 'url') {
         let toolbar = this.Quill.getModule("toolbar");
         toolbar.addHandler("image", (value) => {
-          this.uploadType = "image";
+          //this.uploadType = "image";
           if (value) {
             this.$refs.upload.$children[0].$refs.input.click();
           } else {
@@ -173,6 +173,13 @@ export default {
     },
     // 上传前校检格式和大小
     handleBeforeUpload(file) {
+      const type = ["image/jpeg", "image/jpg", "image/png", "image/svg"];
+      const isJPG = type.includes(file.type);
+      // 检验文件格式
+      if (!isJPG) {
+        this.$message.error(`图片格式错误!`);
+        return false;
+      }
       // 校检文件大小
       if (this.fileSize) {
         const isLt = file.size / 1024 / 1024 < this.fileSize;
