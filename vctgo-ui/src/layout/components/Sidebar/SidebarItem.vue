@@ -14,7 +14,7 @@
       </template>
       <sidebar-item
         v-for="(child, index) in item.children"
-        :key="child.path + index"`
+        :key="child.path + index"
         :is-nest="true"
         :item="child"
         :base-path="resolvePath(child.path)"
