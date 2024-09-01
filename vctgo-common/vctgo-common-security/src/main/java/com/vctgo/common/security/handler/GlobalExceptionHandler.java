@@ -1,5 +1,7 @@
 package com.vctgo.common.security.handler;
 
+import com.vctgo.common.core.text.Convert;
+import com.vctgo.common.core.utils.html.EscapeUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
@@ -92,8 +94,13 @@ public class GlobalExceptionHandler
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
     public AjaxResult handleMethodArgumentTypeMismatchException(MethodArgumentTypeMismatchException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
+        String value = Convert.toStr(e.getValue());
+        if (StringUtils.isNotEmpty(value))
+        {
+            value = EscapeUtil.clean(value);
+        }
         log.error("请求参数类型不匹配'{}',发生系统异常.", requestURI, e);
-        return AjaxResult.error(String.format("请求参数类型不匹配，参数[%s]要求类型为：'%s'，但输入值为：'%s'", e.getName(), e.getRequiredType().getName(), e.getValue()));
+        return AjaxResult.error(String.format("请求参数类型不匹配，参数[%s]要求类型为：'%s'，但输入值为：'%s'", e.getName(), e.getRequiredType().getName(), value));
     }
     /**
      * 拦截未知的运行时异常
