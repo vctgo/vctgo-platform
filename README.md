@@ -1,3 +1,5 @@
+## 官网问题已经修复,可以正常访问,后续如有问题请邮件联系
+## 删除了无用的菜单和容易报错的项目,后续会在2025年春节后继续更新
 ## 平台简介
 
 <h1 align="center" style="margin: 30px 0 30px; font-weight: bold;">Vctgo-platform 多租户Saas快速开发平台</h1>
@@ -39,7 +41,7 @@ Gitee: https://gitee.com/vctgo/vctgo-platform
 
 GitHub: https://github.com/vctgo/vctgo-platform
 ## 演示地址
-PS:目前已经改成流量计费满速100M,请大家切勿恶意刷流量
+PS:目前已经升级服务器,修改为阿里云3M的服务器,请大家请勿恶心访问刷新,如果官网出现问题请邮件联系我!
 - http://platform.vctgo.cn
 - 账号密码 admin/admin123
 - 目前演示地址权限全开,请勿随意删除相关数据,本人只做了初始化数据库备份,如果出现异常情况,会选择直接回滚初始版本
